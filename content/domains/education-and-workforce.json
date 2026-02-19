@@ -1,0 +1,60 @@
+{
+  "name": "Education & Workforce",
+  "slug": "education-and-workforce",
+  "summary": "Lifelong learning and employment verification.",
+  "tags": [
+    "education",
+    "credentials",
+    "workforce",
+    "skills"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "UNESCO \u2013 digital credentialing",
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000264428"
+    },
+    {
+      "label": "W3C Verifiable Credentials",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "label": "EBSI and education credentials",
+      "url": "https://hub.ebsi.eu/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "Education credentials / selective disclosure"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC co-editor"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust frameworks / credentials"
+    }
+  ],
+  "definition": "Education and workforce covers credentials, skills verification, and portable learning records.",
+  "challenges": "Credentials are siloed; verification is manual. Portable records across borders and employers are rare.",
+  "opportunities": "Verifiable credentials for degrees and skills enable instant verification; attestations support lifelong learning records and labour mobility.",
+  "experiments": [
+    {
+      "title": "EBSI diplomas",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "Verifiable education credentials across Europe."
+    },
+    {
+      "title": "Blockcerts / open credentials",
+      "year": 2023,
+      "blockchainUsed": "Bitcoin/Ethereum",
+      "description": "Open standard for blockchain-based academic credentials."
+    }
+  ]
+}

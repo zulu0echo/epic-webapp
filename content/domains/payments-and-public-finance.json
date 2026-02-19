@@ -1,0 +1,75 @@
+{
+  "name": "Payments & Public Finance",
+  "slug": "payments-and-public-finance",
+  "parentSlug": null,
+  "definition": "Payments and public finance covers government-to-person disbursements, procurement spending, treasury reporting, and fiscal transparency.",
+  "summary": "Movement of public funds with transparency and accountability.",
+  "tags": [
+    "payments",
+    "G2P",
+    "treasury",
+    "public finance",
+    "transparency"
+  ],
+  "ethereumPrimitives": [
+    "account abstraction",
+    "L2s",
+    "stablecoins",
+    "programmable payments",
+    "attestation"
+  ],
+  "maturityLevel": "pilot",
+  "edges": [
+    {
+      "toSlug": "digital-identity-and-credentials",
+      "edgeType": "depends_on"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian cash-transfer oriented blockchain approach."
+    },
+    {
+      "title": "UNICEF CryptoFund",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "UN entity receiving/holding/disbursing crypto assets with transparency."
+    }
+  ],
+  "references": [
+    {
+      "label": "WFP Building Blocks (blockchain for humanitarian cash)",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "UNICEF CryptoFund",
+      "url": "https://www.unicef.org/innovation/stories/unicef-cryptofund"
+    },
+    {
+      "label": "World Bank G2Px initiative",
+      "url": "https://www.worldbank.org/en/programs/g2px"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting Partnership"
+    },
+    {
+      "name": "Fran\u00e7ois Adam",
+      "linkedInUrl": "https://www.linkedin.com/in/francois-adam-16398861/",
+      "affiliation": "Belgium Federal Procurement Service"
+    },
+    {
+      "name": "Liesbeth Casier",
+      "linkedInUrl": "https://www.linkedin.com/in/liesbethcasier/",
+      "affiliation": "Public procurement & integrity"
+    }
+  ],
+  "challenges": "Leakage and identity issues in G2P are common; procurement opacity and delayed payments create inefficiency and fraud risk.",
+  "opportunities": "Programmable payments tied to attestations can improve targeting; transparent rails and shared records support accountability and reconciliation."
+}

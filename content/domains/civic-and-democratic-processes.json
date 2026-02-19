@@ -1,0 +1,65 @@
+{
+  "name": "Civic & Democratic Processes",
+  "slug": "civic-and-democratic-processes",
+  "definition": "Civic and democratic processes include the ways governments gather public input, ensure procedural legitimacy, and enable accountable participation in public life.",
+  "summary": "Civic engagement and democratic infrastructure.",
+  "tags": [
+    "civic",
+    "democracy",
+    "transparency",
+    "consultation"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries",
+    "privacy tech"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "OGP National Handbook \u2013 Foundations for Open Government (2025)",
+      "url": "https://www.opengovpartnership.org/wp-content/uploads/2025/04/OGP-National-Handbook-Foundations-for-Open-Government-2025.pdf"
+    },
+    {
+      "label": "EBSI public-sector trust layer",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    },
+    {
+      "label": "OECD DPI governance and safeguards",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Audrey Tang",
+      "linkedInUrl": "https://www.linkedin.com/in/tangaudrey",
+      "affiliation": "former Taiwan Digital Minister / g0v"
+    },
+    {
+      "name": "Beth Simone Noveck",
+      "linkedInUrl": "https://www.linkedin.com/in/bethnoveck",
+      "affiliation": "GovLab director"
+    },
+    {
+      "name": "Pia Mancini",
+      "linkedInUrl": "https://www.linkedin.com/in/piamancini",
+      "affiliation": "DemocracyOS / Democracy.Earth"
+    }
+  ],
+  "challenges": "Civic processes often rely on legacy or fragmented tools; trust in outcomes is undermined when input cannot be verified or when participation is not inclusive. Cross-border and multilingual participation is difficult.",
+  "opportunities": "Attestations can record participation and commitments; registries can anchor policy or consultation outcomes with integrity. Privacy-preserving proofs can support credentialed participation without full identity disclosure.",
+  "experiments": [
+    {
+      "title": "EBSI public-sector trust",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "Trust layer for cross-border public services and participation."
+    },
+    {
+      "title": "OGP and open government data",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Open government partnership and transparent process initiatives."
+    }
+  ]
+}

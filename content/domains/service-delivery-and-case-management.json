@@ -1,0 +1,59 @@
+{
+  "name": "Service Delivery & Case Management",
+  "slug": "service-delivery-and-case-management",
+  "summary": "Coordinated delivery of government services and benefits.",
+  "tags": [
+    "benefits",
+    "eligibility",
+    "case management",
+    "interoperability"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "World Bank \u2013 digital delivery systems",
+      "url": "https://www.worldbank.org/en/topic/socialprotection/brief/digital-delivery-systems"
+    },
+    {
+      "label": "WFP Building Blocks (coordination + cash)",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "W3C Verifiable Credentials",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Audrey Tang",
+      "linkedInUrl": "https://www.linkedin.com/in/tangaudrey",
+      "affiliation": "g0v / digital government"
+    },
+    {
+      "name": "Beth Simone Noveck",
+      "linkedInUrl": "https://www.linkedin.com/in/bethnoveck",
+      "affiliation": "GovLab"
+    },
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC / identity standards"
+    }
+  ],
+  "challenges": "Case management is often siloed across agencies; eligibility and coordination are manual.",
+  "opportunities": "Attestations and verifiable credentials can streamline eligibility and inter-agency coordination; shared state can reduce duplication.",
+  "experiments": [
+    {
+      "title": "WFP Building Blocks",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Coordination and cash in humanitarian delivery."
+    },
+    {
+      "title": "Digital benefit eligibility pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Attestation-based eligibility and case coordination."
+    }
+  ]
+}

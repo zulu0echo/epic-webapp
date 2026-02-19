@@ -1,0 +1,13 @@
+{
+  "slug": "national-digital-id-pilot",
+  "title": "National digital ID pilot",
+  "description": "Exploration for verifiable credentials pilot.",
+  "stage": "exploration",
+  "priority": "high",
+  "fitScore": 78,
+  "budgetBand": "500k-1m",
+  "nextStep": "Scoping call",
+  "pocFlagshipFlag": true,
+  "domainSlugs": ["digital-identity-and-credentials"],
+  "institutionSlugs": ["national-digital-identity-authority"]
+}

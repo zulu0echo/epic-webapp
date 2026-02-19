@@ -1,0 +1,65 @@
+{
+  "name": "Treasury transparency",
+  "slug": "treasury-transparency",
+  "parentSlug": "payments-and-public-finance",
+  "definition": "Public visibility into treasury operations.",
+  "summary": "Auditable public finance.",
+  "challenges": "Treasury operations are politically and commercially sensitive; full real-time transparency may be undesirable. Legacy systems and accounting conventions make it hard to expose commitments and execution in a standard way. Citizens and oversight bodies often lack tools to interpret raw data.",
+  "opportunities": "Commitment and execution can be recorded in a tamper-evident way (e.g. hashes or attestations) to support ex-post audit and accountability. Selective disclosure can balance transparency with sensitivity. Open standards can enable third-party tools for analysis and visualization.",
+  "tags": [
+    "treasury",
+    "transparency",
+    "public finance"
+  ],
+  "ethereumPrimitives": [
+    "registries",
+    "attestation"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "Open Contracting",
+      "url": "https://www.open-contracting.org/"
+    },
+    {
+      "label": "OGP fiscal transparency",
+      "url": "https://www.opengovpartnership.org/"
+    },
+    {
+      "label": "OECD DPI",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting"
+    },
+    {
+      "name": "Fran\u00e7ois Adam",
+      "linkedInUrl": "https://www.linkedin.com/in/francois-adam-16398861/",
+      "affiliation": "Belgium procurement"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian cash transfers and coordination."
+    },
+    {
+      "title": "UNICEF CryptoFund",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "UN entity holding and disbursing crypto with transparency."
+    },
+    {
+      "title": "World Bank G2Px",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Global initiative for government-to-person payment digitization."
+    }
+  ]
+}

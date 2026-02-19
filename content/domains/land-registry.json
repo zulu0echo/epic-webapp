@@ -1,0 +1,64 @@
+{
+  "name": "Land registry",
+  "slug": "land-registry",
+  "parentSlug": "registries-and-records",
+  "definition": "Official record of land ownership and transactions.",
+  "summary": "Title and cadastre.",
+  "challenges": "Land is politically sensitive; reforms can be contested. Legacy systems are often paper or siloed digital systems; disputes over boundaries, inheritance, and transfers are common. Fraud (fake titles, duplicate sales) persists where verification is weak.",
+  "opportunities": "Tamper-evident history of transactions and updates can reduce fraud and support dispute resolution. Merkle proofs and attestations allow verification without centralising all title data. Interoperability with other registries (e.g. identity) can support verification of parties.",
+  "tags": [
+    "land",
+    "registry"
+  ],
+  "ethereumPrimitives": [
+    "registries",
+    "attestation"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "Georgia land titling (Bitfury/NAPR)",
+      "url": "https://bitfury.com/content/downloads/the_bitfury_group_republic_of_georgia_expand_blockchain_pilot_2_7_16.pdf"
+    },
+    {
+      "label": "World Bank \u2013 property registries",
+      "url": "https://openknowledge.worldbank.org/"
+    },
+    {
+      "label": "OECD DPI \u2013 registries",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust / registries"
+    },
+    {
+      "name": "Markus Sabadello",
+      "linkedInUrl": "https://www.linkedin.com/in/markus-sabadello-35302a/",
+      "affiliation": "Registry architecture"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Georgia land registry pilot",
+      "year": 2016,
+      "blockchainUsed": "mixed",
+      "description": "Early government blockchain experiment for land title integrity."
+    },
+    {
+      "title": "EBSI diploma use case",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "European diploma verification on EBSI."
+    },
+    {
+      "title": "Digital business registry pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Verified legal entity attributes for trade and KYC."
+    }
+  ]
+}

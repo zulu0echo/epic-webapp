@@ -1,0 +1,10 @@
+{
+  "slug": "manu-sporny",
+  "name": "Manu Sporny",
+  "affiliation": "W3C Verifiable Credentials co-editor",
+  "skillsTags": ["VC", "W3C", "standards", "identity", "provenance"],
+  "domainSlugs": ["digital-identity-and-credentials", "education-and-workforce", "registries-and-records", "supply-chain-and-logistics"],
+  "region": "Global",
+  "contactPath": "https://www.linkedin.com/in/manusporny/",
+  "ethereumAlignmentNotes": "Core standards, ecosystem coordination; VC primitives for certificates and provenance attestations."
+}

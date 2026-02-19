@@ -1,0 +1,58 @@
+{
+  "name": "Transparency",
+  "slug": "transparency",
+  "parentSlug": "civic-and-democratic-processes",
+  "definition": "Transparency in GovTech means making government actions legible: budgets, contracts, service performance, and decision records that can be inspected and audited.",
+  "summary": "Open data and process transparency.",
+  "challenges": "Transparency initiatives fail when data is partial, late, inconsistently structured, or easy to alter without trace. Over-disclosure can also harm privacy (e.g., publishing personal or sensitive operational details), so safeguards and redaction policies are critical. Capacity constraints\u2014data pipelines, standards adoption, and sustained operations\u2014often matter more than the technology choice.",
+  "opportunities": "Ethereum can add verifiable integrity layers: anchoring hashes of datasets, signed attestations of disclosures, and immutable change logs for policy-critical records. Standards-based publishing becomes more valuable when integrity proofs enable independent verification that published records are complete and untampered. A practical approach is offchain data plus onchain proofs, minimizing costs and privacy risk while strengthening accountability.",
+  "tags": [
+    "transparency",
+    "open government"
+  ],
+  "ethereumPrimitives": [
+    "registries",
+    "attestation"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "Open Contracting Data Standard",
+      "url": "https://standard.open-contracting.org/latest/en/"
+    },
+    {
+      "label": "OGP \u2013 transparency and open government",
+      "url": "https://www.opengovpartnership.org/"
+    },
+    {
+      "label": "OCDS + integrity proofs (contracting disclosure)",
+      "url": "https://www.open-contracting.org/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting Partnership"
+    },
+    {
+      "name": "Audrey Tang",
+      "linkedInUrl": "https://www.linkedin.com/in/tangaudrey",
+      "affiliation": "former Taiwan Digital Minister"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI public-sector trust",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "Trust layer for cross-border public services and participation."
+    },
+    {
+      "title": "OGP and open government data",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Open government partnership and transparent process initiatives."
+    }
+  ]
+}

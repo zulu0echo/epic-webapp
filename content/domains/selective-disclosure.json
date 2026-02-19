@@ -1,0 +1,65 @@
+{
+  "name": "Selective disclosure",
+  "slug": "selective-disclosure",
+  "parentSlug": "digital-identity-and-credentials",
+  "definition": "Prove a claim without revealing full credential.",
+  "summary": "Privacy-preserving verification.",
+  "tags": [
+    "privacy",
+    "ZK",
+    "credentials"
+  ],
+  "ethereumPrimitives": [
+    "ZK proofs",
+    "selective disclosure"
+  ],
+  "maturityLevel": "pilot",
+  "challenges": "UX for selective disclosure\u2014explaining to users what is being shared\u2014is non-trivial. Performance of ZK proofs and key management for many attributes can be demanding. Legal and regulatory acceptance of ZK-based verification is still evolving.",
+  "opportunities": "Minimal disclosure reduces privacy risk and supports compliance (e.g. data minimization). ZK-based proofs can prove range, membership, or relations without revealing underlying data. Attestation and commitment schemes offer lighter-weight options where full ZK is not needed.",
+  "references": [
+    {
+      "label": "W3C VC Data Model (selective disclosure)",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "label": "BBS+ / ZK credentials",
+      "url": "https://www.w3.org/TR/vc-di-bbs/"
+    },
+    {
+      "label": "EAS",
+      "url": "https://attest.sh"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "Selective disclosure"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI Verifiable Credentials",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "EU-wide initiative for verifiable credentials and public services."
+    },
+    {
+      "title": "Ethereum Attestation Service (EAS)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Open attestation registry for credentials and claims."
+    },
+    {
+      "title": "W3C VC implementations",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based verifiable credentials in government and private sector."
+    }
+  ]
+}

@@ -1,44 +1,27 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { getExperts, getDomains } from "@/lib/content";
+import { expertToApiShape } from "@/lib/content/normalize";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const q = searchParams.get("q") ?? "";
-  const where: { deletedAt: null; name?: { contains: string } } = { deletedAt: null };
-  if (q) where.name = { contains: q };
-  const list = await prisma.expert.findMany({
-    where,
-    include: { domainTags: { include: { domain: { select: { id: true, name: true } } } } },
-    orderBy: { name: "asc" },
+  const q = (searchParams.get("q") ?? "").toLowerCase();
+  const [experts, domains] = await Promise.all([getExperts(), getDomains()]);
+  const domainBySlug = new Map(domains.map((d) => [d.slug, d]));
+  let list = experts;
+  if (q) list = list.filter((e) => e.name.toLowerCase().includes(q));
+  const withDomainTags = list.map((e) => {
+    const domainTags = (e.domainSlugs ?? [])
+      .map((slug) => domainBySlug.get(slug))
+      .filter(Boolean)
+      .map((d) => ({ domain: { id: d!.slug, name: d!.name } }));
+    return expertToApiShape(e, domainTags);
   });
-  return NextResponse.json(list);
+  return NextResponse.json(withDomainTags);
 }
 
-export async function POST(request: Request) {
-  const body = await request.json();
-  const {
-    name, affiliation, expertiseDomains, skillsTags, region, languages,
-    ethereumAlignmentNotes, conflicts, availability, contactPath, referencesLinks, domainIds,
-  } = body;
-  if (!name) return NextResponse.json({ error: "name required" }, { status: 400 });
-  const expert = await prisma.expert.create({
-    data: {
-      name: String(name),
-      affiliation: affiliation ?? "",
-      expertiseDomains: Array.isArray(expertiseDomains) ? JSON.stringify(expertiseDomains) : (expertiseDomains ?? ""),
-      skillsTags: Array.isArray(skillsTags) ? JSON.stringify(skillsTags) : (skillsTags ?? ""),
-      region: region ?? "",
-      languages: Array.isArray(languages) ? JSON.stringify(languages) : (languages ?? ""),
-      ethereumAlignmentNotes: ethereumAlignmentNotes ?? "",
-      conflicts: conflicts ?? "",
-      availability: availability ?? "",
-      contactPath: contactPath ?? "",
-      referencesLinks: Array.isArray(referencesLinks) ? JSON.stringify(referencesLinks) : (referencesLinks ?? ""),
-    },
-  });
-  if (Array.isArray(domainIds))
-    for (const domId of domainIds) {
-      await prisma.expertDomain.create({ data: { expertId: expert.id, domainId: domId } });
-    }
-  return NextResponse.json(expert);
+export async function POST() {
+  return NextResponse.json(
+    { error: "Content is file-based. Add JSON files in content/experts/." },
+    { status: 501 }
+  );
 }

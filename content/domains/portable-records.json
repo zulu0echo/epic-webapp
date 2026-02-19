@@ -1,0 +1,63 @@
+{
+  "name": "Portable records",
+  "slug": "portable-records",
+  "parentSlug": "education-and-workforce",
+  "definition": "Lifelong learning and employment records.",
+  "summary": "Portable record of achievements.",
+  "tags": [
+    "portable",
+    "records"
+  ],
+  "ethereumPrimitives": [
+    "verifiable credentials",
+    "attestation"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Ownership and control of learning and employment records are often unclear; data is siloed by institution or employer. Interoperability across systems and countries is limited. Aggregating credentials from multiple sources into a single, verifiable record is non-trivial; employers and institutions may not trust or accept portable records.",
+  "opportunities": "Self-sovereign or user-controlled record aggregating attestations from education providers, employers, and assessors can support portability. Verifiable credentials for each achievement enable employer and institutional verification without centralised access. Standards (e.g. W3C VC, Open Badges) support interoperability; pilots in lifelong learning and employment are advancing.",
+  "references": [
+    {
+      "label": "UNESCO credentials",
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000264428"
+    },
+    {
+      "label": "W3C VC",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "label": "EBSI diplomas",
+      "url": "https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/Use+case+Diplomas"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI diplomas",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "Verifiable education credentials across Europe."
+    },
+    {
+      "title": "Blockcerts / open credentials",
+      "year": 2023,
+      "blockchainUsed": "Bitcoin/Ethereum",
+      "description": "Open standard for blockchain-based academic credentials."
+    }
+  ]
+}

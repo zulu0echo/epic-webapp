@@ -1,0 +1,64 @@
+{
+  "name": "Procurement & invoicing",
+  "slug": "procurement-and-invoicing",
+  "parentSlug": "payments-and-public-finance",
+  "definition": "Public procurement and payment to suppliers.",
+  "summary": "Transparent procurement and settlement.",
+  "challenges": "Fraud and collusion in procurement are significant; opacity in contract award and execution makes detection hard. Invoicing and payment are often manual and delayed. Disputes and reconciliation are costly.",
+  "opportunities": "Audit trail of commitments, milestones, and payments can improve transparency and deter fraud. Smart contracts or programmable logic can release payment when attested milestones are met. Shared, verifiable records can streamline reconciliation.",
+  "tags": [
+    "procurement",
+    "public finance"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "smart contracts"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "Open Contracting Data Standard",
+      "url": "https://standard.open-contracting.org/"
+    },
+    {
+      "label": "OGP procurement",
+      "url": "https://www.opengovpartnership.org/"
+    },
+    {
+      "label": "OECD DPI",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting Partnership"
+    },
+    {
+      "name": "Fran\u00e7ois Adam",
+      "linkedInUrl": "https://www.linkedin.com/in/francois-adam-16398861/",
+      "affiliation": "Belgium Federal Procurement"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian cash transfers and coordination."
+    },
+    {
+      "title": "UNICEF CryptoFund",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "UN entity holding and disbursing crypto with transparency."
+    },
+    {
+      "title": "World Bank G2Px",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Global initiative for government-to-person payment digitization."
+    }
+  ]
+}

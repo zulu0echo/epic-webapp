@@ -3,12 +3,15 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { parseJsonArray } from "@/lib/parsers";
+import { cn } from "@/lib/cn";
+import { getSectorTheme } from "@/lib/sectorColors";
 
 type RelatedLink = { label: string; url: string };
 
 type Domain = {
   id: string;
   name: string;
+  rootName?: string | null;
   definition: string | null;
   summary: string | null;
   challenges: string | null;
@@ -25,6 +28,8 @@ type Domain = {
   experiments?: { experiment: { id: string; title: string; year: number | null; blockchainUsed: string | null; description: string | null } }[];
   opportunityLinks?: { opportunity: { id: string; title: string; stage: string } }[];
   expertDomains?: { expert: { id: string; name: string; affiliation: string | null } }[];
+  references?: { label: string; url: string }[];
+  featuredExperts?: { name: string; linkedInUrl: string; affiliation?: string }[];
 };
 
 export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onClose: () => void }) {
@@ -51,6 +56,7 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
 
   const tags = parseJsonArray(domain.tags);
   const primitives = parseJsonArray(domain.ethereumPrimitives);
+  const theme = getSectorTheme(domain.rootName ?? "");
   let relatedLinks: RelatedLink[] = [];
   try {
     if (domain.relatedLinks) relatedLinks = JSON.parse(domain.relatedLinks) as RelatedLink[];
@@ -60,9 +66,9 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
 
   return (
     <div className="flex flex-col h-full">
-      <div className="p-4 border-b border-slate-200/80 bg-white flex items-start justify-between gap-2">
+      <div className={cn("p-4 border-b flex items-start justify-between gap-2", theme.lightBg, theme.lightBorder)}>
         <div className="min-w-0">
-          <h2 className="font-serif text-lg font-bold text-slate-900 truncate">{domain.name}</h2>
+          <h2 className={cn("font-serif text-lg font-bold truncate", theme.text)}>{domain.name}</h2>
           {domain.parent && (
             <p className="text-xs text-slate-500 mt-0.5">Parent: {domain.parent.name}</p>
           )}
@@ -76,11 +82,14 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`px-3 py-2.5 text-sm font-medium capitalize border-b-2 whitespace-nowrap transition-colors ${
+            className={cn(
+              "px-3 py-2.5 text-sm font-medium capitalize border-b-2 whitespace-nowrap transition-colors",
               tab === t
-                ? "border-indigo-500 text-indigo-600 bg-white"
-                : "border-transparent text-slate-600 hover:text-slate-900 hover:bg-white/50"
-            }`}
+                ? "bg-white"
+                : "border-transparent text-slate-600 hover:text-slate-900 hover:bg-white/50",
+              tab === t && theme.border,
+              tab === t && theme.accent
+            )}
           >
             {t === "pipeline" ? "Pipeline" : t}
           </button>
@@ -100,9 +109,9 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
               </section>
             )}
             {domain.valueProposition && (
-              <section className="mb-4 p-4 rounded-xl bg-indigo-50/80 border border-indigo-100">
-                <h3 className="font-semibold text-indigo-800 mb-1.5">How Ethereum could be used (value prop)</h3>
-                <p className="text-indigo-900/90 text-sm whitespace-pre-wrap leading-relaxed">{domain.valueProposition}</p>
+              <section className={cn("mb-4 p-4 rounded-xl border", theme.lightBg, theme.lightBorder)}>
+                <h3 className={cn("font-semibold mb-1.5", theme.text)}>How Ethereum could be used (value prop)</h3>
+                <p className={cn("text-sm whitespace-pre-wrap leading-relaxed opacity-90", theme.text)}>{domain.valueProposition}</p>
               </section>
             )}
             <section className="mb-4">
@@ -126,7 +135,7 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
                 <h3 className="font-medium text-slate-700 mb-1">Ethereum primitives</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {primitives.map((p) => (
-                    <span key={p} className="px-2.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700 text-xs font-medium">
+                    <span key={p} className={cn("px-2.5 py-0.5 rounded-md text-xs font-medium", theme.lightBg, theme.accent)}>
                       {p}
                     </span>
                   ))}
@@ -134,14 +143,43 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
               </section>
             )}
             {relatedLinks.length > 0 && (
-              <section>
+              <section className="mb-4">
                 <h3 className="font-medium text-slate-700 mb-1">Use cases & case studies</h3>
                 <ul className="space-y-1">
                   {relatedLinks.map((link, i) => (
                     <li key={i}>
-                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline text-sm">
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" className={cn("text-sm hover:underline", theme.accent, theme.accentHover)}>
                         {link.label || link.url}
                       </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+            {(domain.references?.length ?? 0) > 0 && (
+              <section className="mb-4">
+                <h3 className="font-medium text-slate-700 mb-1">References & experiments</h3>
+                <ul className="space-y-1">
+                  {domain.references!.map((ref, i) => (
+                    <li key={i}>
+                      <a href={ref.url} target="_blank" rel="noopener noreferrer" className={cn("text-sm hover:underline", theme.accent, theme.accentHover)}>
+                        {ref.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+            {(domain.featuredExperts?.length ?? 0) > 0 && (
+              <section>
+                <h3 className="font-medium text-slate-700 mb-1">Featured experts</h3>
+                <ul className="space-y-1.5">
+                  {domain.featuredExperts!.map((ex, i) => (
+                    <li key={i}>
+                      <a href={ex.linkedInUrl} target="_blank" rel="noopener noreferrer" className={cn("text-sm font-medium hover:underline", theme.accent, theme.accentHover)}>
+                        {ex.name}
+                      </a>
+                      {ex.affiliation && <span className="text-slate-500 text-sm ml-1">· {ex.affiliation}</span>}
                     </li>
                   ))}
                 </ul>
@@ -202,7 +240,7 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
             ) : (
               domain.opportunityLinks!.map(({ opportunity: o }) => (
                 <li key={o.id} className="epic-card p-3">
-                  <a href={`/crm/opportunities?id=${o.id}`} className="font-medium text-indigo-600 hover:underline">
+                  <a href={`/crm/opportunities?id=${o.id}`} className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
                     {o.title}
                   </a>
                   <span className="text-slate-500 ml-1">· {o.stage}</span>

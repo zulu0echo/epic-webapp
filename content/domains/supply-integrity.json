@@ -1,0 +1,63 @@
+{
+  "name": "Supply integrity",
+  "slug": "supply-integrity",
+  "parentSlug": "health",
+  "definition": "Integrity of medicines and equipment in health supply chain.",
+  "summary": "Provenance for health supplies.",
+  "tags": [
+    "health",
+    "supply chain"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries"
+  ],
+  "maturityLevel": "pilot",
+  "challenges": "Counterfeiting and substandard medicines are widespread in some regions; verification at the point of use is difficult when supply chains are long and opaque. Cold chain and handling conditions must be documented. Serialisation and traceability regulations (e.g. EU FMD, DSCSA) require interoperable systems; recall and investigation need fast, accurate tracing.",
+  "opportunities": "Attestations at each step (manufacturer, distributor, customs, pharmacy) create an auditable provenance trail; verification at point of use can confirm authenticity. Temperature and handling logs can be attested. Serialisation and event data can be anchored in registries; WHO, regulators, and pharma pilots are advancing supply chain integrity.",
+  "references": [
+    {
+      "label": "HL7 FHIR",
+      "url": "https://fhir.hl7.org/"
+    },
+    {
+      "label": "GS1 healthcare",
+      "url": "https://www.gs1.org/industries/healthcare/traceability"
+    },
+    {
+      "label": "W3C VC",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "HL7 FHIR + verifiable credentials",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Healthcare interoperability with provider credential verification."
+    },
+    {
+      "title": "Pharma supply chain pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Provenance and anti-counterfeiting for medicines."
+    }
+  ]
+}

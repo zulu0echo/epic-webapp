@@ -1,34 +1,35 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { getDomains } from "@/lib/content";
+import { toStrArray } from "@/lib/content/normalize";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const focusId = searchParams.get("focusId");
   const kHop = Math.min(parseInt(searchParams.get("k") ?? "2", 10) || 2, 3);
-  const tagFilter = searchParams.get("tags"); // comma-separated
+  const tagFilter = searchParams.get("tags");
   const maturityFilter = searchParams.get("maturity");
 
-  const domains = await prisma.domain.findMany({
-    where: { deletedAt: null },
-    select: { id: true, name: true, parentId: true, tags: true, maturityLevel: true },
-  });
+  const domains = await getDomains();
   const idToRoot = new Map<string, string>();
-  const roots = domains.filter((d) => !d.parentId);
-  function getRootId(id: string): string {
-    const d = domains.find((x) => x.id === id);
-    if (!d || !d.parentId) return d?.id ?? id;
-    return getRootId(d.parentId);
+  const roots = domains.filter((d) => !d.parentSlug || !domains.some((x) => x.slug === d.parentSlug));
+  function getRootId(slug: string): string {
+    const d = domains.find((x) => x.slug === slug);
+    if (!d || !d.parentSlug) return d?.slug ?? slug;
+    return getRootId(d.parentSlug);
   }
   domains.forEach((d) => {
-    const rootName = roots.find((r) => r.id === getRootId(d.id))?.name ?? d.name;
-    idToRoot.set(d.id, rootName);
-  });
-  const edges = await prisma.domainEdge.findMany({
-    where: { deletedAt: null },
-    select: { fromId: true, toId: true, edgeType: true },
+    const rootName = roots.find((r) => r.slug === getRootId(d.slug))?.name ?? d.name;
+    idToRoot.set(d.slug, rootName);
   });
 
-  let nodeIds = new Set(domains.map((d) => d.id));
+  const edges: { fromId: string; toId: string; edgeType: string }[] = [];
+  for (const d of domains) {
+    for (const e of d.edges ?? []) {
+      edges.push({ fromId: d.slug, toId: e.toSlug, edgeType: e.edgeType });
+    }
+  }
+
+  let nodeIds = new Set(domains.map((d) => d.slug));
   if (focusId) {
     const neighborIds = new Set<string>([focusId]);
     let current = new Set<string>([focusId]);
@@ -46,26 +47,22 @@ export async function GET(request: Request) {
 
   const tagSet = tagFilter ? new Set(tagFilter.split(",").map((t) => t.trim())) : null;
   const nodes = domains
-    .filter((d) => nodeIds.has(d.id))
+    .filter((d) => nodeIds.has(d.slug))
     .filter((d) => {
       if (maturityFilter && d.maturityLevel !== maturityFilter) return false;
-      if (tagSet && d.tags) {
-        try {
-          const tags = JSON.parse(d.tags) as string[];
-          if (!tags.some((t) => tagSet.has(t))) return false;
-        } catch {
-          return true;
-        }
+      if (tagSet) {
+        const tags = toStrArray(d.tags);
+        if (tags.length && !tags.some((t) => tagSet.has(t))) return false;
       }
       return true;
     })
     .map((d, i) => ({
-      id: d.id,
+      id: d.slug,
       label: d.name,
-      parentId: d.parentId ?? null,
+      parentId: d.parentSlug ?? null,
       position: { x: (i % 5) * 180, y: Math.floor(i / 5) * 100 },
-      sector: idToRoot.get(d.id) ?? "",
-      tier: d.parentId ? "child" : "root",
+      sector: idToRoot.get(d.slug) ?? "",
+      tier: d.parentSlug ? "child" : "root",
     }));
 
   const nodeIdSet = new Set(nodes.map((n) => n.id));

@@ -1,0 +1,65 @@
+{
+  "name": "Health",
+  "slug": "health",
+  "definition": "Health GovTech includes patient records, provider credentialing, health supply chains, and interoperability across clinics, labs, insurers, and public health authorities.",
+  "summary": "Health data and supply chain with privacy.",
+  "tags": [
+    "health",
+    "patient records",
+    "credentialing",
+    "supply chain"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "privacy tech",
+    "verifiable credentials"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Health data is sensitive and siloed; provider credentialing and supply-chain verification are fragmented across jurisdictions.",
+  "opportunities": "VCs for provider credentials and attestations for supply-chain integrity can improve verification; privacy-preserving tech can support safe data sharing.",
+  "references": [
+    {
+      "label": "HL7 FHIR overview",
+      "url": "https://fhir.hl7.org/fhir/overview.html"
+    },
+    {
+      "label": "GS1 healthcare traceability",
+      "url": "https://www.gs1.org/industries/healthcare/traceability"
+    },
+    {
+      "label": "W3C Verifiable Credentials (provider credentials)",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Grahame Grieve",
+      "linkedInUrl": "https://au.linkedin.com/in/grahame-grieve-952637",
+      "affiliation": "HL7 FHIR leader"
+    },
+    {
+      "name": "Lloyd McKenzie",
+      "linkedInUrl": "https://www.linkedin.com/in/lloyd-mckenzie-6b6681/",
+      "affiliation": "Health IT / interoperability"
+    },
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC / provider credentials"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "HL7 FHIR + verifiable credentials",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Healthcare interoperability with provider credential verification."
+    },
+    {
+      "title": "Pharma supply chain pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Provenance and anti-counterfeiting for medicines."
+    }
+  ]
+}

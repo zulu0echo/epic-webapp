@@ -1,5 +1,5 @@
-import type { PrismaClient } from "@prisma/client";
-import { parseJsonArray } from "./parsers";
+import type { DomainContent, ExpertContent, OpportunityContent } from "@/lib/content";
+import { toStrArray } from "@/lib/content/normalize";
 
 export interface MatchResult {
   expertId: string;
@@ -17,60 +17,59 @@ const WEIGHTS = {
 };
 
 export async function matchExpertsToDomainOrOpportunity(
-  prisma: PrismaClient,
-  opts: { domainId?: string; opportunityId?: string }
+  _opts: { domainId?: string; opportunityId?: string },
+  data: {
+    experts: ExpertContent[];
+    domains: DomainContent[];
+    opportunities: OpportunityContent[];
+  }
 ): Promise<{ matches: MatchResult[] }> {
-  const experts = await prisma.expert.findMany({
-    where: { deletedAt: null },
-    include: { domainTags: { include: { domain: true } } },
-  });
+  const experts = data.experts ?? [];
+  const domains = data.domains ?? [];
+  const opportunities = data.opportunities ?? [];
+  const domainBySlug = new Map(domains.map((d) => [d.slug, d]));
 
-  let targetDomainIds: string[] = [];
+  let targetDomainSlugs: string[] = [];
   let targetTags: string[] = [];
   let targetRegion = "";
   let targetLanguages: string[] = [];
 
-  if (opts.domainId) {
-    const domain = await prisma.domain.findFirst({
-      where: { id: opts.domainId, deletedAt: null },
-    });
+  if (_opts.domainId) {
+    const domain = domainBySlug.get(_opts.domainId);
     if (domain) {
-      targetDomainIds = [domain.id];
-      targetTags = parseJsonArray(domain.tags);
-      targetRegion = "";
-      targetLanguages = [];
+      targetDomainSlugs = [domain.slug];
+      targetTags = toStrArray(domain.tags);
     }
-  } else if (opts.opportunityId) {
-    const opp = await prisma.opportunity.findMany({
-      where: { id: opts.opportunityId, deletedAt: null },
-      include: { domains: { include: { domain: true } }, institutions: { include: { institution: true } } },
-    });
-    const o = opp[0];
-    if (o) {
-      targetDomainIds = o.domains.map((d) => d.domainId);
-      targetTags = o.domains.flatMap((d) => parseJsonArray(d.domain.tags));
-      const inst = o.institutions[0]?.institution;
-      if (inst?.country) targetRegion = inst.country;
+  } else if (_opts.opportunityId) {
+    const opp = opportunities.find((o) => o.slug === _opts.opportunityId);
+    if (opp) {
+      targetDomainSlugs = opp.domainSlugs ?? [];
+      targetTags = (opp.domainSlugs ?? [])
+        .flatMap((slug) => toStrArray(domainBySlug.get(slug)?.tags));
+      const instSlugs = opp.institutionSlugs ?? [];
+      // Region from first institution would need getInstitutions - skip for now or pass in
+      targetRegion = "";
     }
   }
 
   const matches: MatchResult[] = experts.map((expert) => {
     const reasons: string[] = [];
     let score = 0;
-
-    const expertDomainIds = new Set(expert.domainTags.map((d) => d.domainId));
+    const expertDomainSlugs = new Set(expert.domainSlugs ?? []);
     const expertTags = new Set([
-      ...parseJsonArray(expert.skillsTags),
-      ...expert.domainTags.flatMap((d) => parseJsonArray(d.domain.tags)),
+      ...toStrArray(expert.skillsTags),
+      ...(expert.domainSlugs ?? []).flatMap((slug) =>
+        toStrArray(domainBySlug.get(slug)?.tags)
+      ),
     ]);
     const expertRegions = (expert.region ?? "").toLowerCase();
-    const expertLangs = new Set(parseJsonArray(expert.languages).map((l) => l.toLowerCase()));
+    const expertLangs = new Set(toStrArray(expert.languages).map((l) => l.toLowerCase()));
 
-    const domainOverlap = targetDomainIds.filter((id) => expertDomainIds.has(id)).length;
+    const domainOverlap = targetDomainSlugs.filter((id) => expertDomainSlugs.has(id)).length;
     if (domainOverlap > 0) {
-      const pct = Math.min(100, (domainOverlap / Math.max(1, targetDomainIds.length)) * 100);
+      const pct = Math.min(100, (domainOverlap / Math.max(1, targetDomainSlugs.length)) * 100);
       score += (WEIGHTS.domainOverlap * pct) / 100;
-      reasons.push(`Domain match (${domainOverlap} of ${targetDomainIds.length})`);
+      reasons.push(`Domain match (${domainOverlap} of ${targetDomainSlugs.length})`);
     }
 
     const tagOverlap = targetTags.filter((t) => expertTags.has(t)).length;
@@ -97,7 +96,7 @@ export async function matchExpertsToDomainOrOpportunity(
     if (score > 0) score = Math.round(Math.min(100, score));
 
     return {
-      expertId: expert.id,
+      expertId: expert.slug,
       name: expert.name,
       score,
       reasons,

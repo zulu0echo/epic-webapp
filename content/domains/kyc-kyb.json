@@ -1,0 +1,65 @@
+{
+  "name": "KYC/KYB",
+  "slug": "kyc-kyb",
+  "parentSlug": "digital-identity-and-credentials",
+  "definition": "Know-your-customer / business verification.",
+  "summary": "Compliance and onboarding.",
+  "tags": [
+    "KYC",
+    "compliance",
+    "identity"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "verifiable credentials"
+  ],
+  "maturityLevel": "pilot",
+  "challenges": "Regulation (AML/KYC) varies by jurisdiction and sector; reuse of KYC across institutions is often not permitted or is contractually restricted. Duplicate onboarding is costly for firms and burdensome for users. Storing or sharing KYC data raises privacy and security concerns.",
+  "opportunities": "Reusable KYC via attestations or verifiable credentials can reduce duplication while preserving regulatory responsibility. Attestation-based flows allow relying parties to verify without holding raw documents. Interoperability with identity frameworks (eIDAS, national ID) is emerging.",
+  "references": [
+    {
+      "label": "W3C Verifiable Credentials",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "label": "EBSI",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    },
+    {
+      "label": "Ethereum Attestation Service",
+      "url": "https://attest.sh"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "Selective disclosure"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI Verifiable Credentials",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "EU-wide initiative for verifiable credentials and public services."
+    },
+    {
+      "title": "Ethereum Attestation Service (EAS)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Open attestation registry for credentials and claims."
+    },
+    {
+      "title": "W3C VC implementations",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based verifiable credentials in government and private sector."
+    }
+  ]
+}

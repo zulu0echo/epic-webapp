@@ -1,0 +1,64 @@
+{
+  "name": "Patient records pointers",
+  "slug": "patient-records-pointers",
+  "parentSlug": "health",
+  "definition": "Pointers to health data (not data itself).",
+  "summary": "Consent-based access to records.",
+  "tags": [
+    "health",
+    "patient data",
+    "privacy"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "privacy tech"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Privacy and consent are strictly regulated (e.g. GDPR, HIPAA); storing or processing health data on public infrastructure raises legal and ethical questions. Consent must be informed, specific, and revocable; enforcement across many systems is hard. Proving who accessed what and when is often lacking; patients may not know where their data lives or who has access.",
+  "opportunities": "Pointer registry\u2014recording where data lives and who has been given access, with tamper-evident timestamps\u2014supports access control and audit without storing health data on-chain. Attestation of access and usage can support accountability and compliance. Consent receipts and usage policies can be anchored for verification; GDPR-compliant designs are being piloted in health data spaces.",
+  "references": [
+    {
+      "label": "HL7 FHIR",
+      "url": "https://fhir.hl7.org/"
+    },
+    {
+      "label": "GS1 healthcare",
+      "url": "https://www.gs1.org/industries/healthcare/traceability"
+    },
+    {
+      "label": "W3C VC",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "HL7 FHIR + verifiable credentials",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Healthcare interoperability with provider credential verification."
+    },
+    {
+      "title": "Pharma supply chain pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Provenance and anti-counterfeiting for medicines."
+    }
+  ]
+}

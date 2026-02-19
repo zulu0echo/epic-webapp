@@ -16,7 +16,7 @@ import "reactflow/dist/style.css";
 import { DomainDetailPanel } from "./DomainDetailPanel";
 import { TaxonomyTree } from "./TaxonomyTree";
 import { cn } from "@/lib/cn";
-import { getSectorStyle, SECTOR_COLORS } from "@/lib/sectorColors";
+import { getSectorStyle, getSectorTheme, DOMAIN_THEMES } from "@/lib/sectorColors";
 
 const NODE_WIDTH = 180;
 const NODE_HEIGHT = 44;
@@ -103,7 +103,8 @@ function MapExplorerInner({ initialDomainId }: { initialDomainId?: string | null
         className: cn(
           "rounded-xl border-2 shadow-md px-3 py-2 flex items-center justify-center text-center",
           getSectorStyle(n.sector ?? "", n.tier ?? "child"),
-          selectedId === n.id && "ring-2 ring-indigo-500 ring-offset-2"
+          selectedId === n.id && "ring-2 ring-offset-2",
+          selectedId === n.id && getSectorTheme(n.sector ?? "").ring
         ),
       }))
     );
@@ -176,10 +177,10 @@ function MapExplorerInner({ initialDomainId }: { initialDomainId?: string | null
               Focus mode (selected node + neighbors)
             </label>
             <div className="text-xs text-slate-600 border-t border-slate-200 pt-2 mt-2">
-              <span className="font-semibold text-slate-700 block mb-1.5">Sectors</span>
+              <span className="font-semibold text-slate-700 block mb-1.5">Domains</span>
               <div className="flex flex-wrap gap-1.5">
-                {Object.entries(SECTOR_COLORS).slice(0, 6).map(([name, style]) => (
-                  <span key={name} className={`px-2 py-0.5 rounded-md text-xs font-medium ${style.bg} ${style.text}`} title={name}>
+                {Object.entries(DOMAIN_THEMES).map(([name, theme]) => (
+                  <span key={name} className={`px-2 py-0.5 rounded-md text-xs font-medium border ${theme.bg} ${theme.border} ${theme.text}`} title={name}>
                     {name.split(" ")[0]}
                   </span>
                 ))}

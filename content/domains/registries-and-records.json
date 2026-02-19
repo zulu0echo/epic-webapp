@@ -1,0 +1,60 @@
+{
+  "name": "Registries & Records",
+  "slug": "registries-and-records",
+  "definition": "Registries and records are core state infrastructure: land, business, licensing, certificates, and other authoritative datasets.",
+  "summary": "Immutable or tamper-evident records of ownership and entitlements.",
+  "tags": [
+    "registries",
+    "land",
+    "business",
+    "licensing",
+    "certificates"
+  ],
+  "ethereumPrimitives": [
+    "registries",
+    "attestation",
+    "merkle proofs"
+  ],
+  "maturityLevel": "pilot",
+  "experiments": [
+    {
+      "title": "Georgia land registry pilot",
+      "year": 2016,
+      "blockchainUsed": "mixed",
+      "description": "Widely cited early government blockchain experiment for land title integrity."
+    }
+  ],
+  "references": [
+    {
+      "label": "Georgia land titling on blockchain (Bitfury / NAPR)",
+      "url": "https://bitfury.com/content/downloads/the_bitfury_group_republic_of_georgia_expand_blockchain_pilot_2_7_16.pdf"
+    },
+    {
+      "label": "World Bank \u2013 property registries and digitalization",
+      "url": "https://openknowledge.worldbank.org/bitstreams/98ae95ed-e494-4ed7-a417-db01e662af68/download"
+    },
+    {
+      "label": "OECD DPI (registries as key components)",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Decentralized identity / trust frameworks"
+    },
+    {
+      "name": "Markus Sabadello",
+      "linkedInUrl": "https://www.linkedin.com/in/markus-sabadello-35302a/",
+      "affiliation": "Registry architecture / interoperability"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C Verifiable Credentials"
+    }
+  ],
+  "challenges": "Legacy registries are often paper or siloed; interoperability and verification across borders are limited. Fraud persists where verification is weak.",
+  "opportunities": "Tamper-evident registries and attestations can reduce fraud and support dispute resolution; open schemas and anchors enable cross-border recognition."
+}

@@ -1,0 +1,66 @@
+{
+  "name": "Aid disbursement",
+  "slug": "aid-disbursement",
+  "parentSlug": "payments-and-public-finance",
+  "definition": "Humanitarian and development aid flows.",
+  "summary": "End-to-end traceability of aid.",
+  "challenges": "Fragmentation across many donors and implementers makes it hard to see who gave what, to whom, and with what outcome. Reporting burden on implementers is high; data is often inconsistent or late. Beneficiary verification and avoidance of duplication are difficult in crises.",
+  "opportunities": "Commitments and disbursements can be recorded on shared, verifiable rails so donors have visibility. Beneficiary verification via attestations or credentials can support targeting and reduce duplication. Outcome attestations (e.g. delivery confirmed) can close the loop; pilots show traceability is achievable without centralising sensitive data.",
+  "tags": [
+    "aid",
+    "humanitarian",
+    "transparency"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries",
+    "L2s"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "WFP Building Blocks",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "UNICEF CryptoFund",
+      "url": "https://www.unicef.org/innovation/stories/unicef-cryptofund"
+    },
+    {
+      "label": "World Bank G2Px",
+      "url": "https://www.worldbank.org/en/programs/g2px"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting"
+    },
+    {
+      "name": "Liesbeth Casier",
+      "linkedInUrl": "https://www.linkedin.com/in/liesbethcasier/",
+      "affiliation": "Public finance"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian cash transfers and coordination."
+    },
+    {
+      "title": "UNICEF CryptoFund",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "UN entity holding and disbursing crypto with transparency."
+    },
+    {
+      "title": "World Bank G2Px",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Global initiative for government-to-person payment digitization."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "Civil registry",
+  "slug": "civil-registry",
+  "parentSlug": "digital-identity-and-credentials",
+  "definition": "Official record of births, deaths, citizenship.",
+  "summary": "Source of truth for legal identity.",
+  "tags": [
+    "registry",
+    "identity"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Civil registries are often legacy, paper-based or in closed systems with limited APIs; modernisation is costly and politically sensitive. Single points of failure create availability and security risks. Inter-country verification (e.g. for migration or marriage) is cumbersome and often manual.",
+  "opportunities": "Tamper-evident registries and attestations can anchor issuance and updates so that other countries or agencies can verify records without full data sharing. Merkle proofs and selective disclosure support privacy while enabling verification. Neutral infrastructure can reduce vendor lock-in.",
+  "references": [
+    {
+      "label": "World Bank \u2013 civil registration and ID",
+      "url": "https://id4d.worldbank.org/"
+    },
+    {
+      "label": "EBSI trust infrastructure",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    },
+    {
+      "label": "W3C Verifiable Credentials",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust frameworks"
+    },
+    {
+      "name": "Markus Sabadello",
+      "linkedInUrl": "https://www.linkedin.com/in/markus-sabadello-35302a/",
+      "affiliation": "Decentralized identity"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI Verifiable Credentials",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "EU-wide initiative for verifiable credentials and public services."
+    },
+    {
+      "title": "Ethereum Attestation Service (EAS)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Open attestation registry for credentials and claims."
+    },
+    {
+      "title": "W3C VC implementations",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based verifiable credentials in government and private sector."
+    }
+  ]
+}

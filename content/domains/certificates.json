@@ -1,0 +1,64 @@
+{
+  "name": "Certificates",
+  "slug": "certificates",
+  "parentSlug": "registries-and-records",
+  "definition": "Official certificates (birth, marriage, education).",
+  "summary": "Verifiable official documents.",
+  "challenges": "Forgery and fake certificates are common where verification is weak. Portability\u2014using a certificate abroad\u2014often requires apostille or manual verification. Issuance and revocation are not always visible to relying parties; citizens may lack easy access to their own records.",
+  "opportunities": "VC-based certificates issued by recognised authorities enable instant verification by any relying party. Tamper-evident issuance and optional revocation lists support integrity. Portable credentials reduce the need for physical documents and in-person verification; interoperability supports once-only and cross-border use.",
+  "tags": [
+    "certificates",
+    "credentials"
+  ],
+  "ethereumPrimitives": [
+    "verifiable credentials",
+    "attestation"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "W3C Verifiable Credentials",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "label": "EBSI diplomas",
+      "url": "https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/Use+case+Diplomas"
+    },
+    {
+      "label": "Ethereum Attestation Service",
+      "url": "https://attest.sh"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC / credentials"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Georgia land registry pilot",
+      "year": 2016,
+      "blockchainUsed": "mixed",
+      "description": "Early government blockchain experiment for land title integrity."
+    },
+    {
+      "title": "EBSI diploma use case",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "European diploma verification on EBSI."
+    },
+    {
+      "title": "Digital business registry pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Verified legal entity attributes for trade and KYC."
+    }
+  ]
+}

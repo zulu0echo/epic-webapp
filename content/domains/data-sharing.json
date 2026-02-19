@@ -1,0 +1,58 @@
+{
+  "name": "Data sharing",
+  "slug": "data-sharing",
+  "parentSlug": "data-governance-and-interoperability",
+  "definition": "Secure, governed data sharing between orgs.",
+  "summary": "Data sharing agreements and audit.",
+  "tags": [
+    "data sharing",
+    "privacy"
+  ],
+  "ethereumPrimitives": [
+    "ZK proofs",
+    "attestation"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Trust between organisations and legal basis for sharing (contract, consent, public interest) vary. Compliance with data protection law across jurisdictions is complex. Proving that data was used only for agreed purposes is difficult; dispute resolution and accountability are often weak.",
+  "opportunities": "Verifiable data-sharing agreements and usage attestations can be anchored on neutral infrastructure; parties can prove what was agreed and how data was used. Audit trail of access and use supports accountability and compliance. ZK and privacy-preserving tech enable minimal disclosure\u2014analytics or matching without exposing raw data.",
+  "references": [
+    {
+      "label": "World Bank DPI",
+      "url": "https://documents1.worldbank.org/curated/en/099031025172027713/pdf/P505739-84c5073b-9d40-4b83-a211-98b2263e87dd.pdf"
+    },
+    {
+      "label": "EBSI",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    },
+    {
+      "label": "W3C VC",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust frameworks"
+    },
+    {
+      "name": "Markus Sabadello",
+      "linkedInUrl": "https://www.linkedin.com/in/markus-sabadello-35302a/",
+      "affiliation": "Verifiable data"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI shared trust",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "European shared infrastructure for data and identity."
+    },
+    {
+      "title": "Consent and data sovereignty pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "User-controlled consent and minimal disclosure."
+    }
+  ]
+}

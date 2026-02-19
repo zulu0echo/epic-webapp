@@ -1,0 +1,11 @@
+{
+  "slug": "audrey-tang",
+  "name": "Audrey Tang",
+  "affiliation": "former Taiwan Digital Minister / g0v",
+  "skillsTags": ["civic tech", "participatory democracy", "DPI", "digital government"],
+  "domainSlugs": ["civic-and-democratic-processes", "service-delivery-and-case-management"],
+  "region": "Taiwan",
+  "contactPath": "http://www.linkedin.com/in/tangaudrey",
+  "referencesLinks": [{ "label": "Source", "url": "https://github.com/audreyt" }],
+  "ethereumAlignmentNotes": "Strong practical track record on participatory democracy + digital public infrastructure."
+}

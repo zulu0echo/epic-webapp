@@ -1,0 +1,63 @@
+{
+  "name": "Environmental registries",
+  "slug": "environmental-registries",
+  "parentSlug": "climate-and-mrv",
+  "definition": "Environmental registries record assets, permissions, and outcomes related to environmental governance.",
+  "summary": "Environmental compliance and rights.",
+  "tags": [
+    "environmental",
+    "registry"
+  ],
+  "ethereumPrimitives": [
+    "registries",
+    "attestation"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Registries often suffer from fragmented ownership, inconsistent identifiers, and weak change control, leading to disputes about what is the authoritative record. Some environmental data is sensitive (e.g. location of endangered species, critical infrastructure), requiring careful access controls. Long timelines and shifting regulations make versioning and provenance a hard, ongoing problem.",
+  "opportunities": "Ethereum can anchor registry events (issuance, updates, retirements, permits) and attestations by authorized bodies, creating verifiable lineage and a shared audit surface. With offchain storage plus onchain proofs, systems can support public transparency where appropriate while enabling restricted access for sensitive data. This approach pairs naturally with DPI thinking: reusable identity, data-sharing, and registry primitives.",
+  "references": [
+    {
+      "label": "UNFCCC MRV",
+      "url": "https://unfccc.int/process-and-meetings/transparency-and-reporting"
+    },
+    {
+      "label": "World Bank MRV",
+      "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"
+    },
+    {
+      "label": "Digital MRV Springer",
+      "url": "https://link.springer.com/article/10.1007/s12599-025-00953-3"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Digital MRV pilots",
+      "year": 2024,
+      "blockchainUsed": "Various",
+      "description": "Measurement, reporting and verification for carbon and climate finance."
+    },
+    {
+      "title": "Carbon credit registries",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Tamper-evident registries for carbon credits and offsets."
+    }
+  ]
+}

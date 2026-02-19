@@ -1,0 +1,58 @@
+{
+  "name": "Customs",
+  "slug": "customs",
+  "parentSlug": "supply-chain-and-logistics",
+  "definition": "Customs declarations and clearance.",
+  "summary": "Cross-border trade facilitation.",
+  "challenges": "Paper and legacy systems cause delays, errors, and fraud; cross-border coordination is complex. Multiple agencies (customs, health, agriculture) may need to verify the same shipment. Trust in declarations and supporting documents is often established through manual checks.",
+  "opportunities": "Verifiable declarations and supporting attestations (e.g. origin, compliance) can streamline clearance and reduce paperwork. Shared state or registries can support single-window and multi-agency coordination. Tamper-evident records support audit and fraud detection.",
+  "tags": [
+    "customs",
+    "trade"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "WCO Data Model",
+      "url": "https://www.wcoomd.org/"
+    },
+    {
+      "label": "UN/CEFACT trade",
+      "url": "https://unece.org/trade"
+    },
+    {
+      "label": "GS1 traceability",
+      "url": "https://www.gs1.org/standards"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "David Roff",
+      "linkedInUrl": "https://www.linkedin.com/in/davidroff/",
+      "affiliation": "UN/CEFACT"
+    },
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Supply chain"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks (logistics)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian supply chain and delivery attestation."
+    },
+    {
+      "title": "GS1 + blockchain traceability",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based supply chain provenance."
+    }
+  ]
+}

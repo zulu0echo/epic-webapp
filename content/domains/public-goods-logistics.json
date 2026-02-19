@@ -1,0 +1,57 @@
+{
+  "name": "Public goods logistics",
+  "slug": "public-goods-logistics",
+  "parentSlug": "supply-chain-and-logistics",
+  "definition": "Logistics for public sector goods.",
+  "summary": "Audit trail for public procurement logistics.",
+  "challenges": "Fragmentation across procurement, warehousing, and delivery systems makes end-to-end visibility rare. Milestone and acceptance are often documented on paper or in siloed systems. Disputes over delivery or quality are costly; accountability for delays or losses is unclear.",
+  "opportunities": "Milestone attestations (e.g. order placed, shipped, received, inspected) can trigger payment or next steps and provide an audit trail. Visibility for procurers and auditors supports accountability. Shared, verifiable records can streamline reconciliation and dispute resolution.",
+  "tags": [
+    "logistics",
+    "public finance"
+  ],
+  "ethereumPrimitives": [
+    "attestation"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "Open Contracting",
+      "url": "https://www.open-contracting.org/"
+    },
+    {
+      "label": "WFP Building Blocks",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "GS1 standards",
+      "url": "https://www.gs1.org/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting"
+    },
+    {
+      "name": "David Roff",
+      "linkedInUrl": "https://www.linkedin.com/in/davidroff/",
+      "affiliation": "Trade / logistics"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks (logistics)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian supply chain and delivery attestation."
+    },
+    {
+      "title": "GS1 + blockchain traceability",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based supply chain provenance."
+    }
+  ]
+}

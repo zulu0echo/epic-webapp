@@ -1,0 +1,69 @@
+{
+  "name": "Licensing",
+  "slug": "licensing",
+  "parentSlug": "registries-and-records",
+  "definition": "Licenses and permits (professional, trade).",
+  "summary": "Proof of authorization.",
+  "challenges": "Renewal and continuing education or compliance are hard to track across many license types. Portability\u2014using a license in another jurisdiction\u2014is limited. Verification by employers or clients is often manual; revocation (e.g. disciplinary action) must be visible to relying parties.",
+  "opportunities": "Verifiable credentials for licenses enable instant, portable verification without centralised lookups. Attestations can link license to identity and to continuing compliance. Revocation registries or status lists can be anchored on-chain; interoperability supports labour mobility and cross-border recognition.",
+  "tags": [
+    "licensing",
+    "credentials"
+  ],
+  "ethereumPrimitives": [
+    "verifiable credentials",
+    "attestation"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "W3C VC",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "label": "EBSI",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    },
+    {
+      "label": "OECD DPI",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Georgia land registry pilot",
+      "year": 2016,
+      "blockchainUsed": "mixed",
+      "description": "Early government blockchain experiment for land title integrity."
+    },
+    {
+      "title": "EBSI diploma use case",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "European diploma verification on EBSI."
+    },
+    {
+      "title": "Digital business registry pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Verified legal entity attributes for trade and KYC."
+    }
+  ]
+}

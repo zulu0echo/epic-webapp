@@ -1,0 +1,63 @@
+{
+  "name": "Inter-agency coordination",
+  "slug": "inter-agency-coordination",
+  "parentSlug": "service-delivery-and-case-management",
+  "definition": "Sharing verified data across agencies.",
+  "summary": "Once-only, consent-based sharing.",
+  "challenges": "Trust between agencies and legal basis for sharing vary by jurisdiction. Consent must be informed, specific, and revocable; enforcement across systems is hard. Technical and semantic standards for data exchange are often missing or inconsistent.",
+  "opportunities": "Consent receipts and verifiable data-sharing agreements anchored on neutral infrastructure give users and agencies a tamper-evident record of what was shared and when. Attestations allow one agency to prove a claim to another without passing raw data. Once-only and cross-agency flows are piloted in several jurisdictions.",
+  "tags": [
+    "interoperability",
+    "data sharing"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "privacy tech"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "World Bank",
+      "url": "https://www.worldbank.org/en/topic/socialprotection"
+    },
+    {
+      "label": "WFP Building Blocks",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "W3C VC",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Coordination and cash in humanitarian delivery."
+    },
+    {
+      "title": "Digital benefit eligibility pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Attestation-based eligibility and case coordination."
+    }
+  ]
+}

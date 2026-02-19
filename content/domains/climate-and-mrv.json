@@ -1,0 +1,61 @@
+{
+  "name": "Climate & MRV",
+  "slug": "climate-and-mrv",
+  "definition": "Climate MRV (Measurement, Reporting, Verification) underpins credible climate action by ensuring emissions reductions and mitigation outcomes are measured and verified against accepted baselines.",
+  "summary": "Climate and environmental data and finance.",
+  "tags": [
+    "climate",
+    "MRV",
+    "carbon",
+    "environmental",
+    "grants"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries",
+    "privacy tech"
+  ],
+  "maturityLevel": "pilot",
+  "challenges": "MRV methodologies vary; data provenance and verifier independence are hard to assure. Fragmented systems slow down results-based finance and crediting.",
+  "opportunities": "Ethereum can anchor dataset commitments, verifier attestations, and methodology versions for audit-grade provenance. Payments can be tied to verified milestones.",
+  "references": [
+    {
+      "label": "UNFCCC MRV technical material",
+      "url": "https://unfccc.int/process-and-meetings/transparency-and-reporting/support-for-developing-countries/consultative-group-of-experts/measurement-reporting-and-verification-technical-material"
+    },
+    {
+      "label": "World Bank MRV explainer",
+      "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"
+    },
+    {
+      "label": "Digital MRV research (Springer)",
+      "url": "https://link.springer.com/article/10.1007/s12599-025-00953-3"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting / transparency"
+    },
+    {
+      "name": "Beth Simone Noveck",
+      "linkedInUrl": "https://www.linkedin.com/in/bethnoveck",
+      "affiliation": "GovLab / evidence-based policy"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Digital MRV pilots",
+      "year": 2024,
+      "blockchainUsed": "Various",
+      "description": "Measurement, reporting and verification for carbon and climate finance."
+    },
+    {
+      "title": "Carbon credit registries",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Tamper-evident registries for carbon credits and offsets."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Pharmaceuticals",
+  "slug": "pharmaceuticals",
+  "parentSlug": "supply-chain-and-logistics",
+  "definition": "Provenance and anti-counterfeiting for medicines.",
+  "summary": "Supply chain integrity for health.",
+  "challenges": "Scale\u2014integrating many manufacturers, distributors, and dispensers\u2014and regulatory alignment (e.g. serialisation, DSCSA, FMD) are demanding. Verification at the point of use must work in low-connectivity or offline scenarios. Counterfeiting remains a serious risk in many markets.",
+  "opportunities": "Batch and unit-level attestations at each step create an auditable provenance trail; verification at point of use can confirm authenticity without a single central database. Regulatory initiatives (e.g. DSCSA, international standards) are driving adoption. Interoperability and integration with existing ERP and serialisation systems are improving.",
+  "tags": [
+    "pharma",
+    "supply chain"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "GS1",
+      "url": "https://www.gs1.org/"
+    },
+    {
+      "label": "WFP Building Blocks",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "WCO",
+      "url": "https://www.wcoomd.org/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks (logistics)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian supply chain and delivery attestation."
+    },
+    {
+      "title": "GS1 + blockchain traceability",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based supply chain provenance."
+    }
+  ]
+}

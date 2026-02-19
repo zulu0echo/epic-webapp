@@ -1,0 +1,63 @@
+{
+  "name": "Grants tracking",
+  "slug": "grants-tracking",
+  "parentSlug": "climate-and-mrv",
+  "definition": "Grants tracking covers the end-to-end lifecycle of public or philanthropic funds: allocation, disbursement, milestones, reporting, and audits.",
+  "summary": "Transparency for climate finance.",
+  "tags": [
+    "grants",
+    "climate",
+    "transparency"
+  ],
+  "ethereumPrimitives": [
+    "attestation"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Grant programs often rely on fragmented reporting and inconsistent documentation, making audits slow and costly. Fraud risks include duplicate beneficiaries, inflated invoices, and opaque subcontracting chains. Privacy is critical: publishing too much can endanger recipients or reveal sensitive operational details.",
+  "opportunities": "Ethereum can provide shared, tamper-evident ledgers for commitments to grant agreements, milestone attestations, and audit trails while keeping sensitive details offchain. Smart contracts can enforce basic controls (e.g. disbursement only after verifier attestations) and generate real-time transparency dashboards for funders. Used carefully, this supports credible transparency rather than surveillance, aligning with open government principles.",
+  "references": [
+    {
+      "label": "UNFCCC MRV",
+      "url": "https://unfccc.int/process-and-meetings/transparency-and-reporting"
+    },
+    {
+      "label": "World Bank MRV",
+      "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"
+    },
+    {
+      "label": "Digital MRV Springer",
+      "url": "https://link.springer.com/article/10.1007/s12599-025-00953-3"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Digital MRV pilots",
+      "year": 2024,
+      "blockchainUsed": "Various",
+      "description": "Measurement, reporting and verification for carbon and climate finance."
+    },
+    {
+      "title": "Carbon credit registries",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Tamper-evident registries for carbon credits and offsets."
+    }
+  ]
+}

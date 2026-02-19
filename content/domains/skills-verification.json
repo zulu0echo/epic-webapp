@@ -1,0 +1,63 @@
+{
+  "name": "Skills verification",
+  "slug": "skills-verification",
+  "parentSlug": "education-and-workforce",
+  "definition": "Verification of skills and competencies.",
+  "summary": "Skills attestations.",
+  "tags": [
+    "skills",
+    "workforce"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "verifiable credentials"
+  ],
+  "maturityLevel": "pilot",
+  "challenges": "Standardisation of skills frameworks and taxonomies is fragmented across sectors and countries. Proof of competency (from training, assessment, or experience) is often informal or not portable. Labour market matching (job versus skills) is limited by data quality and standards; micro-credentials and non-formal learning are hard to evidence in a standard way.",
+  "opportunities": "Micro-credentials and skills attestations from training providers, employers, or assessors can be combined into a portable, verifiable record. ZK can support minimal disclosure (e.g. prove competency level without revealing full transcript). Alignment with frameworks (e.g. ESCO, national standards) can be represented in schemas; employers and platforms can consume attested skills for matching and hiring.",
+  "references": [
+    {
+      "label": "UNESCO credentials",
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000264428"
+    },
+    {
+      "label": "W3C VC",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "label": "EBSI diplomas",
+      "url": "https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/Use+case+Diplomas"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI diplomas",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "Verifiable education credentials across Europe."
+    },
+    {
+      "title": "Blockcerts / open credentials",
+      "year": 2023,
+      "blockchainUsed": "Bitcoin/Ethereum",
+      "description": "Open standard for blockchain-based academic credentials."
+    }
+  ]
+}

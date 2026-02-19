@@ -1,0 +1,58 @@
+{
+  "name": "Food aid",
+  "slug": "food-aid",
+  "parentSlug": "supply-chain-and-logistics",
+  "definition": "Traceability for food aid and relief.",
+  "summary": "From donor to beneficiary.",
+  "challenges": "Last-mile delivery in insecure or remote areas is hard to track; many actors (donors, UN, NGOs, local government) use different systems. Reporting to donors is burdensome and often delayed. Theft or diversion is a risk; verifying that aid reached intended beneficiaries is difficult.",
+  "opportunities": "Commitments, shipments, and handoffs can be recorded with attestations so donors and implementers see end-to-end flow. Delivery or beneficiary attestations at distribution points close the loop. Pilots in humanitarian logistics show that lightweight attestation is feasible in field conditions.",
+  "tags": [
+    "food aid",
+    "humanitarian",
+    "supply chain"
+  ],
+  "ethereumPrimitives": [
+    "attestation"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "WFP Building Blocks",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "GS1 humanitarian",
+      "url": "https://www.gs1.org/industries/retail"
+    },
+    {
+      "label": "UN OCHA",
+      "url": "https://www.unocha.org/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Transparency"
+    },
+    {
+      "name": "David Roff",
+      "linkedInUrl": "https://www.linkedin.com/in/davidroff/",
+      "affiliation": "Supply chain"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks (logistics)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian supply chain and delivery attestation."
+    },
+    {
+      "title": "GS1 + blockchain traceability",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based supply chain provenance."
+    }
+  ]
+}

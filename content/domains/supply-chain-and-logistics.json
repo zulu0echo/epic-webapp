@@ -1,0 +1,58 @@
+{
+  "name": "Supply Chain & Logistics",
+  "slug": "supply-chain-and-logistics",
+  "summary": "Provenance and integrity across supply chains.",
+  "tags": [
+    "supply chain",
+    "logistics",
+    "provenance"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "GS1 Global Traceability Standard",
+      "url": "https://www.gs1.org/standards/gs1-global-traceability-standard/current-standard"
+    },
+    {
+      "label": "WFP Building Blocks (humanitarian logistics)",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "WCO Data Model / Single Window",
+      "url": "https://www.wcoomd.org/"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting Partnership"
+    },
+    {
+      "name": "David Roff",
+      "linkedInUrl": "https://www.linkedin.com/in/davidroff/",
+      "affiliation": "UN/CEFACT expert, digital trade"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC / provenance"
+    }
+  ],
+  "challenges": "Fragmented systems limit end-to-end visibility; provenance and compliance are hard to verify across many actors.",
+  "opportunities": "Attestations at each step create auditable provenance; shared registries can support single-window and anti-counterfeiting.",
+  "experiments": [
+    {
+      "title": "WFP Building Blocks (logistics)",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian supply chain and delivery attestation."
+    },
+    {
+      "title": "GS1 + blockchain traceability",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Standards-based supply chain provenance."
+    }
+  ]
+}

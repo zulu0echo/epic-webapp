@@ -1,0 +1,64 @@
+{
+  "name": "Business registry",
+  "slug": "business-registry",
+  "parentSlug": "registries-and-records",
+  "definition": "Official register of companies and entities.",
+  "summary": "Legal entity identification.",
+  "challenges": "Interoperability across countries and sectors is limited; updates (e.g. directors, address) are often slow to propagate. Verification of legal existence and good standing is manual in many contexts. Fraud (shell companies, misrepresentation) is a concern.",
+  "opportunities": "Global identifiers and verified attributes (e.g. attestations from registry or tax authority) can streamline KYC/KYB and trade. Open, standardised schemas support cross-border recognition. Real-time or near-real-time updates with an audit trail can improve accuracy and trust.",
+  "tags": [
+    "business",
+    "registry"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "registries"
+  ],
+  "maturityLevel": "idea",
+  "references": [
+    {
+      "label": "Global LEI (legal entity identifier)",
+      "url": "https://www.gleif.org/"
+    },
+    {
+      "label": "EBSI / business attributes",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    },
+    {
+      "label": "OECD DPI",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust / identifiers"
+    },
+    {
+      "name": "David Roff",
+      "linkedInUrl": "https://www.linkedin.com/in/davidroff/",
+      "affiliation": "UN/CEFACT"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Georgia land registry pilot",
+      "year": 2016,
+      "blockchainUsed": "mixed",
+      "description": "Early government blockchain experiment for land title integrity."
+    },
+    {
+      "title": "EBSI diploma use case",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "European diploma verification on EBSI."
+    },
+    {
+      "title": "Digital business registry pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "Verified legal entity attributes for trade and KYC."
+    }
+  ]
+}

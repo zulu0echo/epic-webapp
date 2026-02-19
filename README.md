@@ -7,17 +7,19 @@ Production-quality web app for the **Ethereum Foundation EPIC team** (Ethereum P
 - **Map Explorer**: Interactive taxonomy tree (left), graph view (center) with pan/zoom and focus mode, and detail panel (right) with tabs: Overview, Challenges & Opportunities, Key Actors, Experiments, Experts, Opportunities.
 - **Rolodex**: Table of experts with filters; match experts to a domain or opportunity (via URL params) with explainable scoring.
 - **CRM**: Institutions, contacts, opportunities pipeline; weekly review (updated this week, stale).
-- **Admin**: Taxonomy editing (via API/Prisma Studio), export domains (JSON), export CRM (CSV).
+- **Admin**: Export domains (JSON), export CRM (CSV). Content is file-based (see `content/`).
 - **Global search**: Search across domains, institutions, opportunities, experts.
 
 ## Tech stack
 
 - **Next.js 14** (App Router)
-- **Prisma** + **SQLite**
+- **File-based content** (JSON in `content/`) — no database required
 - **React Flow** for the map graph
 - **Tailwind CSS** + Radix UI primitives
 
 ## Setup and run locally
+
+No database required. All data is loaded from JSON files in the `content/` directory.
 
 ```bash
 # 1. Go to the app directory
@@ -26,18 +28,17 @@ cd epic-map-app
 # 2. Install dependencies
 npm install
 
-# 3. Create the database (SQLite at prisma/dev.db)
-echo 'DATABASE_URL="file:./dev.db"' > .env
-npx prisma db push
-
-# 4. Seed the starter DPI taxonomy and sample data
-npm run db:seed
-
-# 5. Start the dev server
+# 3. Start the dev server
 npm run dev
 ```
 
 Then open **http://localhost:3001** in your browser.
+
+Sample content is included in `content/domains/`, `content/experts/`, `content/opportunities/`, and `content/institutions/`. Add or edit JSON files there; see **content/README.md** for the file format.
+
+### Deploy to Vercel
+
+Deploy as usual (e.g. connect the repo to Vercel). No database or environment variables are needed for map, Rolodex, or CRM — they read from the `content/` folder in the repo.
 
 - **Contact** and **Vendor / Ecosystem** forms send to **epic@ethereum.org** (they open your default email client with To and body pre-filled).
 
@@ -47,9 +48,7 @@ Then open **http://localhost:3001** in your browser.
 |--------|-------------|
 | `npm run dev` | Start dev server on port 3001 |
 | `npm run build` | Build for production |
-| `npm run db:push` | Push Prisma schema to DB (no migrations) |
-| `npm run db:seed` | Run seed script (taxonomy + sample data) |
-| `npm run db:studio` | Open Prisma Studio |
+| `npm run db:seed` | (No-op) Content is file-based; edit files in `content/`. |
 | `npm run test` | Run Vitest tests |
 
 ## Data model
@@ -63,11 +62,11 @@ Then open **http://localhost:3001** in your browser.
 
 ## Where to edit
 
-- **Taxonomy (domains)**: Use **Admin** → API instructions, or `npx prisma studio` to edit `Domain` and `DomainEdge`. Seed is in `prisma/seed.ts`.
-- **Add domain**: `POST /api/domains` with `name`, optional `parentId`, `definition`, `summary`, `challenges`, `opportunities`, `tags` (JSON array), `ethereumPrimitives` (JSON array), `maturityLevel`.
-- **Add edge**: `POST /api/domains/edges` with `fromId`, `toId`, `edgeType` (depends_on | enables | adjacent_to).
-- **Add opportunity**: `POST /api/opportunities` with `title`, optional `stage`, `priority`, `institutionIds`, `domainIds`.
-- **Add expert**: `POST /api/experts` with `name`, optional `skillsTags`, `expertiseDomains`, `domainIds`.
+- **Taxonomy (domains)**: Add or edit JSON files in **`content/domains/`**. Filename (without `.json`) = slug. See `content/README.md` for the schema. Use **Admin** to export domains as JSON.
+- **Experts**: `content/experts/*.json`
+- **Opportunities**: `content/opportunities/*.json`
+- **Institutions**: `content/institutions/*.json`
+- **Individual pages**: Each entry has a page at `/domains/[slug]`, `/experts/[slug]`, `/opportunities/[slug]`, `/institutions/[slug]`.
 
 ## Matching (Rolodex ↔ domain/opportunity)
 
@@ -83,10 +82,10 @@ Then open **http://localhost:3001** in your browser.
 
 ## Taxonomy maintenance
 
-1. **Add a new top-level domain**: Insert in `TAXONOMY` in `prisma/seed.ts` (or create via API after seed).
-2. **Add subdomains**: Add to the `children` array of the parent in the seed, or `POST /api/domains` with `parentId` set.
-3. **Add relationships**: `POST /api/domains/edges` with `fromId`, `toId`, `edgeType`.
-4. **Add experiments**: Create `Experiment` and `ExperimentDomain` in seed or via Prisma; link to domain IDs.
+1. **Add a new top-level domain**: Create `content/domains/your-slug.json` with `name`, optional `definition`, `summary`, `tags`, `edges`, etc. Use `parentSlug: null` or omit it for roots.
+2. **Add subdomains**: Create a new domain file with `parentSlug: "parent-slug"`.
+3. **Add relationships**: In each domain JSON, set `edges: [{ "toSlug": "other-slug", "edgeType": "depends_on" }]` (or `enables`, `adjacent_to`).
+4. **Add experiments**: In the domain JSON, set `experiments: [{ "title", "year", "blockchainUsed", "description" }]`.
 
 ## License
 

@@ -1,0 +1,58 @@
+{
+  "name": "Consent",
+  "slug": "consent",
+  "parentSlug": "data-governance-and-interoperability",
+  "definition": "User consent for data use.",
+  "summary": "Consent capture and proof.",
+  "tags": [
+    "consent",
+    "privacy"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "privacy tech"
+  ],
+  "maturityLevel": "idea",
+  "challenges": "Revocation is hard to enforce when data has already been copied or shared. Granularity\u2014what exactly was consented to, for how long, for what purpose\u2014is often unclear. Demonstrating lawful basis and consent to regulators or data subjects is difficult at scale; consent is frequently buried in long terms or obtained without meaningful choice.",
+  "opportunities": "Consent receipts\u2014tamper-evident records of what was consented to, when, and by whom\u2014can be anchored on-chain and presented to processors and auditors. Selective disclosure and ZK can support minimal data use in line with consent. Revocation or withdrawal can be recorded and verified; GDPR Art. 7 and W3C work on consent receipts align with these patterns.",
+  "references": [
+    {
+      "label": "W3C Consent Receipt",
+      "url": "https://www.w3.org/community/receipt/"
+    },
+    {
+      "label": "GDPR Art. 7 (conditions for consent)",
+      "url": "https://gdpr-info.eu/art-7-gdpr/"
+    },
+    {
+      "label": "EBSI / data sovereignty",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust / consent"
+    },
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "Selective disclosure"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI shared trust",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "European shared infrastructure for data and identity."
+    },
+    {
+      "title": "Consent and data sovereignty pilots",
+      "year": 2023,
+      "blockchainUsed": "Various",
+      "description": "User-controlled consent and minimal disclosure."
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 // EPIC Map — GovTech/DPI ecosystem + CRM + Rolodex
-// SQLite for simple local/single-host deploy
+// PostgreSQL for Vercel and local dev (use Neon, Vercel Postgres, or local Postgres)
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

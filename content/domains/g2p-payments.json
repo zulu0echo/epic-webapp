@@ -1,0 +1,66 @@
+{
+  "name": "G2P payments",
+  "slug": "g2p-payments",
+  "parentSlug": "payments-and-public-finance",
+  "definition": "Government-to-person transfers (benefits, subsidies).",
+  "summary": "Direct disbursement to citizens.",
+  "challenges": "Leakage\u2014funds diverted or lost\u2014and identity issues (wrong recipient, duplicate claims) are common where verification is weak. Last-mile delivery in rural or low-connectivity areas is difficult. Conditional payments (e.g. release when a child is enrolled in school) are hard to enforce transparently with current systems.",
+  "opportunities": "Conditional release tied to attested eligibility or milestones can improve targeting and accountability. Transparent rails give auditors and citizens visibility. Lower-cost settlement (e.g. L2s, stablecoins where permitted) can extend reach and reduce fees; account abstraction can simplify UX.",
+  "tags": [
+    "G2P",
+    "payments",
+    "benefits"
+  ],
+  "ethereumPrimitives": [
+    "programmable payments",
+    "attestation",
+    "L2s"
+  ],
+  "maturityLevel": "pilot",
+  "references": [
+    {
+      "label": "WFP Building Blocks",
+      "url": "https://innovation.wfp.org/project/building-blocks"
+    },
+    {
+      "label": "World Bank G2Px",
+      "url": "https://www.worldbank.org/en/programs/g2px"
+    },
+    {
+      "label": "UNICEF CryptoFund",
+      "url": "https://www.unicef.org/innovation/stories/unicef-cryptofund"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Gavin Hayman",
+      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
+      "affiliation": "Open Contracting"
+    },
+    {
+      "name": "Fran\u00e7ois Adam",
+      "linkedInUrl": "https://www.linkedin.com/in/francois-adam-16398861/",
+      "affiliation": "Belgium Federal Procurement"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "WFP Building Blocks",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "Humanitarian cash transfers and coordination."
+    },
+    {
+      "title": "UNICEF CryptoFund",
+      "year": 2023,
+      "blockchainUsed": "Ethereum",
+      "description": "UN entity holding and disbursing crypto with transparency."
+    },
+    {
+      "title": "World Bank G2Px",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Global initiative for government-to-person payment digitization."
+    }
+  ]
+}

@@ -1,31 +1,35 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { getDomains } from "@/lib/content";
 
-type TreeNode = { id: string; name: string; children?: TreeNode[] };
+type TreeNode = { id: string; name: string; rootName?: string; children?: TreeNode[] };
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const q = searchParams.get("q") ?? "";
-  const roots = await prisma.domain.findMany({
-    where: { parentId: null, deletedAt: null },
-    include: {
-      children: {
-        where: { deletedAt: null },
-        include: {
-          children: { where: { deletedAt: null }, select: { id: true, name: true } },
-        },
-      },
-    },
-    orderBy: { name: "asc" },
-  });
-  const filter = (name: string) =>
-    !q || name.toLowerCase().includes(q.toLowerCase());
-  const filterTree = (node: TreeNode): TreeNode | null => {
-    const match = filter(node.name);
-    const children = (node.children?.map((c) => filterTree(c)).filter(Boolean) ?? []) as TreeNode[];
-    if (match || children.length) return { id: node.id, name: node.name, children };
+  const q = (searchParams.get("q") ?? "").toLowerCase();
+  const domains = await getDomains();
+  const bySlug = new Map(domains.map((d) => [d.slug, d]));
+  const roots = domains.filter((d) => !d.parentSlug || !bySlug.has(d.parentSlug));
+
+  function getRootName(slug: string): string {
+    const d = bySlug.get(slug);
+    if (!d || !d.parentSlug) return d?.name ?? "";
+    return getRootName(d.parentSlug);
+  }
+
+  function buildTree(slug: string): TreeNode | null {
+    const d = bySlug.get(slug);
+    if (!d) return null;
+    const match = !q || d.name.toLowerCase().includes(q);
+    const children = domains
+      .filter((c) => c.parentSlug === slug)
+      .map((c) => buildTree(c.slug))
+      .filter((n): n is TreeNode => n !== null);
+    const rootName = getRootName(d.slug);
+    if (match || children.length)
+      return { id: d.slug, name: d.name, rootName: rootName || undefined, children: children.length ? children : undefined };
     return null;
-  };
-  const filtered = roots.map((r) => filterTree(r as TreeNode)).filter(Boolean);
+  }
+
+  const filtered = roots.map((r) => buildTree(r.slug)).filter((n): n is TreeNode => n !== null);
   return NextResponse.json(filtered);
 }

@@ -1,0 +1,63 @@
+{
+  "name": "Public consultations",
+  "slug": "public-consultations",
+  "parentSlug": "civic-and-democratic-processes",
+  "definition": "Public consultations are structured processes where governments solicit feedback on proposed laws, regulations, or programs.",
+  "summary": "Consultation and feedback.",
+  "tags": [
+    "consultation",
+    "participation"
+  ],
+  "ethereumPrimitives": [
+    "attestation",
+    "privacy tech"
+  ],
+  "maturityLevel": "pilot",
+  "challenges": "Consultations often face legitimacy issues: stakeholders worry submissions are ignored, deleted, or misrepresented. Identity and duplication controls can conflict with anonymity and safety, especially for vulnerable communities. Consultation platforms struggle with spam, misinformation, accessibility needs, and inconsistent archival practices.",
+  "opportunities": "Ethereum can support tamper-evident submission receipts (signed attestations and timestamps) and verifiable publication of final datasets so observers can detect post-hoc edits. Eligibility can be proven with selective disclosure credentials or ZK proofs while preserving privacy. Done well, this can increase trust without forcing every submission onto a public chain.",
+  "references": [
+    {
+      "label": "OGP",
+      "url": "https://www.opengovpartnership.org/"
+    },
+    {
+      "label": "EBSI",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-blockchain-services-infrastructure"
+    },
+    {
+      "label": "OECD DPI",
+      "url": "https://www.oecd.org/en/publications/digital-public-infrastructure-for-digital-governments_ff525dc8-en.html"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Kim Hamilton Duffy",
+      "linkedInUrl": "https://www.linkedin.com/in/kimdhamilton/",
+      "affiliation": "VC"
+    },
+    {
+      "name": "Manu Sporny",
+      "linkedInUrl": "https://www.linkedin.com/in/manusporny/",
+      "affiliation": "W3C VC"
+    },
+    {
+      "name": "Drummond Reed",
+      "linkedInUrl": "https://www.linkedin.com/in/drummondreed/",
+      "affiliation": "Trust"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "EBSI public-sector trust",
+      "year": 2024,
+      "blockchainUsed": "Ethereum",
+      "description": "Trust layer for cross-border public services and participation."
+    },
+    {
+      "title": "OGP and open government data",
+      "year": 2024,
+      "blockchainUsed": "N/A",
+      "description": "Open government partnership and transparent process initiatives."
+    }
+  ]
+}
