@@ -1,0 +1,226 @@
+// EPIC Map — GovTech/DPI ecosystem + CRM + Rolodex
+// SQLite for simple local/single-host deploy
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Domain {
+  id                String    @id @default(cuid())
+  name              String
+  parentId          String?
+  parent            Domain?   @relation("DomainHierarchy", fields: [parentId], references: [id])
+  children          Domain[]   @relation("DomainHierarchy")
+  definition        String?    @default("")
+  summary           String?    @default("")
+  challenges        String?    @default("") // rich text
+  opportunities     String?    @default("") // rich text
+  ethereumPrimitives String?   @default("") // JSON array as string: ["attestation","VC","ZK",...]
+  valueProposition  String?   @default("") // how Ethereum could be used (value prop)
+  relatedLinks      String?   @default("") // JSON array of { label, url } for use cases / case studies
+  maturityLevel     String?   @default("idea") // idea | pilot | production
+  tags              String?   @default("") // JSON array
+  deletedAt         DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  outEdges         DomainEdge[] @relation("FromDomain")
+  inEdges          DomainEdge[] @relation("ToDomain")
+  experiments      ExperimentDomain[]
+  opportunityLinks OpportunityDomain[]
+  expertDomains    ExpertDomain[]
+}
+
+model DomainEdge {
+  id       String  @id @default(cuid())
+  fromId   String
+  from     Domain  @relation("FromDomain", fields: [fromId], references: [id], onDelete: Cascade)
+  toId     String
+  to       Domain  @relation("ToDomain", fields: [toId], references: [id], onDelete: Cascade)
+  edgeType String  // depends_on | enables | adjacent_to
+  deletedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([fromId, toId, edgeType])
+  @@index([fromId])
+  @@index([toId])
+}
+
+model Experiment {
+  id               String   @id @default(cuid())
+  title            String
+  year             Int?
+  description      String?  @default("")
+  outcomes         String?  @default("")
+  links            String?  @default("") // JSON array of URLs
+  blockchainUsed   String?  @default("") // Ethereum | other | mixed
+  architectureNotes String? @default("")
+  deletedAt        DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  domains ExperimentDomain[]
+}
+
+model ExperimentDomain {
+  domainId     String
+  domain       Domain    @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  experimentId  String
+  experiment   Experiment @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+
+  @@id([domainId, experimentId])
+}
+
+model Institution {
+  id              String   @id @default(cuid())
+  name            String
+  type            String   // gov | agency | multilateral | NGO | vendor | coalition
+  country         String?  @default("")
+  region          String?  @default("")
+  description     String?  @default("")
+  alignmentNotes  String?  @default("")
+  relationshipOwner String? @default("")
+  status          String?  @default("prospect") // prospect | active | alumni
+  tags            String?  @default("") // JSON array
+  deletedAt       DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  contacts      Contact[]
+  opportunities OpportunityInstitution[]
+}
+
+model Contact {
+  id               String    @id @default(cuid())
+  institutionId    String
+  institution      Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  name             String
+  role             String?   @default("")
+  email            String?   @default("")
+  handles          String?   @default("") // JSON: other contact info
+  geography        String?   @default("")
+  languages        String?   @default("") // JSON array
+  championFlag     Boolean   @default(false)
+  championNotes    String?   @default("")
+  influenceLevel   String?   @default("") // low | medium | high
+  valuesAlignment  String?   @default("")
+  lastContactedAt  DateTime?
+  notes            String?   @default("")
+  deletedAt        DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  activityNotes ActivityNote[]
+}
+
+model Opportunity {
+  id               String   @id @default(cuid())
+  title            String
+  description      String?  @default("")
+  stage            String   @default("long_list") // long_list | screening | exploration | evaluation | engagement | post_engagement
+  priority         String?  @default("med") // low | med | high
+  fitScore         Int?     // 0-100
+  riskNotes        String?  @default("")
+  budgetBand       String?  @default("") // none | <50k | 50k-500k | 500k-1m | 1m+
+  nextStep         String?  @default("")
+  dueDate          DateTime?
+  pocFlagshipFlag  Boolean  @default(false)
+  links            String?  @default("") // JSON array
+  notesTimeline    String?  @default("") // rich text / JSON
+  deletedAt        DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  institutions OpportunityInstitution[]
+  domains      OpportunityDomain[]
+  activityNotes ActivityNote[]
+}
+
+model OpportunityInstitution {
+  opportunityId String
+  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  institutionId String
+  institution   Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+
+  @@id([opportunityId, institutionId])
+}
+
+model OpportunityDomain {
+  opportunityId String
+  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  domainId      String
+  domain        Domain      @relation(fields: [domainId], references: [id], onDelete: Cascade)
+
+  @@id([opportunityId, domainId])
+}
+
+model Expert {
+  id                   String   @id @default(cuid())
+  name                 String
+  affiliation          String?  @default("")
+  expertiseDomains     String?  @default("") // JSON array of domain IDs or names
+  skillsTags           String?  @default("") // JSON: ["ZK","identity","privacy","procurement",...]
+  region               String?  @default("")
+  languages            String?  @default("") // JSON array
+  ethereumAlignmentNotes String? @default("")
+  conflicts            String?  @default("")
+  availability         String?  @default("") // free text or enum
+  contactPath          String?  @default("")
+  referencesLinks      String?  @default("") // JSON array
+  deletedAt            DateTime?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  domainTags ExpertDomain[]
+}
+
+model ExpertDomain {
+  expertId String
+  expert   Expert @relation(fields: [expertId], references: [id], onDelete: Cascade)
+  domainId String
+  domain   Domain @relation(fields: [domainId], references: [id], onDelete: Cascade)
+
+  @@id([expertId, domainId])
+}
+
+model Coalition {
+  id          String   @id @default(cuid())
+  name        String
+  description String?  @default("")
+  memberships String?  @default("") // JSON or text
+  links       String?  @default("")
+  deletedAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  type        String?  @default("") // conference | workshop | consortium
+  date        DateTime?
+  description String?  @default("")
+  links       String?  @default("")
+  deletedAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ActivityNote {
+  id             String   @id @default(cuid())
+  body           String
+  noteType       String?  @default("note") // note | meeting | next_step
+  opportunityId  String?
+  opportunity    Opportunity? @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  contactId      String?
+  contact        Contact? @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  institutionId  String?  // optional link
+  createdAt      DateTime @default(now())
+  createdBy      String?  @default("")
+}
