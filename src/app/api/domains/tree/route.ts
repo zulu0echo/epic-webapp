@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
+type TreeNode = { id: string; name: string; children?: TreeNode[] };
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q") ?? "";
@@ -18,12 +20,12 @@ export async function GET(request: Request) {
   });
   const filter = (name: string) =>
     !q || name.toLowerCase().includes(q.toLowerCase());
-  const filterTree = (node: { id: string; name: string; children?: { id: string; name: string; children?: unknown[] }[] }) => {
+  const filterTree = (node: TreeNode): TreeNode | null => {
     const match = filter(node.name);
-    const children = node.children?.map((c) => filterTree(c as never)).filter(Boolean) ?? [];
+    const children = (node.children?.map((c) => filterTree(c)).filter(Boolean) ?? []) as TreeNode[];
     if (match || children.length) return { id: node.id, name: node.name, children };
     return null;
   };
-  const filtered = roots.map((r) => filterTree(r as never)).filter(Boolean);
+  const filtered = roots.map((r) => filterTree(r as TreeNode)).filter(Boolean);
   return NextResponse.json(filtered);
 }

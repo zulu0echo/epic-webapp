@@ -38,8 +38,9 @@ function formatDate(iso: string) {
       month: "long",
       day: "numeric",
     });
+  } catch {
+    return iso;
   }
-  return iso;
 }
 
 export default function BlogPage() {

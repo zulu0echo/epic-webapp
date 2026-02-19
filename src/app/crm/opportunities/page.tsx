@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ type Opportunity = {
   domains: { domain: { id: string; name: string } }[];
 };
 
-export default function OpportunitiesPage() {
+function OpportunitiesContent() {
   const searchParams = useSearchParams();
   const highlightId = searchParams.get("id");
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
@@ -97,5 +97,13 @@ export default function OpportunitiesPage() {
         </table>
       </div>
     </div>
+  );
+}
+
+export default function OpportunitiesPage() {
+  return (
+    <Suspense fallback={<div className="p-6 max-w-6xl"><p className="text-slate-500">Loading...</p></div>}>
+      <OpportunitiesContent />
+    </Suspense>
   );
 }

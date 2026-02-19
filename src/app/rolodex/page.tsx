@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { parseJsonArray } from "@/lib/parsers";
 import Link from "next/link";
@@ -19,7 +19,7 @@ type Expert = {
 
 type MatchResult = { expertId: string; name: string; score: number; reasons: string[] };
 
-export default function RolodexPage() {
+function RolodexContent() {
   const searchParams = useSearchParams();
   const domainId = searchParams.get("domainId");
   const opportunityId = searchParams.get("opportunityId");
@@ -139,5 +139,13 @@ export default function RolodexPage() {
         </table>
       </div>
     </div>
+  );
+}
+
+export default function RolodexPage() {
+  return (
+    <Suspense fallback={<div className="p-6 max-w-6xl"><p className="text-slate-500">Loading...</p></div>}>
+      <RolodexContent />
+    </Suspense>
   );
 }
