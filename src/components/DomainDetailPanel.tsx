@@ -32,7 +32,15 @@ type Domain = {
   featuredExperts?: { name: string; linkedInUrl: string; affiliation?: string }[];
 };
 
-export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onClose: () => void }) {
+export function DomainDetailPanel({
+  domainId,
+  onClose,
+  onSelectNode,
+}: {
+  domainId: string;
+  onClose: () => void;
+  onSelectNode?: (id: string) => void;
+}) {
   const [domain, setDomain] = useState<Domain | null>(null);
   const [tab, setTab] = useState<"overview" | "challenges" | "opportunities" | "experiments" | "experts">("overview");
 
@@ -95,7 +103,7 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
           </button>
         ))}
       </div>
-      <div className="flex-1 overflow-auto p-4 text-sm bg-white">
+      <div className="flex-1 overflow-auto p-4 text-sm bg-white" aria-live="polite" aria-label="Domain details">
         {tab === "overview" && (
           <>
             <section className="mb-4">
@@ -165,6 +173,49 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
                       <a href={ref.url} target="_blank" rel="noopener noreferrer" className={cn("text-sm hover:underline", theme.accent, theme.accentHover)}>
                         {ref.label}
                       </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+            {((domain.outEdges?.length ?? 0) + (domain.inEdges?.length ?? 0)) > 0 && (
+              <section className="mb-4">
+                <h3 className="font-medium text-slate-700 mb-1">Related domains</h3>
+                <ul className="space-y-1">
+                  {(domain.outEdges ?? []).map((e) => (
+                    <li key={`out-${e.to.id}`}>
+                      {onSelectNode ? (
+                        <button
+                          type="button"
+                          onClick={() => onSelectNode(e.to.id)}
+                          className={cn("text-sm text-left hover:underline", theme.accent, theme.accentHover)}
+                        >
+                          → {e.to.name}
+                        </button>
+                      ) : (
+                        <a href={`/domains/${e.to.id}`} className={cn("text-sm hover:underline", theme.accent, theme.accentHover)}>
+                          → {e.to.name}
+                        </a>
+                      )}
+                      {e.edgeType && <span className="text-slate-400 text-xs ml-1">({e.edgeType.replace("_", " ")})</span>}
+                    </li>
+                  ))}
+                  {(domain.inEdges ?? []).map((e) => (
+                    <li key={`in-${e.from.id}`}>
+                      {onSelectNode ? (
+                        <button
+                          type="button"
+                          onClick={() => onSelectNode(e.from.id)}
+                          className={cn("text-sm text-left hover:underline", theme.accent, theme.accentHover)}
+                        >
+                          ← {e.from.name}
+                        </button>
+                      ) : (
+                        <a href={`/domains/${e.from.id}`} className={cn("text-sm hover:underline", theme.accent, theme.accentHover)}>
+                          ← {e.from.name}
+                        </a>
+                      )}
+                      {e.edgeType && <span className="text-slate-400 text-xs ml-1">({e.edgeType.replace("_", " ")})</span>}
                     </li>
                   ))}
                 </ul>

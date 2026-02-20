@@ -164,3 +164,10 @@ export function getTreeTextColor(rootName: string, depth: number): string {
   if (depth === 1) return shades[1]!;
   return shades[2]!;
 }
+
+/** Hex color for map edges and minimap by sector/root name. Uses the accent (middle) shade. */
+export function getSectorEdgeColor(sectorOrRootName: string): string {
+  const shades = TREE_TEXT_COLORS[sectorOrRootName];
+  if (shades) return shades[1] ?? shades[0]!;
+  return "#475569";
+}

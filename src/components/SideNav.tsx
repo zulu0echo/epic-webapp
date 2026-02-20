@@ -15,6 +15,7 @@ const publicNav = [
   { href: "/blog", label: "Blog", icon: BookOpen },
   { href: "/contact", label: "Contact", icon: Mail },
   { href: "/vendor", label: "Vendor / Ecosystem", icon: Package },
+  { href: "/admin", label: "Admin", icon: Settings },
 ];
 
 const adminSubsections = [

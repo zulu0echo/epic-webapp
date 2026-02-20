@@ -85,3 +85,18 @@
 .react-flow__node.selected {
   @apply ring-2 ring-epic-navy-muted ring-offset-2;
 }
+
+.react-flow__node {
+  transition: opacity 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.react-flow__edge-path {
+  transition: opacity 0.2s ease, stroke-width 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .react-flow__node,
+  .react-flow__edge-path {
+    transition: none;
+  }
+}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ChevronRight, ChevronDown, Folder, FolderOpen } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { getSectorTheme, getTreeTextColor } from "@/lib/sectorColors";
+import { getDomainIcon } from "@/lib/domainIcons";
 
 type TreeNode = {
   id: string;
@@ -27,13 +28,7 @@ export function TaxonomyTree({
       .then((r) => r.json())
       .then((data) => {
         setTree(data);
-        const allIds = new Set<string>();
-        function collect(n: TreeNode) {
-          allIds.add(n.id);
-          n.children?.forEach(collect);
-        }
-        data.forEach(collect);
-        setOpen(allIds);
+        setOpen(new Set());
       });
   }, [search]);
 
@@ -76,9 +71,10 @@ export function TaxonomyTree({
               <span className="w-4 inline-block" />
             )}
           </button>
-          {hasChildren ? (
-            isOpen ? <FolderOpen className={cn("w-4 h-4", theme.accent)} /> : <Folder className={cn("w-4 h-4", theme.accent)} />
-          ) : null}
+          {(() => {
+            const DomainIcon = getDomainIcon(node.id);
+            return <DomainIcon className={cn("w-4 h-4 shrink-0", theme.accent)} aria-hidden />;
+          })()}
           <span className={cn("truncate font-medium", depth > 0 && theme.accentHover)} style={{ color: textColor }}>{node.name}</span>
         </div>
         {hasChildren && isOpen && (
