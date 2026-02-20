@@ -87,37 +87,45 @@ function MapExplorerInner({ initialDomainId }: { initialDomainId?: string | null
 
   const loadGraph = useCallback(async () => {
     setGraphLoading(true);
-    const params = new URLSearchParams();
-    if (focusId) params.set("focusId", focusId);
-    if (treeSearch) params.set("tags", treeSearch);
-    const res = await fetch(`/api/domains/graph?${params}`);
-    const data = await res.json();
-    const layouted = buildLayout(data.nodes, data.edges);
-    setNodes(
-      layouted.map((n: GraphNode & { position: { x: number; y: number }; data?: { label: string } }) => ({
-        id: n.id,
-        type: "default",
-        position: n.position,
-        data: { label: n.label },
-        style: { width: NODE_WIDTH, height: NODE_HEIGHT },
-        className: cn(
-          "rounded-xl border-2 shadow-md px-3 py-2 flex items-center justify-center text-center",
-          getSectorStyle(n.sector ?? "", n.tier ?? "child"),
-          selectedId === n.id && "ring-2 ring-offset-2",
-          selectedId === n.id && getSectorTheme(n.sector ?? "").ring
-        ),
-      }))
-    );
-    setEdges(
-      data.edges.map((e: { id: string; source: string; target: string; type: string }) => ({
-        id: e.id,
-        source: e.source,
-        target: e.target,
-        label: e.type?.replace("_", " "),
-        type: "smoothstep",
-      }))
-    );
-    setGraphLoading(false);
+    try {
+      const params = new URLSearchParams();
+      if (focusId) params.set("focusId", focusId);
+      if (treeSearch) params.set("tags", treeSearch);
+      const res = await fetch(`/api/domains/graph?${params}`);
+      const data = await res.json();
+      const rawNodes = Array.isArray(data?.nodes) ? data.nodes : [];
+      const rawEdges = Array.isArray(data?.edges) ? data.edges : [];
+      const layouted = buildLayout(rawNodes, rawEdges);
+      setNodes(
+        layouted.map((n: GraphNode & { position: { x: number; y: number }; data?: { label: string } }) => ({
+          id: n.id,
+          type: "default",
+          position: n.position,
+          data: { label: n.label },
+          style: { width: NODE_WIDTH, height: NODE_HEIGHT },
+          className: cn(
+            "rounded-xl border-2 shadow-md px-3 py-2 flex items-center justify-center text-center",
+            getSectorStyle(n.id ?? "", n.tier ?? "child"),
+            selectedId === n.id && "ring-2 ring-offset-2",
+            selectedId === n.id && getSectorTheme(n.id ?? "").ring
+          ),
+        }))
+      );
+      setEdges(
+        rawEdges.map((e: { id: string; source: string; target: string; type: string }) => ({
+          id: e.id,
+          source: e.source,
+          target: e.target,
+          label: e.type?.replace("_", " "),
+          type: "smoothstep",
+        }))
+      );
+    } catch (err) {
+      setNodes([]);
+      setEdges([]);
+    } finally {
+      setGraphLoading(false);
+    }
   }, [focusId, treeSearch, setNodes, setEdges, selectedId]);
 
   useEffect(() => {
@@ -129,8 +137,8 @@ function MapExplorerInner({ initialDomainId }: { initialDomainId?: string | null
   }, []);
 
   return (
-    <div className="flex h-[calc(100vh-0px)] w-full bg-slate-50/50">
-      <div className="w-64 border-r border-slate-200/80 bg-white flex flex-col shrink-0 shadow-epic">
+    <div className="flex w-full flex-1 min-h-0 bg-slate-50/50" style={{ height: "100%", minHeight: "70vh" }}>
+      <div className="w-64 border-r border-slate-200/80 bg-white flex flex-col shrink-0 shadow-epic overflow-hidden">
         <div className="p-3 border-b border-slate-200/80">
           <input
             type="search"
@@ -151,7 +159,7 @@ function MapExplorerInner({ initialDomainId }: { initialDomainId?: string | null
           Focus: {focusId ? "on" : "all"} · Click node for details
         </div>
       </div>
-      <div className="flex-1 relative bg-slate-100/50">
+      <div className="flex-1 relative bg-slate-100/50 overflow-hidden" style={{ minHeight: 400, height: "100%" }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -162,6 +170,7 @@ function MapExplorerInner({ initialDomainId }: { initialDomainId?: string | null
           fitViewOptions={{ padding: 0.25, minZoom: 0.15, maxZoom: 1.2 }}
           minZoom={0.15}
           maxZoom={1.5}
+          style={{ width: "100%", height: "100%" }}
         >
           <Background />
           <Controls />
@@ -172,7 +181,7 @@ function MapExplorerInner({ initialDomainId }: { initialDomainId?: string | null
                 type="checkbox"
                 checked={!!focusId}
                 onChange={(e) => setFocusId(e.target.checked ? selectedId ?? null : null)}
-                className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                className="rounded border-slate-300 text-epic-navy focus:ring-epic-navy-muted"
               />
               Focus mode (selected node + neighbors)
             </label>

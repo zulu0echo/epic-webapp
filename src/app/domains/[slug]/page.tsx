@@ -27,7 +27,7 @@ export default async function DomainPage({
   if (!domain) notFound();
 
   const rootName = getRootName(domain.slug, allDomains);
-  const theme = getSectorTheme(rootName);
+  const theme = getSectorTheme(slug);
 
   const parent = domain.parentSlug
     ? allDomains.find((d) => d.slug === domain.parentSlug)
@@ -164,7 +164,13 @@ export default async function DomainPage({
           <ul className="space-y-2">
             {domain.experiments!.map((ex, i) => (
               <li key={i} className="p-3 rounded-lg border border-slate-200 bg-white">
-                <span className="font-medium">{ex.title}</span>
+                {ex.url ? (
+                  <a href={ex.url} target="_blank" rel="noopener noreferrer" className={`font-medium ${theme.accent} ${theme.accentHover} hover:underline`}>
+                    {ex.title}
+                  </a>
+                ) : (
+                  <span className="font-medium">{ex.title}</span>
+                )}
                 {ex.year != null && <span className="text-slate-500 ml-1">({ex.year})</span>}
                 {ex.blockchainUsed && <span className="text-slate-500 ml-1">· {ex.blockchainUsed}</span>}
                 {ex.description && <p className="text-slate-600 mt-1 text-sm">{ex.description}</p>}

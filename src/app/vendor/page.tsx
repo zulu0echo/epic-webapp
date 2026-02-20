@@ -34,7 +34,7 @@ export default function VendorPage() {
         <h1 className="epic-heading-2">Vendor / Ecosystem</h1>
         <p className="mt-2 epic-body">
           Tooling, protocols, or ecosystem partners relevant to EPIC can get in touch. Submissions go to{" "}
-          <a href={`mailto:${RECIPIENT}`} className="text-indigo-600 font-medium hover:underline">
+          <a href={`mailto:${RECIPIENT}`} className="text-epic-navy font-medium hover:underline">
             {RECIPIENT}
           </a>
           .

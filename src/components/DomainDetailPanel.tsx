@@ -25,7 +25,7 @@ type Domain = {
   children?: { id: string; name: string }[];
   outEdges?: { edgeType: string; to: { id: string; name: string } }[];
   inEdges?: { edgeType: string; from: { id: string; name: string } }[];
-  experiments?: { experiment: { id: string; title: string; year: number | null; blockchainUsed: string | null; description: string | null } }[];
+  experiments?: { id: string; title: string; year: number | null; blockchainUsed: string | null; description: string | null; url?: string | null }[];
   opportunityLinks?: { opportunity: { id: string; title: string; stage: string } }[];
   expertDomains?: { expert: { id: string; name: string; affiliation: string | null } }[];
   references?: { label: string; url: string }[];
@@ -34,7 +34,7 @@ type Domain = {
 
 export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onClose: () => void }) {
   const [domain, setDomain] = useState<Domain | null>(null);
-  const [tab, setTab] = useState<"overview" | "challenges" | "opportunities" | "experiments" | "experts" | "pipeline">("overview");
+  const [tab, setTab] = useState<"overview" | "challenges" | "opportunities" | "experiments" | "experts">("overview");
 
   useEffect(() => {
     fetch(`/api/domains/${domainId}`)
@@ -56,7 +56,7 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
 
   const tags = parseJsonArray(domain.tags);
   const primitives = parseJsonArray(domain.ethereumPrimitives);
-  const theme = getSectorTheme(domain.rootName ?? "");
+  const theme = getSectorTheme(domain.id ?? domainId ?? "");
   let relatedLinks: RelatedLink[] = [];
   try {
     if (domain.relatedLinks) relatedLinks = JSON.parse(domain.relatedLinks) as RelatedLink[];
@@ -78,7 +78,7 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
         </button>
       </div>
       <div className="flex border-b border-slate-200/80 overflow-x-auto bg-slate-50/50 px-1">
-        {(["overview", "challenges", "opportunities", "experiments", "experts", "pipeline"] as const).map((t) => (
+        {(["overview", "challenges", "opportunities", "experiments", "experts"] as const).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -91,7 +91,7 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
               tab === t && theme.accent
             )}
           >
-            {t === "pipeline" ? "Pipeline" : t}
+            {t}
           </button>
         ))}
       </div>
@@ -208,9 +208,15 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
             {(domain.experiments ?? []).length === 0 ? (
               <li className="text-slate-500">No experiments linked.</li>
             ) : (
-              domain.experiments!.map(({ experiment: e }) => (
+              domain.experiments!.map((e) => (
                 <li key={e.id} className="epic-card p-3">
-                  <span className="font-medium text-slate-800">{e.title}</span>
+                  {e.url ? (
+                    <a href={e.url} target="_blank" rel="noopener noreferrer" className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
+                      {e.title}
+                    </a>
+                  ) : (
+                    <span className="font-medium text-slate-800">{e.title}</span>
+                  )}
                   {e.year != null && <span className="text-slate-500 ml-1">({e.year})</span>}
                   {e.blockchainUsed && <span className="text-slate-500 ml-1">· {e.blockchainUsed}</span>}
                   {e.description && <p className="text-slate-600 mt-1 text-xs">{e.description}</p>}
@@ -219,36 +225,32 @@ export function DomainDetailPanel({ domainId, onClose }: { domainId: string; onC
             )}
           </ul>
         )}
-        {tab === "experts" && (
-          <ul className="space-y-2">
-            {(domain.expertDomains ?? []).length === 0 ? (
-              <li className="text-slate-500">No experts linked. Use Rolodex → Match to find experts for this domain.</li>
-            ) : (
-              domain.expertDomains!.map(({ expert: e }) => (
-                <li key={e.id} className="epic-card p-3">
-                  <span className="font-medium text-slate-800">{e.name}</span>
-                  {e.affiliation && <span className="text-slate-500 ml-1">· {e.affiliation}</span>}
-                </li>
-              ))
-            )}
-          </ul>
-        )}
-        {tab === "pipeline" && (
-          <ul className="space-y-2">
-            {(domain.opportunityLinks ?? []).length === 0 ? (
-              <li className="text-slate-500">No opportunities linked.</li>
-            ) : (
-              domain.opportunityLinks!.map(({ opportunity: o }) => (
-                <li key={o.id} className="epic-card p-3">
-                  <a href={`/crm/opportunities?id=${o.id}`} className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
-                    {o.title}
-                  </a>
-                  <span className="text-slate-500 ml-1">· {o.stage}</span>
-                </li>
-              ))
-            )}
-          </ul>
-        )}
+        {tab === "experts" && (() => {
+          const fromRolodex = (domain.expertDomains ?? []).map(({ expert: e }) => ({ name: e.name, affiliation: e.affiliation ?? undefined, linkedInUrl: null as string | null }));
+          const rolodexNames = new Set(fromRolodex.map((e) => e.name.toLowerCase()));
+          const fromFeatured = (domain.featuredExperts ?? []).filter((ex) => !rolodexNames.has(ex.name.toLowerCase())).map((ex) => ({ name: ex.name, affiliation: ex.affiliation, linkedInUrl: ex.linkedInUrl }));
+          const combined = [...fromRolodex, ...fromFeatured];
+          return (
+            <ul className="space-y-2">
+              {combined.length === 0 ? (
+                <li className="text-slate-500">No experts listed for this domain.</li>
+              ) : (
+                combined.map((e, i) => (
+                  <li key={`${e.name}-${i}`} className="epic-card p-3">
+                    {e.linkedInUrl ? (
+                      <a href={e.linkedInUrl} target="_blank" rel="noopener noreferrer" className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
+                        {e.name}
+                      </a>
+                    ) : (
+                      <span className="font-medium text-slate-800">{e.name}</span>
+                    )}
+                    {e.affiliation && <span className="text-slate-500 ml-1">· {e.affiliation}</span>}
+                  </li>
+                ))
+              )}
+            </ul>
+          );
+        })()}
       </div>
     </div>
   );

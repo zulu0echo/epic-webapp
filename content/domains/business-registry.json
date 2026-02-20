@@ -46,13 +46,15 @@
       "title": "Georgia land registry pilot",
       "year": 2016,
       "blockchainUsed": "mixed",
-      "description": "Early government blockchain experiment for land title integrity."
+      "description": "Early government blockchain experiment for land title integrity.",
+      "url": "https://bitfury.com/content/downloads/the_bitfury_group_republic_of_georgia_expand_blockchain_pilot_2_7_16.pdf"
     },
     {
       "title": "EBSI diploma use case",
       "year": 2024,
       "blockchainUsed": "Ethereum",
-      "description": "European diploma verification on EBSI."
+      "description": "European diploma verification on EBSI.",
+      "url": "https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials"
     },
     {
       "title": "Digital business registry pilots",

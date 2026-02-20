@@ -52,6 +52,7 @@ export async function GET(
     year: ex.year ?? null,
     blockchainUsed: ex.blockchainUsed ?? null,
     description: ex.description ?? null,
+    url: ex.url ?? null,
   }));
   const opportunityLinks = opportunities
     .filter((o) => (o.domainSlugs ?? []).includes(domain.slug))

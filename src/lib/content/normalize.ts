@@ -36,7 +36,7 @@ export function domainToApiShape(
     children?: { id: string; name: string }[];
     outEdges?: { edgeType: string; to: { id: string; name: string } }[];
     inEdges?: { edgeType: string; from: { id: string; name: string } }[];
-    experiments?: { id: string; title: string; year: number | null; blockchainUsed: string | null; description: string | null }[];
+    experiments?: { id: string; title: string; year: number | null; blockchainUsed: string | null; description: string | null; url: string | null }[];
     opportunityLinks?: { opportunity: { id: string; title: string; stage: string } }[];
     expertDomains?: { expert: { id: string; name: string; affiliation: string | null } }[];
   } = {}

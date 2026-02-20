@@ -3,9 +3,9 @@ import { ETH_BRAND } from "@/lib/brand";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       {/* Hero */}
-      <section className="border-b border-slate-200/80 bg-gradient-to-b from-white to-epic-paper">
+      <section className="epic-divider bg-white">
         <div className="epic-section">
           <div className="flex flex-wrap items-center gap-3">
             <img
@@ -23,83 +23,75 @@ export default function HomePage() {
               height={24}
             />
           </div>
-          <h1 className="mt-4 font-serif text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-            EPIC
-          </h1>
-          <p className="mt-2 font-serif text-xl text-slate-600 sm:text-2xl">
+          <h1 className="mt-8 font-serif text-display font-semibold tracking-tight text-epic-ink sm:text-4xl">
             Ethereum Public Infrastructure and Commons
+          </h1>
+          <p className="mt-4 text-xl text-slate-600 sm:text-2xl font-serif">
+            Supporting governments and public institutions in the responsible exploration and adoption of Ethereum-based solutions for public systems.
           </p>
-          <p className="mt-6 text-lg font-medium text-slate-800">
-            Strengthening Public Systems with Ethereum
-          </p>
-          <p className="mt-4 max-w-2xl epic-body">
-            EPIC (formerly the Institutional Secretariat) is a team within the Ethereum Foundation dedicated to helping governments, multilateral organizations, and large NGOs responsibly explore and adopt Ethereum-based solutions to improve public systems.
-          </p>
-          <p className="mt-4 max-w-2xl epic-body">
-            We work at the intersection of technology, public institutions, and values-driven innovation. Our mission is simple:{" "}
-            <strong className="font-semibold text-slate-800">
-              connect Ethereum’s capabilities with real institutional needs — without compromising decentralization, openness, or long-term resilience.
-            </strong>
+          <p className="mt-6 max-w-2xl epic-body">
+            EPIC is an initiative of the Ethereum Foundation. We work with governments, multilateral organizations, and civil society to connect Ethereum’s capabilities with institutional needs while preserving decentralization, openness, and long-term resilience.
           </p>
         </div>
       </section>
 
-      {/* Why EPIC Exists */}
-      <section className="border-b border-slate-200/80 bg-white">
+      {/* Rationale */}
+      <section className="epic-divider bg-epic-paper/50">
         <div className="epic-section">
-          <h2 className="epic-heading-2">Why EPIC Exists</h2>
+          <h2 className="epic-heading-2">Why this work matters</h2>
           <p className="mt-4 epic-body">
-            Public institutions manage some of society’s most critical systems: identity, payments, registries, service delivery, supply chains, and data governance. Many of these systems are fragmented, opaque, or difficult to modernize.
+            Public institutions manage critical systems: identity, payments, registries, service delivery, supply chains, and data governance. Many of these systems remain fragmented, opaque, or difficult to modernize.
           </p>
           <p className="mt-4 epic-body">
-            Ethereum offers new primitives for coordination, transparency, programmable trust, and digital ownership. But meaningful institutional adoption requires more than technology — it requires trusted relationships, careful design, and long-term alignment.
-          </p>
-          <p className="mt-6 text-lg font-semibold text-slate-800">
-            EPIC exists to bridge that gap.
+            Ethereum offers primitives for coordination, transparency, and programmable trust. Meaningful institutional adoption depends on trusted relationships, careful design, and long-term alignment. EPIC exists to support that process.
           </p>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className="border-b border-slate-200/80 bg-epic-paper/50">
+      {/* What we do */}
+      <section className="epic-divider bg-white">
         <div className="epic-section">
-          <h2 className="epic-heading-2">What We Do</h2>
+          <h2 className="epic-heading-2">What we do</h2>
           <div className="mt-10 space-y-8">
             {[
               {
-                title: "1. Cultivate Institutional Champions",
-                intro: "We identify and support values-aligned leaders inside and around public institutions who are willing and capable of driving meaningful change.",
+                title: "Institutional engagement",
+                intro: "We identify and support values-aligned leaders within and around public institutions who are positioned to advance responsible adoption.",
                 list: [
-                  "Education and strategic guidance on Ethereum’s capabilities",
-                  "Introductions to trusted ecosystem builders",
-                  "Support navigating design, policy, and implementation questions",
+                  "Education and guidance on Ethereum’s capabilities",
+                  "Introductions to vetted ecosystem partners",
+                  "Support on design, policy, and implementation",
                   "Access to a curated network of domain experts",
                 ],
-                closing: "We focus intentionally on smaller governments and specific departments within larger institutions — environments where thoughtful innovation can move forward with agility and integrity.",
+                closing: "We focus on smaller governments and specific departments where thoughtful innovation can proceed with clarity and accountability.",
               },
               {
-                title: "2. Support High-Integrity Pilot Projects",
-                intro: "We help identify and nurture proof-of-concept and live production projects that demonstrate Ethereum’s tangible usefulness in public systems.",
-                list: ["Quality over volume", "Long-term resilience over short-term wins", "Decentralization and open standards", "Careful due diligence and risk assessment"],
-                closing: "Each year, we support a limited number of flagship and exploratory initiatives that meaningfully advance institutional understanding of Ethereum.",
+                title: "Pilot and production support",
+                intro: "We help identify and support proof-of-concept and production projects that demonstrate Ethereum’s utility in public systems.",
+                list: [
+                  "Emphasis on quality and long-term resilience",
+                  "Decentralization and open standards",
+                  "Due diligence and risk assessment",
+                ],
+                closing: "We support a limited number of initiatives each year that advance institutional understanding of Ethereum.",
               },
               {
-                title: "3. Build Global Coalitions",
-                intro: "Institutional adoption does not happen in isolation. We collaborate with respected organizations — both inside and outside crypto — that share Ethereum’s values of openness, neutrality, and credible transparency.",
+                title: "Coalition building",
+                intro: "Institutional adoption does not happen in isolation. We collaborate with organizations inside and outside the ecosystem that share a commitment to openness, neutrality, and transparency.",
                 list: null,
-                closing: "Through alliances, events, research collaborations, and joint initiatives, we expand the institutional conversation around public-interest blockchain infrastructure.",
+                closing: "Through partnerships, events, research, and joint initiatives, we broaden the institutional conversation around public-interest infrastructure.",
               },
             ].map((block, idx) => (
-              <div key={idx} className="epic-card p-6">
+              <div key={idx} className="epic-card p-6 sm:p-8">
                 <h3 className="epic-heading-3">{block.title}</h3>
                 <p className="mt-3 epic-body">{block.intro}</p>
                 {block.list && (
                   <>
-                    <p className="mt-3 text-sm font-medium text-slate-700">We provide:</p>
-                    <ul className="mt-2 space-y-1.5 epic-body text-sm">
+                    <p className="mt-4 text-sm font-medium text-slate-700">We provide:</p>
+                    <ul className="mt-2 space-y-2 epic-body text-sm">
                       {block.list.map((item, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-epic-navy-muted" />
                           {item}
                         </li>
                       ))}
@@ -113,12 +105,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Areas of Engagement */}
-      <section className="border-b border-slate-200/80 bg-white">
+      {/* Areas of engagement */}
+      <section className="epic-divider bg-epic-paper/50">
         <div className="epic-section">
-          <h2 className="epic-heading-2">Areas of Engagement</h2>
+          <h2 className="epic-heading-2">Areas of engagement</h2>
           <p className="mt-4 epic-body">
-            EPIC works across a broad landscape of Digital Public Infrastructure and GovTech domains, including:
+            EPIC works across Digital Public Infrastructure and GovTech domains, including:
           </p>
           <ul className="mt-6 grid gap-3 text-slate-600 sm:grid-cols-2">
             {[
@@ -131,35 +123,35 @@ export default function HomePage() {
               "Climate reporting and MRV",
               "Education and workforce credentials",
             ].map((item, i) => (
-              <li key={i} className="flex items-center gap-3 rounded-lg border border-slate-100 bg-slate-50/50 px-4 py-2.5 text-sm">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-indigo-500" />
+              <li key={i} className="flex items-center gap-3 rounded-epic border border-epic-border bg-white px-4 py-3 text-sm">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-epic-navy-muted" />
                 {item}
               </li>
             ))}
           </ul>
           <p className="mt-6 epic-body">
-            Our work spans exploratory research, pilot design, strategic advisory, and ecosystem coordination.
+            Our work spans research, pilot design, strategic advisory, and ecosystem coordination.
           </p>
         </div>
       </section>
 
-      {/* How We Work */}
-      <section className="border-b border-slate-200/80 bg-epic-paper/50">
+      {/* How we work */}
+      <section className="epic-divider bg-white">
         <div className="epic-section">
-          <h2 className="epic-heading-2">How We Work</h2>
+          <h2 className="epic-heading-2">How we work</h2>
           <p className="mt-4 epic-body">
-            We take a structured approach to institutional engagement:
+            We follow a structured approach to institutional engagement:
           </p>
           <ol className="mt-6 space-y-4">
             {[
-              "Identify opportunities and champions",
+              "Identify opportunities and institutional champions",
               "Assess alignment and feasibility",
               "Provide guidance and ecosystem connections",
               "Support responsible pilot execution",
-              "Share knowledge and strengthen long-term relationships",
+              "Share knowledge and maintain long-term relationships",
             ].map((step, i) => (
-              <li key={i} className="flex items-center gap-4 rounded-lg border border-slate-200/80 bg-white px-4 py-3 shadow-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 font-serif text-sm font-bold text-indigo-700">
+              <li key={i} className="flex items-center gap-4 rounded-epic border border-epic-border bg-epic-paper/30 px-4 py-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 font-serif text-sm font-semibold text-epic-navy">
                   {i + 1}
                 </span>
                 <span className="text-slate-700">{step}</span>
@@ -167,101 +159,123 @@ export default function HomePage() {
             ))}
           </ol>
           <p className="mt-6 epic-body">
-            We maintain a consolidated database of institutional opportunities, an active engagement pipeline, and a curated Rolodex of Ethereum-aligned experts capable of delivering high-quality institutional projects.
+            We maintain a database of institutional opportunities, an engagement pipeline, and a curated network of experts for institutional projects.
           </p>
         </div>
       </section>
 
-      {/* Our Vision */}
-      <section className="border-b border-slate-200/80 bg-white">
+      {/* Vision */}
+      <section className="epic-divider bg-epic-paper/50">
         <div className="epic-section">
-          <h2 className="epic-heading-2">Our Vision</h2>
+          <h2 className="epic-heading-2">Vision</h2>
           <p className="mt-4 epic-body">
-            We envision a future where governments and public institutions leverage Ethereum to build systems that are:
+            We aim for a future where governments and public institutions can use Ethereum to build systems that are more transparent, interoperable, resilient, and accountable, and aligned with open, global standards.
           </p>
-          <ul className="mt-5 space-y-3">
-            {["More transparent", "More interoperable", "More resilient", "More accountable", "And aligned with open, global standards"].map((item, i) => (
-              <li key={i} className="flex items-center gap-3 text-slate-700">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">✓</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 epic-body">
-            EPIC’s role is not to push technology for its own sake — but to ensure that when Ethereum is used in public systems, it is done thoughtfully, responsibly, and in service of long-term public value.
+          <p className="mt-6 epic-body">
+            EPIC’s role is not to promote technology for its own sake but to ensure that when Ethereum is used in public systems, it is done thoughtfully and in service of long-term public value.
           </p>
         </div>
       </section>
 
-      {/* Blog */}
-      <section className="border-b border-slate-200/80 bg-epic-paper/50">
+      {/* Trust: Partners and governance (placeholder structure) */}
+      <section className="epic-divider bg-white">
         <div className="epic-section">
-          <h2 className="epic-heading-2">From the Blog</h2>
-          <p className="mt-2 epic-body text-slate-600">
+          <h2 className="epic-heading-2">Partners and governance</h2>
+          <p className="mt-4 epic-body">
+            EPIC operates within the Ethereum Foundation and collaborates with public institutions, multilateral organizations, standards bodies, and NGOs. We publish briefings, map engagement domains, and maintain transparent processes for institutional outreach.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            <div className="epic-card p-6">
+              <h3 className="font-serif text-lg font-semibold text-epic-ink">Publications and resources</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Briefings, domain maps, and policy-oriented resources are available through the blog and map explorer.
+              </p>
+              <Link href="/blog" className="mt-3 inline-block text-sm font-medium text-epic-navy hover:underline">
+                View blog and resources
+              </Link>
+            </div>
+            <div className="epic-card p-6">
+              <h3 className="font-serif text-lg font-semibold text-epic-ink">Engagement domains</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Our map of domains and relationships shows how Ethereum primitives connect to public systems.
+              </p>
+              <Link href="/map" className="mt-3 inline-block text-sm font-medium text-epic-navy hover:underline">
+                Open map explorer
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog and map cards */}
+      <section className="epic-divider bg-epic-paper/50">
+        <div className="epic-section">
+          <h2 className="epic-heading-2">From the blog</h2>
+          <p className="mt-2 epic-body">
             Updates and resources on public infrastructure and institutional adoption.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <Link
               href="/blog"
-              className="epic-card p-5 text-left transition-shadow hover:shadow-md"
+              className="epic-card block p-6 text-left transition-shadow hover:shadow-epic-md"
             >
-              <span className="text-sm font-medium text-indigo-600">Blog</span>
-              <h3 className="mt-1 font-serif text-lg font-bold text-slate-900">
+              <span className="text-sm font-medium text-epic-navy-muted">Blog</span>
+              <h3 className="mt-1 font-serif text-lg font-semibold text-epic-ink">
                 Latest posts
               </h3>
               <p className="mt-2 text-sm text-slate-600">
-                Read updates, reflections, and resources from the EPIC team.
+                Updates and resources from the EPIC team.
               </p>
             </Link>
             <Link
               href="/map"
-              className="epic-card p-5 text-left transition-shadow hover:shadow-md"
+              className="epic-card block p-6 text-left transition-shadow hover:shadow-epic-md"
             >
-              <span className="text-sm font-medium text-indigo-600">Map</span>
-              <h3 className="mt-1 font-serif text-lg font-bold text-slate-900">
-                Exploring the EPIC Map
+              <span className="text-sm font-medium text-epic-navy-muted">Map</span>
+              <h3 className="mt-1 font-serif text-lg font-semibold text-epic-ink">
+                Map explorer
               </h3>
               <p className="mt-2 text-sm text-slate-600">
                 Domains, relationships, and how Ethereum primitives connect to public systems.
               </p>
             </Link>
           </div>
-          <p className="mt-4">
-            <Link href="/blog" className="text-indigo-600 font-medium hover:underline">
-              View all posts →
+          <p className="mt-6">
+            <Link href="/blog" className="text-epic-navy font-medium hover:underline">
+              View all posts
             </Link>
           </p>
         </div>
       </section>
 
-      {/* CTA / Resources */}
-      <section className="bg-slate-900 text-white">
+      {/* CTA */}
+      <section className="epic-divider bg-epic-navy text-white">
         <div className="epic-section">
-          <h2 className="font-serif text-2xl font-bold sm:text-3xl">Explore & Get in Touch</h2>
+          <h2 className="font-serif text-2xl font-semibold sm:text-3xl">Explore and get in touch</h2>
           <p className="mt-3 text-slate-300">
-            Map our engagement domains, submit ecosystem tools, or contact the team.
+            Use the map explorer, submit ecosystem tools, or contact the team.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/map" className="epic-btn-primary bg-indigo-600 hover:bg-indigo-500 ring-offset-slate-900">
-              Map Explorer
+            <Link href="/map" className="epic-btn-primary bg-white text-epic-navy hover:bg-slate-100 focus-visible:ring-white">
+              Map explorer
             </Link>
             <Link
               href="/blog"
-              className="epic-btn-secondary border-slate-600 bg-transparent text-white hover:bg-slate-800 ring-offset-slate-900"
+              className="epic-btn-secondary border-slate-500 bg-transparent text-white hover:bg-slate-800/50 focus-visible:ring-slate-400"
             >
               Blog
             </Link>
             <Link
               href="/contact"
-              className="epic-btn-secondary border-slate-600 bg-transparent text-white hover:bg-slate-800 ring-offset-slate-900"
+              className="epic-btn-secondary border-slate-500 bg-transparent text-white hover:bg-slate-800/50 focus-visible:ring-slate-400"
             >
               Contact
             </Link>
             <Link
               href="/vendor"
-              className="epic-btn-secondary border-slate-600 bg-transparent text-white hover:bg-slate-800 ring-offset-slate-900"
+              className="epic-btn-secondary border-slate-500 bg-transparent text-white hover:bg-slate-800/50 focus-visible:ring-slate-400"
             >
-              Vendor / Ecosystem
+              Vendor and ecosystem
             </Link>
           </div>
         </div>

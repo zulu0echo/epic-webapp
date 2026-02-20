@@ -3,69 +3,77 @@
 @tailwind utilities;
 
 :root {
-  --epic-brand: #4f46e5;
-  --epic-brand-hover: #4338ca;
+  --epic-navy: #0f172a;
+  --epic-navy-light: #1e293b;
+  --epic-navy-muted: #334155;
+  --epic-ink: #0f172a;
+  --epic-muted: #64748b;
   --epic-surface: #f8fafc;
   --epic-surface-elevated: #ffffff;
   --epic-border: #e2e8f0;
   --epic-border-subtle: #f1f5f9;
-  --epic-ink: #0f172a;
-  --epic-muted: #64748b;
-  --epic-radius: 0.5rem;
-  --epic-radius-lg: 0.75rem;
-  --epic-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --epic-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --epic-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --epic-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --epic-radius: 0.375rem;
+  --epic-radius-lg: 0.5rem;
+  --epic-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --epic-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --epic-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --epic-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.06);
 }
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 antialiased;
+    @apply bg-epic-surface text-epic-ink antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Consistent focus rings for accessibility */
   *:focus-visible {
-    @apply outline-none ring-2 ring-indigo-500 ring-offset-2 ring-offset-white;
+    @apply outline-none ring-2 ring-epic-navy-muted ring-offset-2 ring-offset-white;
   }
 }
 
 @layer components {
   .epic-card {
-    @apply rounded-xl border border-slate-200/80 bg-white shadow-sm;
+    @apply rounded-epic-lg border border-epic-border bg-white shadow-epic;
   }
 
   .epic-input {
-    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 transition-colors focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20;
+    @apply w-full rounded-epic border border-epic-border bg-white px-3 py-2.5 text-slate-700 placeholder-slate-400 transition-colors focus:border-epic-navy-muted focus:ring-1 focus:ring-epic-navy-muted/30;
   }
 
   .epic-btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-epic bg-epic-navy px-4 py-2.5 text-sm font-medium text-white shadow-epic transition-colors hover:bg-epic-navy-light focus-visible:ring-2 focus-visible:ring-epic-navy-muted focus-visible:ring-offset-2;
   }
 
   .epic-btn-secondary {
-    @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-epic border border-epic-border bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-epic transition-colors hover:bg-slate-50 hover:border-slate-300 focus-visible:ring-2 focus-visible:ring-epic-navy-muted focus-visible:ring-offset-2;
   }
 
   .epic-section {
-    @apply mx-auto max-w-3xl px-6 py-14 sm:py-16;
+    @apply mx-auto max-w-3xl px-6 py-section sm:px-8;
+  }
+
+  .epic-section-wide {
+    @apply mx-auto max-w-4xl px-6 py-section sm:px-8;
   }
 
   .epic-heading-1 {
-    @apply font-serif text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl;
+    @apply font-serif text-3xl font-semibold tracking-tight text-epic-ink sm:text-4xl;
   }
 
   .epic-heading-2 {
-    @apply font-serif text-2xl font-bold text-slate-900 sm:text-3xl;
+    @apply font-serif text-2xl font-semibold text-epic-ink sm:text-3xl;
   }
 
   .epic-heading-3 {
-    @apply font-serif text-xl font-semibold text-slate-900;
+    @apply font-serif text-xl font-semibold text-epic-ink;
   }
 
   .epic-body {
     @apply text-slate-600 leading-relaxed;
+  }
+
+  .epic-divider {
+    @apply border-t border-epic-border;
   }
 }
 
@@ -75,5 +83,5 @@
 }
 
 .react-flow__node.selected {
-  @apply ring-2 ring-indigo-500 ring-offset-2;
+  @apply ring-2 ring-epic-navy-muted ring-offset-2;
 }

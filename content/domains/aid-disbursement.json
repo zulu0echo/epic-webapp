@@ -48,19 +48,22 @@
       "title": "WFP Building Blocks",
       "year": 2023,
       "blockchainUsed": "Ethereum",
-      "description": "Humanitarian cash transfers and coordination."
+      "description": "Humanitarian cash transfers and coordination.",
+      "url": "https://innovation.wfp.org/project/building-blocks"
     },
     {
       "title": "UNICEF CryptoFund",
       "year": 2023,
       "blockchainUsed": "Ethereum",
-      "description": "UN entity holding and disbursing crypto with transparency."
+      "description": "UN entity holding and disbursing crypto with transparency.",
+      "url": "https://www.unicef.org/innovation/stories/unicef-cryptofund"
     },
     {
       "title": "World Bank G2Px",
       "year": 2024,
       "blockchainUsed": "N/A",
-      "description": "Global initiative for government-to-person payment digitization."
+      "description": "Global initiative for government-to-person payment digitization.",
+      "url": "https://www.worldbank.org/en/programs/g2px"
     }
   ]
 }

@@ -51,19 +51,22 @@
       "title": "EBSI Verifiable Credentials",
       "year": 2024,
       "blockchainUsed": "Ethereum",
-      "description": "EU-wide initiative for verifiable credentials and public services."
+      "description": "EU-wide initiative for verifiable credentials and public services.",
+      "url": "https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials"
     },
     {
       "title": "Ethereum Attestation Service (EAS)",
       "year": 2023,
       "blockchainUsed": "Ethereum",
-      "description": "Open attestation registry for credentials and claims."
+      "description": "Open attestation registry for credentials and claims.",
+      "url": "https://attest.sh"
     },
     {
       "title": "W3C VC implementations",
       "year": 2023,
       "blockchainUsed": "Various",
-      "description": "Standards-based verifiable credentials in government and private sector."
+      "description": "Standards-based verifiable credentials in government and private sector.",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
     }
   ]
 }

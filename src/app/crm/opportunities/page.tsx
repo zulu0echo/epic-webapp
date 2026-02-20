@@ -48,10 +48,10 @@ function OpportunitiesContent() {
           <option value="post_engagement">Post-engagement</option>
         </select>
         <Link
-          href="/admin?tab=opportunities"
+          href="/crm"
           className="px-3 py-2 rounded border border-slate-200 bg-white hover:bg-slate-50 text-sm"
         >
-          Add opportunity
+          Add opportunity (CRM)
         </Link>
       </div>
       <div className="border border-slate-200 rounded-lg overflow-hidden bg-white">

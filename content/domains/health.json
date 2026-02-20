@@ -53,7 +53,8 @@
       "title": "HL7 FHIR + verifiable credentials",
       "year": 2024,
       "blockchainUsed": "N/A",
-      "description": "Healthcare interoperability with provider credential verification."
+      "description": "Healthcare interoperability with provider credential verification.",
+      "url": "https://fhir.hl7.org/"
     },
     {
       "title": "Pharma supply chain pilots",

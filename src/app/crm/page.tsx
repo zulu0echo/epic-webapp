@@ -23,19 +23,82 @@ type Opportunity = {
   updatedAt: string;
 };
 
+const STAGES = ["long_list", "screening", "exploration", "evaluation", "engagement", "post_engagement"] as const;
+
+function parseCommaList(s: string): string[] {
+  return s
+    .split(",")
+    .map((x) => x.trim())
+    .filter(Boolean);
+}
+
 export default function CRMPage() {
   const [institutions, setInstitutions] = useState<Institution[]>([]);
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [loading, setLoading] = useState(true);
+  const [admin, setAdmin] = useState(false);
+  const [addPanelOpen, setAddPanelOpen] = useState(false);
+  const [addStatus, setAddStatus] = useState<"idle" | "saving" | "done" | "error">("idle");
+  const [addForm, setAddForm] = useState({
+    title: "",
+    description: "",
+    stage: "long_list",
+    priority: "",
+    domainSlugs: "",
+    institutionSlugs: "",
+    nextStep: "",
+  });
 
-  useEffect(() => {
+  const loadData = () => {
+    setLoading(true);
     Promise.all([fetch("/api/institutions").then((r) => r.json()), fetch("/api/opportunities").then((r) => r.json())])
       .then(([inst, opp]) => {
-        setInstitutions(inst);
-        setOpportunities(opp);
+        setInstitutions(Array.isArray(inst) ? inst : []);
+        setOpportunities(Array.isArray(opp) ? opp : []);
+      })
+      .catch(() => {
+        setInstitutions([]);
+        setOpportunities([]);
       })
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    loadData();
   }, []);
+
+  useEffect(() => {
+    fetch("/api/auth/session")
+      .then((r) => r.json())
+      .then((d) => setAdmin(!!d?.admin))
+      .catch(() => setAdmin(false));
+  }, []);
+
+  const handleAddOpportunity = (e: React.FormEvent) => {
+    e.preventDefault();
+    setAddStatus("saving");
+    fetch("/api/opportunities", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: addForm.title.trim(),
+        description: addForm.description.trim() || undefined,
+        stage: addForm.stage,
+        priority: addForm.priority.trim() || undefined,
+        domainSlugs: parseCommaList(addForm.domainSlugs),
+        institutionSlugs: parseCommaList(addForm.institutionSlugs),
+        nextStep: addForm.nextStep.trim() || undefined,
+      }),
+    })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("Failed"))))
+      .then(() => {
+        setAddStatus("done");
+        setAddForm({ title: "", description: "", stage: "long_list", priority: "", domainSlugs: "", institutionSlugs: "", nextStep: "" });
+        loadData();
+        setTimeout(() => setAddPanelOpen(false), 600);
+      })
+      .catch(() => setAddStatus("error"));
+  };
 
   const weekAgo = new Date();
   weekAgo.setDate(weekAgo.getDate() - 7);
@@ -48,6 +111,106 @@ export default function CRMPage() {
       <p className="text-slate-600 mb-6">
         Institutions, contacts, and opportunities. Use the weekly review to prioritize follow-up.
       </p>
+
+      {admin && (
+        <div className="mb-6 epic-card p-4">
+          <div className="flex items-center justify-between gap-2">
+            <span className="font-medium text-slate-800">Add opportunity</span>
+            <button
+              type="button"
+              onClick={() => setAddPanelOpen((v) => !v)}
+              className="px-3 py-1.5 text-sm rounded-epic border border-epic-border bg-white hover:bg-slate-50"
+            >
+              {addPanelOpen ? "Close" : "Add opportunity"}
+            </button>
+          </div>
+          {addPanelOpen && (
+            <form onSubmit={handleAddOpportunity} className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="sm:col-span-2">
+                <label className="block text-xs font-medium text-slate-500 mb-0.5">Title *</label>
+                <input
+                  type="text"
+                  required
+                  value={addForm.title}
+                  onChange={(e) => setAddForm((f) => ({ ...f, title: e.target.value }))}
+                  className="epic-input py-1.5 text-sm"
+                  placeholder="e.g. National digital ID pilot"
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-xs font-medium text-slate-500 mb-0.5">Description</label>
+                <textarea
+                  value={addForm.description}
+                  onChange={(e) => setAddForm((f) => ({ ...f, description: e.target.value }))}
+                  className="epic-input py-1.5 text-sm min-h-[80px]"
+                  placeholder="Brief description of the opportunity"
+                  rows={3}
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-500 mb-0.5">Stage</label>
+                <select
+                  value={addForm.stage}
+                  onChange={(e) => setAddForm((f) => ({ ...f, stage: e.target.value }))}
+                  className="epic-input py-1.5 text-sm"
+                >
+                  {STAGES.map((s) => (
+                    <option key={s} value={s}>{s.replace(/_/g, " ")}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-500 mb-0.5">Priority</label>
+                <input
+                  type="text"
+                  value={addForm.priority}
+                  onChange={(e) => setAddForm((f) => ({ ...f, priority: e.target.value }))}
+                  className="epic-input py-1.5 text-sm"
+                  placeholder="e.g. high, medium"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-500 mb-0.5">Domain slugs (comma-separated)</label>
+                <input
+                  type="text"
+                  value={addForm.domainSlugs}
+                  onChange={(e) => setAddForm((f) => ({ ...f, domainSlugs: e.target.value }))}
+                  className="epic-input py-1.5 text-sm"
+                  placeholder="digital-identity-and-credentials, registries-and-records"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-500 mb-0.5">Institution slugs (comma-separated)</label>
+                <input
+                  type="text"
+                  value={addForm.institutionSlugs}
+                  onChange={(e) => setAddForm((f) => ({ ...f, institutionSlugs: e.target.value }))}
+                  className="epic-input py-1.5 text-sm"
+                  placeholder="national-digital-identity-authority"
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-xs font-medium text-slate-500 mb-0.5">Next step</label>
+                <input
+                  type="text"
+                  value={addForm.nextStep}
+                  onChange={(e) => setAddForm((f) => ({ ...f, nextStep: e.target.value }))}
+                  className="epic-input py-1.5 text-sm"
+                  placeholder="e.g. Scoping call"
+                />
+              </div>
+              <div className="sm:col-span-2 flex items-center gap-2">
+                <button type="submit" disabled={addStatus === "saving"} className="epic-btn-primary text-sm py-1.5 px-3">
+                  {addStatus === "saving" ? "Saving…" : "Add opportunity"}
+                </button>
+                {addStatus === "done" && <span className="text-sm text-green-600">Added.</span>}
+                {addStatus === "error" && <span className="text-sm text-red-600">Failed to add.</span>}
+              </div>
+            </form>
+          )}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <Link
           href="/crm?view=institutions"

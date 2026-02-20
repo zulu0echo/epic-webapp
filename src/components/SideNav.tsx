@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, Users, Building2, BookUser, Settings, Home, Mail, Package, LogOut, PanelLeftClose, PanelLeft, BookOpen } from "lucide-react";
+import { Map, Building2, BookUser, Settings, Home, Mail, Package, LogOut, PanelLeftClose, PanelLeft, BookOpen } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 import { ETH_BRAND } from "@/lib/brand";
@@ -17,14 +17,10 @@ const publicNav = [
   { href: "/vendor", label: "Vendor / Ecosystem", icon: Package },
 ];
 
-const adminOnlyNav = [
+const adminSubsections = [
+  { href: "/admin", label: "Dashboard", icon: Settings },
   { href: "/rolodex", label: "Rolodex", icon: BookUser },
   { href: "/crm", label: "CRM", icon: Building2 },
-  { href: "/crm/opportunities", label: "Opportunities", icon: Users },
-];
-
-const adminNav = [
-  { href: "/admin", label: "Admin", icon: Settings },
 ];
 
 export function SideNav() {
@@ -58,16 +54,10 @@ export function SideNav() {
     window.location.href = "/";
   };
 
-  const allLinks = [
-    ...publicNav,
-    ...(admin ? adminOnlyNav : []),
-    ...adminNav,
-  ];
-
   return (
     <nav
       className={cn(
-        "border-r border-slate-200/80 bg-white flex flex-col p-3 gap-0.5 shrink-0 transition-[width] duration-200 ease-out shadow-epic",
+        "border-r border-epic-border bg-white flex flex-col p-3 gap-0.5 shrink-0 transition-[width] duration-200 ease-out shadow-epic",
         collapsed ? "w-[4.25rem]" : "w-56"
       )}
     >
@@ -79,11 +69,11 @@ export function SideNav() {
           width={28}
           height={28}
         />
-        <span className={cn("font-serif text-lg font-bold text-indigo-600 truncate", collapsed && "hidden")}>EPIC</span>
+        <span className={cn("font-serif text-lg font-semibold text-epic-navy truncate", collapsed && "hidden")}>EPIC</span>
         {collapsed && <span className="sr-only">EPIC</span>}
       </div>
       <div className="flex-1 flex flex-col gap-0.5 py-1">
-        {allLinks.map(({ href, label, icon: Icon }) => (
+        {publicNav.map(({ href, label, icon: Icon }) => (
           <Link
             key={href}
             href={href}
@@ -92,16 +82,43 @@ export function SideNav() {
               "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150",
               collapsed && "justify-center px-0",
               pathname === href || (href !== "/" && pathname.startsWith(href))
-                ? "bg-indigo-50 text-indigo-700 shadow-sm"
-                : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                ? "bg-slate-100 text-epic-navy font-medium"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
             )}
           >
             <Icon className="w-4 h-4 shrink-0" />
             {!collapsed && <span className="truncate">{label}</span>}
           </Link>
         ))}
+        {admin && (
+          <>
+            {!collapsed && (
+              <div className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                Admin
+              </div>
+            )}
+            {adminSubsections.map(({ href, label, icon: Icon }) => (
+              <Link
+                key={href + label}
+                href={href}
+                title={collapsed ? label : undefined}
+                className={cn(
+                  "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150",
+                  collapsed && "justify-center px-0",
+                  !collapsed && "pl-5",
+                  pathname === href || (href !== "/" && pathname.startsWith(href))
+                    ? "bg-slate-100 text-epic-navy font-medium"
+                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                )}
+              >
+                <Icon className="w-4 h-4 shrink-0" />
+                {!collapsed && <span className="truncate">{label}</span>}
+              </Link>
+            ))}
+          </>
+        )}
       </div>
-      <div className="mt-auto pt-2 border-t border-slate-200/80 space-y-0.5">
+      <div className="mt-auto pt-2 border-t border-epic-border space-y-0.5">
         {admin && (
           <button
             onClick={handleLogout}

@@ -51,13 +51,15 @@
       "title": "Digital MRV pilots",
       "year": 2024,
       "blockchainUsed": "Various",
-      "description": "Measurement, reporting and verification for carbon and climate finance."
+      "description": "Measurement, reporting and verification for carbon and climate finance.",
+      "url": "https://attest.sh"
     },
     {
       "title": "Carbon credit registries",
       "year": 2023,
       "blockchainUsed": "Various",
-      "description": "Tamper-evident registries for carbon credits and offsets."
+      "description": "Tamper-evident registries for carbon credits and offsets.",
+      "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"
     }
   ]
 }

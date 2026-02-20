@@ -2,7 +2,7 @@
 
 export type DomainEdgeSpec = { toSlug: string; edgeType: "depends_on" | "enables" | "adjacent_to" };
 export type RelatedLink = { label: string; url: string };
-export type ExperimentSpec = { title: string; year?: number; blockchainUsed?: string; description?: string };
+export type ExperimentSpec = { title: string; year?: number; blockchainUsed?: string; description?: string; url?: string };
 
 /** 2–3 experiments, PoCs, or articles (GitHub, reports, academic) per domain. */
 export type DomainReference = { label: string; url: string };

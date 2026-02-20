@@ -46,13 +46,15 @@
       "title": "EBSI public-sector trust",
       "year": 2024,
       "blockchainUsed": "Ethereum",
-      "description": "Trust layer for cross-border public services and participation."
+      "description": "Trust layer for cross-border public services and participation.",
+      "url": "https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials"
     },
     {
       "title": "OGP and open government data",
       "year": 2024,
       "blockchainUsed": "N/A",
-      "description": "Open government partnership and transparent process initiatives."
+      "description": "Open government partnership and transparent process initiatives.",
+      "url": "https://www.opengovpartnership.org/"
     }
   ]
 }

@@ -28,9 +28,8 @@ function parseList(value: string): string[] {
 }
 
 export default function AdminPage() {
-  const [tab, setTab] = useState<"dashboard" | "taxonomy" | "export" | "import" | "opportunities">("dashboard");
+  const [tab, setTab] = useState<"dashboard" | "taxonomy" | "export" | "opportunities">("dashboard");
   const [exportStatus, setExportStatus] = useState("");
-  const [importStatus, setImportStatus] = useState("");
   const [admin, setAdmin] = useState<boolean | null>(null);
 
   // Dashboard: domains list
@@ -262,7 +261,7 @@ export default function AdminPage() {
 
   if (admin === null) return <div className="epic-section max-w-4xl"><div className="epic-card p-6"><p className="text-slate-500">Loading...</p></div></div>;
 
-  const tabs = ["dashboard", "taxonomy", "export", "import", "opportunities"] as const;
+  const tabs = ["dashboard", "taxonomy", "export", "opportunities"] as const;
 
   return (
     <div className="epic-section max-w-5xl">
@@ -648,14 +647,6 @@ export default function AdminPage() {
               </button>
             </div>
             {exportStatus && <p className="mt-3 text-sm text-slate-600">{exportStatus}</p>}
-          </div>
-        )}
-        {tab === "import" && (
-          <div>
-            <p className="epic-body mb-4">
-              Import domains from JSON (array of objects with name, parentId?, definition?, summary?, challenges?, opportunities?, tags?, ethereumPrimitives?, maturityLevel?). Use seed script for full taxonomy.
-            </p>
-            {importStatus && <p className="text-sm text-slate-600">{importStatus}</p>}
           </div>
         )}
         {tab === "opportunities" && (

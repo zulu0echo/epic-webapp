@@ -34,7 +34,7 @@ export default async function BlogPostPage({
     <div className="epic-section max-w-3xl">
       <Link
         href="/blog"
-        className="text-sm font-medium text-indigo-600 hover:underline"
+        className="text-sm font-medium text-epic-navy hover:underline"
       >
         ← Blog
       </Link>

@@ -48,13 +48,15 @@
       "title": "EBSI diplomas",
       "year": 2024,
       "blockchainUsed": "Ethereum",
-      "description": "Verifiable education credentials across Europe."
+      "description": "Verifiable education credentials across Europe.",
+      "url": "https://ec.europa.eu/digital-building-blocks/wikis/display/EBSI/EBSI+Verifiable+Credentials"
     },
     {
       "title": "Blockcerts / open credentials",
       "year": 2023,
       "blockchainUsed": "Bitcoin/Ethereum",
-      "description": "Open standard for blockchain-based academic credentials."
+      "description": "Open standard for blockchain-based academic credentials.",
+      "url": "https://www.blockcerts.org/"
     }
   ]
 }

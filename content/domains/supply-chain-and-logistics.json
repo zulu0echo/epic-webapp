@@ -46,13 +46,15 @@
       "title": "WFP Building Blocks (logistics)",
       "year": 2023,
       "blockchainUsed": "Ethereum",
-      "description": "Humanitarian supply chain and delivery attestation."
+      "description": "Humanitarian supply chain and delivery attestation.",
+      "url": "https://innovation.wfp.org/project/building-blocks"
     },
     {
       "title": "GS1 + blockchain traceability",
       "year": 2023,
       "blockchainUsed": "Various",
-      "description": "Standards-based supply chain provenance."
+      "description": "Standards-based supply chain provenance.",
+      "url": "https://www.gs1.org/standards"
     }
   ]
 }

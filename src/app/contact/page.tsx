@@ -29,7 +29,7 @@ export default function ContactPage() {
         <h1 className="epic-heading-2">Contact</h1>
         <p className="mt-2 epic-body">
           Get in touch with the EPIC team. This form opens your email client and sends to{" "}
-          <a href={`mailto:${RECIPIENT}`} className="text-indigo-600 font-medium hover:underline">
+          <a href={`mailto:${RECIPIENT}`} className="text-epic-navy font-medium hover:underline">
             {RECIPIENT}
           </a>
           .

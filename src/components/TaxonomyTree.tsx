@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ChevronRight, ChevronDown, Folder, FolderOpen } from "lucide-react";
 import { cn } from "@/lib/cn";
-import { getSectorTheme } from "@/lib/sectorColors";
+import { getSectorTheme, getTreeTextColor } from "@/lib/sectorColors";
 
 type TreeNode = {
   id: string;
@@ -49,7 +49,9 @@ export function TaxonomyTree({
   const renderNode = (node: TreeNode, depth: number) => {
     const hasChildren = node.children && node.children.length > 0;
     const isOpen = open.has(node.id);
-    const theme = getSectorTheme(node.rootName ?? "");
+    const rootName = node.rootName ?? "";
+    const theme = getSectorTheme(rootName || node.id);
+    const textColor = getTreeTextColor(rootName, depth);
     return (
       <div key={node.id} className="flex flex-col">
         <div
@@ -77,7 +79,7 @@ export function TaxonomyTree({
           {hasChildren ? (
             isOpen ? <FolderOpen className={cn("w-4 h-4", theme.accent)} /> : <Folder className={cn("w-4 h-4", theme.accent)} />
           ) : null}
-          <span className={cn("truncate", theme.text)}>{node.name}</span>
+          <span className={cn("truncate font-medium", depth > 0 && theme.accentHover)} style={{ color: textColor }}>{node.name}</span>
         </div>
         {hasChildren && isOpen && (
           <div>

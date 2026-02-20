@@ -30,13 +30,15 @@
       "title": "WFP Building Blocks",
       "year": 2023,
       "blockchainUsed": "Ethereum",
-      "description": "Humanitarian cash-transfer oriented blockchain approach."
+      "description": "Humanitarian cash-transfer oriented blockchain approach.",
+      "url": "https://innovation.wfp.org/project/building-blocks"
     },
     {
       "title": "UNICEF CryptoFund",
       "year": 2023,
       "blockchainUsed": "Ethereum",
-      "description": "UN entity receiving/holding/disbursing crypto assets with transparency."
+      "description": "UN entity receiving/holding/disbursing crypto assets with transparency.",
+      "url": "https://www.unicef.org/innovation/stories/unicef-cryptofund"
     }
   ],
   "references": [
