@@ -5,6 +5,7 @@ import { SideNav } from "@/components/SideNav";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { Footer } from "@/components/Footer";
 import { ETH_BRAND } from "@/lib/brand";
+import { Analytics } from "@vercel/analytics/next";
 
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function RootLayout({
             <Footer />
           </main>
         </div>
+        <Analytics />
       </body>
     </html>
   );
