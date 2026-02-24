@@ -1,0 +1,40 @@
+{
+  "name": "carbon-mrv-poc",
+  "version": "0.1.0",
+  "description": "Proof of concept: Carbon MRV attestations and dataset commitments with a minimal registry",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "carbon-mrv": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "demo": "tsx src/cli.ts demo",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "spec:view": "cat spec/README.md"
+  },
+  "keywords": [
+    "carbon",
+    "mrv",
+    "attestation",
+    "verification",
+    "climate",
+    "ethereum"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ethereum/carbon-mrv-poc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0",
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

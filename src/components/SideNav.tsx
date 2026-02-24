@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, Building2, BookUser, Settings, Home, Mail, Package, LogOut, PanelLeftClose, PanelLeft, BookOpen } from "lucide-react";
+import { Map, Building2, BookUser, Settings, Home, Mail, Package, LogOut, PanelLeftClose, PanelLeft, BookOpen, FileText } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 import { ETH_BRAND } from "@/lib/brand";
@@ -13,6 +13,7 @@ const publicNav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/map", label: "Map Explorer", icon: Map },
   { href: "/blog", label: "Blog", icon: BookOpen },
+  { href: "/use-case-template", label: "Use Case Template", icon: FileText },
   { href: "/contact", label: "Contact", icon: Mail },
   { href: "/vendor", label: "Vendor / Ecosystem", icon: Package },
   { href: "/admin", label: "Admin", icon: Settings },
