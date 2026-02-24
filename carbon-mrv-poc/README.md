@@ -6,7 +6,7 @@ A minimal proof of concept for **Carbon MRV** (Measurement, Reporting, Verificat
 - **Verifier attestations** — signed statement that a dataset was verified (PoC: HMAC; production: EIP-712 or similar)
 - **Registry** — append-only list of attestations (PoC: file-based; production: onchain or verified API)
 
-The design is aligned with **cypherpunk** values: **decentralization** (no single registry gatekeeper), **privacy** (raw data offchain; only commitments and attestations in the shared layer), **openness** (open spec and formats), and **transparency** (anyone can verify signatures and commitments). See [Design philosophy](docs/design-philosophy.md).
+The design is aligned with **CROPS** values: **decentralization** (no single registry gatekeeper), **privacy** (raw data offchain; only commitments and attestations in the shared layer), **openness** (open spec and formats), and **transparency** (anyone can verify signatures and commitments). See [Design philosophy](docs/design-philosophy.md).
 
 This repo follows the [EPIC Use Case Template](https://github.com/ethereum/epic-map-app/blob/main/src/lib/useCaseTemplate.ts) for govtech domain use cases.
 
@@ -107,8 +107,8 @@ carbon-mrv-poc/
 | Document | Description |
 |----------|-------------|
 | [Problem & research](docs/problem-and-research.md) | Problem space (in depth), parties affected, existing solutions and limitations |
-| [Value proposition](docs/value-proposition.md) | Why Ethereum / verifiable data fits Carbon MRV; solution required; cypherpunk alignment |
-| [Design philosophy](docs/design-philosophy.md) | Decentralization, privacy, openness, transparency (cypherpunk values) |
+| [Value proposition](docs/value-proposition.md) | Why Ethereum / verifiable data fits Carbon MRV; solution required; CROPS alignment |
+| [Design philosophy](docs/design-philosophy.md) | Decentralization, privacy, openness, transparency (CROPS values) |
 | [Requirements](docs/requirements.md) | Functional and non-functional requirements |
 | [Architecture](docs/architecture.md) | Components and data flow |
 | [User guide](docs/user-guide.md) | Personas, parties, step-by-step user flows, running the demo |

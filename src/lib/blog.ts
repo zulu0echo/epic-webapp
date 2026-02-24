@@ -28,6 +28,13 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       "Why Ethereum's structural properties—decentralized consensus, tamper-evident records, client diversity, and programmable settlement—matter for institutional resilience in public-sector digital infrastructure.",
     date: "2026-02-19",
   },
+  {
+    slug: "crops-principles-govtech",
+    title: "CROPS Principles in Development: Why They Matter for GovTech and This Work",
+    excerpt:
+      "How decentralization, privacy, openness, and transparency—CROPS—guide the design of public-interest systems and why they are relevant to govtech use cases and EPIC’s work.",
+    date: "2026-02-19",
+  },
 ];
 
 export function getPostMeta(slug: string): BlogPostMeta | undefined {

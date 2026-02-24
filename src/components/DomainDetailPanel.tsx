@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { X } from "lucide-react";
 import { parseJsonArray } from "@/lib/parsers";
 import { cn } from "@/lib/cn";
@@ -99,7 +100,7 @@ export function DomainDetailPanel({
               tab === t && theme.accent
             )}
           >
-            {t}
+            {t === "experiments" ? "Proof of concepts" : t}
           </button>
         ))}
       </div>
@@ -166,7 +167,7 @@ export function DomainDetailPanel({
             )}
             {(domain.references?.length ?? 0) > 0 && (
               <section className="mb-4">
-                <h3 className="font-medium text-slate-700 mb-1">References & experiments</h3>
+                <h3 className="font-medium text-slate-700 mb-1">References & proof of concepts</h3>
                 <ul className="space-y-1">
                   {domain.references!.map((ref, i) => (
                     <li key={i}>
@@ -257,19 +258,32 @@ export function DomainDetailPanel({
         {tab === "experiments" && (
           <ul className="space-y-2">
             {(domain.experiments ?? []).length === 0 ? (
-              <li className="text-slate-500">No experiments linked.</li>
+              <li className="text-slate-500">No proof of concepts linked.</li>
             ) : (
               domain.experiments!.map((e) => (
                 <li key={e.id} className="epic-card p-3">
-                  {e.url ? (
-                    <a href={e.url} target="_blank" rel="noopener noreferrer" className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
-                      {e.title}
-                    </a>
-                  ) : (
-                    <span className="font-medium text-slate-800">{e.title}</span>
-                  )}
-                  {e.year != null && <span className="text-slate-500 ml-1">({e.year})</span>}
-                  {e.blockchainUsed && <span className="text-slate-500 ml-1">· {e.blockchainUsed}</span>}
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {e.url ? (
+                      e.url.startsWith("/") ? (
+                        <Link href={e.url} className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
+                          {e.title}
+                        </Link>
+                      ) : (
+                        <a href={e.url} target="_blank" rel="noopener noreferrer" className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
+                          {e.title}
+                        </a>
+                      )
+                    ) : (
+                      <span className="font-medium text-slate-800">{e.title}</span>
+                    )}
+                    {e.url === "/proof-of-concepts/carbon-mrv" && (
+                      <span className="inline-flex items-center rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-slate-600">
+                        built by PSE
+                      </span>
+                    )}
+                  </div>
+                  {e.year != null && <span className="text-slate-500 ml-1 text-xs">({e.year})</span>}
+                  {e.blockchainUsed && <span className="text-slate-500 ml-1 text-xs">· {e.blockchainUsed}</span>}
                   {e.description && <p className="text-slate-600 mt-1 text-xs">{e.description}</p>}
                 </li>
               ))

@@ -1,9 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { SideNav } from "@/components/SideNav";
-import { GlobalSearch } from "@/components/GlobalSearch";
-import { Footer } from "@/components/Footer";
+import { AppShell } from "@/components/AppShell";
 import { ETH_BRAND } from "@/lib/brand";
 
 const sourceSerif = Source_Serif_4({
@@ -26,6 +24,12 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,16 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sourceSerif.variable} ${sourceSans.variable}`}>
       <body className="min-h-screen flex font-sans">
-        <SideNav />
-        <div className="flex-1 flex flex-col min-w-0">
-          <header className="shrink-0 border-b border-epic-border bg-white px-6 py-4 flex items-center justify-end gap-4">
-            <GlobalSearch />
-          </header>
-          <main className="flex-1 overflow-auto bg-epic-surface min-h-0 flex flex-col">
-            {children}
-            <Footer />
-          </main>
-        </div>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

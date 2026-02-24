@@ -31,12 +31,13 @@ function FlowApiBridge({
   return null;
 }
 import "reactflow/dist/style.css";
-import { Search, RotateCcw } from "lucide-react";
+import { Search, RotateCcw, PanelLeftOpen, X } from "lucide-react";
 import { DomainDetailPanel } from "./DomainDetailPanel";
 import { TaxonomyTree } from "./TaxonomyTree";
 import { cn } from "@/lib/cn";
 import { getSectorStyle, getSectorTheme, getSectorEdgeColor, DOMAIN_THEMES } from "@/lib/sectorColors";
 import { getDomainIcon } from "@/lib/domainIcons";
+import { useIsMobileDevice } from "@/hooks/useIsMobileDevice";
 
 const NODE_WIDTH = 160;
 const NODE_HEIGHT = 40;
@@ -157,7 +158,9 @@ function MapExplorerInner({
   );
   const [treeSearch, setTreeSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<Set<string>>(new Set());
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const isMobile = useIsMobileDevice(1024);
   const [graphLoading, setGraphLoading] = useState(true);
   const [rawNodes, setRawNodes] = useState<GraphNode[]>([]);
   const [rawEdges, setRawEdges] = useState<
@@ -466,6 +469,7 @@ function MapExplorerInner({
       if (e.key === "Escape") {
         setSelectedId(null);
         setHoveredId(null);
+        setMobileFiltersOpen(false);
         return;
       }
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
@@ -496,9 +500,12 @@ function MapExplorerInner({
       role="application"
       aria-label="Ecosystem map"
     >
-      {/* Left sidebar: search, category filter chips, reset */}
+      {/* Left sidebar: search, category filter chips, reset — on mobile device hidden below lg and shown in overlay */}
       <aside
-        className="w-72 border-r border-slate-200 bg-white flex flex-col shrink-0 shadow-epic overflow-hidden"
+        className={cn(
+          "w-72 border-r border-slate-200 bg-white flex flex-col shrink-0 shadow-epic overflow-hidden",
+          isMobile ? "hidden lg:flex" : "flex"
+        )}
         aria-label="Map filters"
       >
         <div className="p-3 border-b border-slate-200">
@@ -558,6 +565,86 @@ function MapExplorerInner({
         />
       </aside>
 
+      {/* Mobile filters drawer */}
+      {isMobile && mobileFiltersOpen && (
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+            onClick={() => setMobileFiltersOpen(false)}
+            aria-hidden
+          />
+          <aside
+            className="fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] flex flex-col border-r border-slate-200 bg-white shadow-xl overflow-y-auto lg:hidden"
+            aria-label="Map filters"
+          >
+            <div className="flex items-center justify-between p-3 border-b border-slate-200">
+              <span className="font-semibold text-slate-800">Filters</span>
+              <button
+                type="button"
+                onClick={() => setMobileFiltersOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100"
+                aria-label="Close filters"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="p-3 border-b border-slate-200">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                <input
+                  type="search"
+                  placeholder="Search taxonomy..."
+                  className="epic-input py-2 pl-9 pr-3 text-sm"
+                  value={treeSearch}
+                  onChange={(e) => setTreeSearch(e.target.value)}
+                  aria-label="Search domains"
+                />
+              </div>
+            </div>
+            <div className="px-3 py-2 border-b border-slate-200">
+              <p className="text-xs font-semibold text-slate-600 uppercase tracking-wide mb-2">Category</p>
+              <div className="flex flex-wrap gap-1.5">
+                {CATEGORY_NAMES.map((name) => (
+                  <button
+                    key={name}
+                    type="button"
+                    onClick={() => toggleCategory(name)}
+                    className={cn(
+                      "px-2.5 py-1 rounded-md text-xs font-medium border transition-all duration-150",
+                      categoryFilter.has(name)
+                        ? "ring-1 ring-offset-1 ring-slate-400"
+                        : "opacity-80 hover:opacity-100",
+                      DOMAIN_THEMES[name]
+                        ? `${DOMAIN_THEMES[name]!.bg} ${DOMAIN_THEMES[name]!.border} ${DOMAIN_THEMES[name]!.text}`
+                        : "bg-slate-100 border-slate-300 text-slate-700"
+                    )}
+                    aria-pressed={categoryFilter.has(name)}
+                    aria-label={`Filter by ${name}`}
+                  >
+                    {name.split(" ")[0]}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="p-3 border-b border-slate-200">
+              <button
+                type="button"
+                onClick={() => { resetView(); setMobileFiltersOpen(false); }}
+                className="epic-btn-secondary w-full flex items-center justify-center gap-2 py-2 text-sm"
+                aria-label="Reset view and clear filters"
+              >
+                <RotateCcw className="w-4 h-4" />
+                Reset view
+              </button>
+            </div>
+            <TaxonomyTree
+              onSelect={(id) => { setSelectedId(id); setMobileFiltersOpen(false); }}
+              search={treeSearch}
+            />
+          </aside>
+        </>
+      )}
+
       {/* Canvas */}
       <div
         className="flex-1 min-h-0 relative bg-slate-100/60 overflow-hidden"
@@ -607,11 +694,36 @@ function MapExplorerInner({
             <span className="text-slate-600 font-medium">Loading graph…</span>
           </div>
         )}
+        <button
+          type="button"
+          onClick={() => setMobileFiltersOpen(true)}
+          className={cn(
+            "absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-md hover:bg-slate-50",
+            isMobile ? "flex" : "hidden"
+          )}
+          aria-label="Open filters"
+        >
+          <PanelLeftOpen className="h-4 w-4" />
+          Filters
+        </button>
       </div>
 
-      {/* Right details panel */}
+      {isMobile && selectedId && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-white lg:hidden">
+          <DomainDetailPanel
+            domainId={selectedId}
+            onClose={() => setSelectedId(null)}
+            onSelectNode={(id) => setSelectedId(id)}
+          />
+        </div>
+      )}
+
+      {/* Right details panel — on mobile device hidden below lg; detail shown in full-screen overlay */}
       <aside
-        className="w-96 border-l border-slate-200 bg-white flex flex-col shrink-0 overflow-hidden shadow-epic"
+        className={cn(
+          "w-96 border-l border-slate-200 bg-white flex flex-col shrink-0 overflow-hidden shadow-epic",
+          isMobile ? "hidden lg:flex" : "flex"
+        )}
         aria-label="Node details"
         role="region"
       >

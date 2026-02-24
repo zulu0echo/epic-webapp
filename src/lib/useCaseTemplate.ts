@@ -1,5 +1,5 @@
 /**
- * Use Case Template: structure and content for govtech domain/subdomain use cases.
+ * Proof of Concept Template: structure and content for govtech domain/subdomain proof of concepts.
  * Sections align with EPIC deliverables: problem research, value prop, requirements,
  * architecture, code, docs, demo, CTA, roadmap, and specification (zkspecs-style).
  */

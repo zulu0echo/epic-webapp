@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { USE_CASE_TEMPLATE_SECTIONS } from "@/lib/useCaseTemplate";
-import { FileText, CheckCircle2 } from "lucide-react";
+import { FileText, CheckCircle2, ArrowRight, Leaf } from "lucide-react";
 
 export const metadata = {
-  title: "Use Case Template — EPIC",
+  title: "Proof of Concept Template — EPIC",
   description:
-    "Template for govtech domain and subdomain use cases: problem research, value prop, requirements, architecture, code, docs, demo, CTA, roadmap, and specification.",
+    "Template for govtech domain and subdomain proof of concepts: problem research, value prop, requirements, architecture, code, docs, demo, CTA, roadmap, and specification.",
 };
 
 function SectionBlock({
@@ -52,12 +52,20 @@ export default function UseCaseTemplatePage() {
           <div>
             <h1 className="epic-heading-1 flex items-center gap-2">
               <FileText className="w-8 h-8 text-epic-navy-muted" aria-hidden />
-              Use Case Template
+              Proof of Concept Template
             </h1>
             <p className="mt-2 epic-body max-w-2xl">
-              A structured template for documenting govtech domain and subdomain use cases. Use it to produce reliable material for problem exploration, Ethereum value proposition, requirements, architecture, code, documentation, demos, and a formal specification (e.g. zkspecs-style).
+              A structured template for documenting govtech domain and subdomain proof of concepts. Use it to produce reliable material for problem exploration, Ethereum value proposition, requirements, architecture, code, documentation, demos, and a formal specification (e.g. zkspecs-style).
             </p>
           </div>
+          <Link
+            href="/proof-of-concepts/carbon-mrv"
+            className="epic-btn-secondary inline-flex items-center gap-2"
+          >
+            <Leaf className="w-4 h-4 shrink-0 text-emerald-600" aria-hidden />
+            See example: Carbon MRV PoC
+            <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />
+          </Link>
         </div>
 
         <div className="mb-6 p-4 rounded-lg bg-slate-50 border border-slate-200 text-sm text-slate-700">
@@ -87,7 +95,18 @@ export default function UseCaseTemplatePage() {
             <Link href="/map" className="text-epic-navy underline hover:no-underline">
               Map Explorer
             </Link>
-            . Fill in each section with extended descriptions and meet the acceptance criteria.
+            . Fill in each section with extended descriptions and meet the acceptance criteria for proof of concepts.
+          </p>
+          <p className="mt-4 epic-body">
+            <strong>Example:</strong> Explore{" "}
+            <Link href="/domains/climate-and-mrv" className="text-epic-navy underline hover:no-underline">
+              Climate & MRV
+            </Link>
+            {" "}on the map (or view the domain page), then open the Carbon MRV proof of concept from the Proof of concepts tab, or go directly to{" "}
+            <Link href="/proof-of-concepts/carbon-mrv" className="text-epic-navy underline hover:no-underline">
+              Carbon MRV PoC
+            </Link>
+            {" "}for the full documentation and spec.
           </p>
         </div>
       </div>

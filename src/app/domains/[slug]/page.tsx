@@ -160,17 +160,30 @@ export default async function DomainPage({
 
       {(domain.experiments ?? []).length > 0 && (
         <section className="mt-6">
-          <h2 className="font-semibold text-slate-800 mb-2">Experiments</h2>
+          <h2 className="font-semibold text-slate-800 mb-2">Proof of concepts</h2>
           <ul className="space-y-2">
             {domain.experiments!.map((ex, i) => (
               <li key={i} className="p-3 rounded-lg border border-slate-200 bg-white">
-                {ex.url ? (
-                  <a href={ex.url} target="_blank" rel="noopener noreferrer" className={`font-medium ${theme.accent} ${theme.accentHover} hover:underline`}>
-                    {ex.title}
-                  </a>
-                ) : (
-                  <span className="font-medium">{ex.title}</span>
-                )}
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {ex.url ? (
+                    ex.url.startsWith("/") ? (
+                      <Link href={ex.url} className={`font-medium ${theme.accent} ${theme.accentHover} hover:underline`}>
+                        {ex.title}
+                      </Link>
+                    ) : (
+                      <a href={ex.url} target="_blank" rel="noopener noreferrer" className={`font-medium ${theme.accent} ${theme.accentHover} hover:underline`}>
+                        {ex.title}
+                      </a>
+                    )
+                  ) : (
+                    <span className="font-medium">{ex.title}</span>
+                  )}
+                  {ex.url === "/proof-of-concepts/carbon-mrv" && (
+                    <span className="inline-flex items-center rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-slate-600">
+                      built by PSE
+                    </span>
+                  )}
+                </div>
                 {ex.year != null && <span className="text-slate-500 ml-1">({ex.year})</span>}
                 {ex.blockchainUsed && <span className="text-slate-500 ml-1">· {ex.blockchainUsed}</span>}
                 {ex.description && <p className="text-slate-600 mt-1 text-sm">{ex.description}</p>}
@@ -214,7 +227,7 @@ export default async function DomainPage({
 
       {(domain.references?.length ?? 0) > 0 && (
         <section className="mt-6">
-          <h2 className="font-semibold text-slate-800 mb-2">References & experiments</h2>
+          <h2 className="font-semibold text-slate-800 mb-2">References & proof of concepts</h2>
           <ul className="space-y-1">
             {domain.references!.map((ref, i) => (
               <li key={i}>

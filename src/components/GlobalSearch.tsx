@@ -4,12 +4,29 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 
+type SearchPageItem = {
+  type: "domain" | "opportunity" | "expert" | "institution" | "blog" | "page";
+  title: string;
+  href: string;
+  preview: string;
+};
+
 type SearchResult = {
   domains: { id: string; name: string }[];
   institutions: { id: string; name: string; type: string }[];
   contacts: { id: string; name: string }[];
   opportunities: { id: string; title: string; stage: string }[];
   experts: { id: string; name: string; affiliation: string | null }[];
+  pages: SearchPageItem[];
+};
+
+const TYPE_LABEL: Record<SearchPageItem["type"], string> = {
+  domain: "Domain",
+  opportunity: "Opportunity",
+  expert: "Expert",
+  institution: "Institution",
+  blog: "Blog",
+  page: "Page",
 };
 
 export function GlobalSearch() {
@@ -39,16 +56,11 @@ export function GlobalSearch() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const hasResults = results && (
-    results.domains.length +
-    results.institutions.length +
-    results.contacts.length +
-    results.opportunities.length +
-    results.experts.length
-  ) > 0;
+  const pages = results?.pages ?? [];
+  const hasResults = pages.length > 0;
 
   return (
-    <div ref={ref} className="relative w-72">
+    <div ref={ref} className="relative w-72 sm:w-80">
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
         <input
@@ -64,74 +76,29 @@ export function GlobalSearch() {
         />
       </div>
       {open && q.length >= 2 && (
-        <div className="absolute top-full left-0 right-0 mt-2 epic-card z-50 max-h-80 overflow-auto py-1 shadow-epic-lg">
+        <div className="absolute top-full left-0 right-0 mt-2 epic-card z-50 max-h-[min(24rem,70vh)] overflow-auto py-1 shadow-epic-lg min-w-[20rem]">
           {!results ? (
             <div className="px-4 py-3 text-slate-500 text-sm">Searching...</div>
           ) : !hasResults ? (
             <div className="px-4 py-3 text-slate-500 text-sm">No results</div>
           ) : (
-            <div className="py-1">
-              {results.domains.length > 0 && (
-                <div className="mb-1">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 px-3 py-2">Domains</div>
-                  {results.domains.slice(0, 5).map((d) => (
-                    <Link
-                      key={d.id}
-                      href={`/map?domainId=${d.id}`}
-                      className="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
-                      onClick={() => setOpen(false)}
-                    >
-                      {d.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-              {results.opportunities.length > 0 && (
-                <div className="mb-1">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 px-3 py-2">Opportunities</div>
-                  {results.opportunities.slice(0, 5).map((o) => (
-                    <Link
-                      key={o.id}
-                      href={`/crm/opportunities?id=${o.id}`}
-                      className="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
-                      onClick={() => setOpen(false)}
-                    >
-                      {o.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-              {results.experts.length > 0 && (
-                <div className="mb-1">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 px-3 py-2">Experts</div>
-                  {results.experts.slice(0, 5).map((e) => (
-                    <Link
-                      key={e.id}
-                      href="/rolodex"
-                      className="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
-                      onClick={() => setOpen(false)}
-                    >
-                      {e.name} {e.affiliation ? <span className="text-slate-500">· {e.affiliation}</span> : ""}
-                    </Link>
-                  ))}
-                </div>
-              )}
-              {results.institutions.length > 0 && (
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 px-3 py-2">Institutions</div>
-                  {results.institutions.slice(0, 5).map((i) => (
-                    <Link
-                      key={i.id}
-                      href="/crm"
-                      className="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
-                      onClick={() => setOpen(false)}
-                    >
-                      {i.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ul className="py-1" role="list">
+              {pages.map((item, idx) => (
+                <li key={`${item.type}-${item.href}-${idx}`}>
+                  <Link
+                    href={item.href}
+                    className="block px-3 py-2.5 hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-b-0"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      {TYPE_LABEL[item.type]}
+                    </span>
+                    <p className="font-medium text-slate-800 text-sm mt-0.5">{item.title}</p>
+                    <p className="text-slate-600 text-xs mt-1 line-clamp-2">{item.preview}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       )}

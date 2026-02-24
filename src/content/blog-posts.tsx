@@ -10,6 +10,8 @@ export function getPostContent(slug: string): React.ReactNode {
       return <EpicTeamVisionPost />;
     case "ethereum-resilient-public-infrastructure":
       return <EthereumResilientInfrastructurePost />;
+    case "crops-principles-govtech":
+      return <CROPSPrinciplesGovTechPost />;
     default:
       return null;
   }
@@ -274,6 +276,87 @@ function EthereumResilientInfrastructurePost() {
       <p>
         Resilience in public infrastructure is ultimately about trust under stress. Ethereum offers a mechanism for embedding verifiability into the foundation of digital governance systems, reducing reliance on institutional goodwill alone and replacing it with cryptographic assurance.
       </p>
+    </article>
+  );
+}
+
+function CROPSPrinciplesGovTechPost() {
+  return (
+    <article className="epic-body space-y-6">
+      <p>
+        When we design systems for the public sector—registries, attestations, credentials, carbon MRV—we aim for more than functional correctness. We want systems that remain <strong>accountable</strong>, <strong>portable</strong>, and <strong>verifiable</strong> over time, across vendors and political cycles. The set of principles we use to guide that design we call <strong>CROPS</strong>: <strong>C</strong>ommitment to distributed trust (no single gatekeeper), <strong>R</strong>espect for privacy (minimize shared data), <strong>O</strong>penness (open spec, open formats, open participation), and <strong>P</strong>ublic <strong>S</strong>crutiny (transparency and falsifiability). This post explains what CROPS means in practice for development, why it is relevant to govtech use cases, and how it shapes the work we do at EPIC—including the Carbon MRV proof of concept and the EPIC map.
+      </p>
+
+      <h2 className="epic-heading-3 mt-8">The four CROPS principles in development</h2>
+
+      <h3 className="font-serif text-lg font-semibold text-epic-ink mt-6">Decentralization (no single gatekeeper)</h3>
+      <p>
+        In development terms: avoid designs where one operator, vendor, or database holds the only copy of the truth or the only key to verification. Prefer <strong>portable data formats</strong> and <strong>permissionless verification</strong>—anyone with the right data and the public rules can verify an attestation or a commitment without calling a central API. That means defining canonical formats (e.g. how a commitment hash is computed, how an attestation is signed) in open specs, and allowing multiple registries or implementations to coexist. In govtech, decentralization reduces lock-in and ensures that systems can outlive a single contract or administration.
+      </p>
+
+      <h3 className="font-serif text-lg font-semibold text-epic-ink mt-6">Privacy (data minimization)</h3>
+      <p>
+        Only put in the shared layer what is needed for verification and accountability. Raw data—personal data, full reports, sensitive metrics—stays offchain or in controlled systems; the shared layer gets <strong>commitments</strong> (hashes) and <strong>signed attestations</strong>. In development: design APIs and storage so that the minimal set of data is published or anchored; use cryptographic binding so that “what was attested” is fixed without exposing the underlying dataset. For govtech, this aligns with data protection and principle of least privilege while still enabling audit and proof.
+      </p>
+
+      <h3 className="font-serif text-lg font-semibold text-epic-ink mt-6">Openness (open spec, formats, and participation)</h3>
+      <p>
+        Protocols and formats should be open: open specification (so others can implement and interoperate), open source where possible (so the community can inspect and extend), and open participation (any qualified verifier or registry can join without a proprietary gate). In development, that means writing down the rules (MUST/SHOULD/MAY), using standard algorithms (e.g. SHA-256, EIP-712-style signing), and avoiding “secret sauce” that only one vendor can verify. Govtech benefits from openness because it enables multi-vendor procurement, cross-border interoperability, and long-term maintainability.
+      </p>
+
+      <h3 className="font-serif text-lg font-semibold text-epic-ink mt-6">Transparency (public scrutiny and falsifiability)</h3>
+      <p>
+        Claims that affect trust—“this dataset was verified,” “this commitment matches this summary”—should be <strong>falsifiable</strong> and <strong>independently verifiable</strong>. In development: use signed statements and reproducible computations (e.g. recompute a hash from a summary and compare to the commitment). The registry should be append-only so that history is preserved and auditable. For govtech, transparency supports accountability to citizens, auditors, and other jurisdictions without relying on a single authority to “bless” the data.
+      </p>
+
+      <h2 className="epic-heading-3 mt-8">Why CROPS is relevant to govtech use cases</h2>
+      <p>
+        Government and multilateral systems face pressures that private-sector products often do not: <strong>long lifecycles</strong> (decades, not quarters), <strong>political and vendor turnover</strong>, <strong>cross-border and multi-stakeholder coordination</strong>, and <strong>high accountability</strong> to the public and to auditors. CROPS speaks directly to these needs.
+      </p>
+      <ul className="list-disc space-y-2 pl-6 text-slate-700">
+        <li>
+          <strong>Decentralization</strong> reduces dependence on a single vendor or registry; systems can migrate or interoperate without one party controlling access.
+        </li>
+        <li>
+          <strong>Privacy</strong> (data minimization) helps meet data-protection and confidentiality requirements while still enabling verifiable attestations and commitments.
+        </li>
+        <li>
+          <strong>Openness</strong> supports procurement (multiple bidders can implement the same spec), interoperability (different countries or programs can use the same formats), and long-term maintenance (no single proprietary stack).
+        </li>
+        <li>
+          <strong>Transparency</strong> gives citizens, auditors, and partners the ability to verify claims themselves, strengthening legitimacy and reducing reliance on “trust us” from a central operator.
+        </li>
+      </ul>
+      <p>
+        Use cases that fit well include: <strong>carbon MRV</strong> (commitments and attestations without publishing full reports), <strong>verifiable credentials</strong> (issuer-independent verification), <strong>registries and entitlements</strong> (append-only, portable records), and <strong>procurement or aid</strong> (tamper-evident deadlines and commitments). In each case, CROPS guides how we design the data model and the verification story.
+      </p>
+
+      <h2 className="epic-heading-3 mt-8">How CROPS shapes this work</h2>
+      <p>
+        EPIC’s work—the <strong>EPIC map</strong>, the <strong>Carbon MRV PoC</strong>, and related pilots—is explicitly aligned with CROPS. The map organizes domains (digital identity, payments, climate MRV, etc.) and connects them to Ethereum primitives and real-world experiments; it is open and community-updated so that no single actor controls the taxonomy. The Carbon MRV proof of concept implements dataset commitments, verifier attestations, and an append-only registry with open formats and permissionless verification; raw emissions data stays offchain, and anyone can verify attestations and commitments using the public spec.
+      </p>
+      <p>
+        When we say a system is “CROPS-aligned,” we mean: it minimizes central gatekeepers, minimizes shared data while preserving verifiability, uses open specs and formats, and enables public scrutiny. That is the bar we use when scoping new use cases and when evaluating pilots and partners. If you are building or procuring govtech systems and want to apply the same principles, we encourage you to use the <Link href="/map" className="font-medium text-epic-navy hover:underline">EPIC map</Link> and the <Link href="/proof-of-concepts/carbon-mrv" className="font-medium text-epic-navy hover:underline">Carbon MRV PoC</Link> as reference designs and to reach out for collaboration.
+      </p>
+
+      <div className="mt-10 rounded-epic-lg border border-epic-border bg-epic-paper/80 p-6">
+        <h3 className="font-serif text-lg font-semibold text-epic-ink">Learn more</h3>
+        <p className="mt-2 text-slate-700">
+          For the design philosophy behind the Carbon MRV PoC (CROPS in practice), see the PoC’s Design philosophy doc in the{" "}
+          <Link href="/proof-of-concepts/carbon-mrv/docs/design-philosophy" className="font-medium text-epic-navy hover:underline">
+            Carbon MRV docs
+          </Link>
+          . For the EPIC map and how to contribute, see{" "}
+          <Link href="/blog/map-explorer" className="font-medium text-epic-navy hover:underline">
+            Explore the EPIC Map
+          </Link>
+          . For inquiries:{" "}
+          <a href="mailto:epic@ethereum.org" className="font-medium text-epic-navy hover:underline">
+            epic@ethereum.org
+          </a>
+          .
+        </p>
+      </div>
     </article>
   );
 }

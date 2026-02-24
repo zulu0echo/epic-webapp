@@ -1,6 +1,6 @@
 # Design philosophy: decentralization, privacy, openness, transparency
 
-This proof of concept is designed in line with **cypherpunk** values: systems that reduce reliance on central gatekeepers, protect privacy, embrace open protocols and data, and enable public verification. The following principles guide the Carbon MRV PoC and its specification.
+This proof of concept is designed in line with **CROPS** values: systems that reduce reliance on central gatekeepers, protect privacy, embrace open protocols and data, and enable public verification. The following principles guide the Carbon MRV PoC and its specification.
 
 ---
 
@@ -77,7 +77,7 @@ This proof of concept is designed in line with **cypherpunk** values: systems th
 
 ## Audience
 
-- **Technical readers**: Use this doc to see how the PoC’s design choices map to cypherpunk goals (e.g. why canonical hashing, why no raw data in registry).
+- **Technical readers**: Use this doc to see how the PoC’s design choices map to CROPS goals (e.g. why canonical hashing, why no raw data in registry).
 - **Policy and program readers**: Use this doc to understand how “blockchain” or “verifiable data” in Carbon MRV can align with decentralization, privacy, openness, and transparency, rather than with a single centralized ledger.
 
 For protocol details, see [Specification](../spec/README.md) and [Architecture](architecture.md). For user flows and personas, see [User guide](user-guide.md).

@@ -4,58 +4,24 @@
   "parentSlug": "climate-and-mrv",
   "definition": "Carbon MRV focuses specifically on quantifying greenhouse gas reductions or removals for carbon crediting, inventories, and results-based climate finance.",
   "summary": "Credible carbon accounting.",
-  "tags": [
-    "carbon",
-    "MRV",
-    "climate"
-  ],
-  "ethereumPrimitives": [
-    "attestation",
-    "registries"
-  ],
+  "tags": ["carbon", "MRV", "climate"],
+  "ethereumPrimitives": ["attestation", "registries"],
   "maturityLevel": "pilot",
-  "challenges": "Baseline selection and methodology disputes can lead to inconsistent or inflated claims, undermining market trust. Data pipelines are fragmented, and verifiers face limited visibility into provenance\u2014especially when data is manually collected or comes from many subcontractors. Scaling credible verification without exploding costs is a persistent bottleneck for markets and programs.",
+  "challenges": "Baseline selection and methodology disputes can lead to inconsistent or inflated claims, undermining market trust. Data pipelines are fragmented, and verifiers face limited visibility into provenance—especially when data is manually collected or comes from many subcontractors. Scaling credible verification without exploding costs is a persistent bottleneck for markets and programs.",
   "opportunities": "Ethereum can anchor dataset commitments, verifier attestations, and methodology versions so later reviewers can reproduce or challenge claims with a clear integrity trail. A structured, tamper-evident record of what was measured, who verified it, and under what rules supports audit-grade provenance. Where carbon finance disburses funds, smart contracts can tie payments to verified milestones while keeping raw monitoring data offchain.",
   "references": [
-    {
-      "label": "UNFCCC MRV",
-      "url": "https://unfccc.int/process-and-meetings/transparency-and-reporting/support-for-developing-countries/consultative-group-of-experts/measurement-reporting-and-verification-technical-material"
-    },
-    {
-      "label": "World Bank MRV of carbon credits",
-      "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"
-    },
-    {
-      "label": "Digital MRV (Springer)",
-      "url": "https://link.springer.com/article/10.1007/s12599-025-00953-3"
-    }
+    {"label": "UNFCCC MRV", "url": "https://unfccc.int/process-and-meetings/transparency-and-reporting/support-for-developing-countries/consultative-group-of-experts/measurement-reporting-and-verification-technical-material"},
+    {"label": "World Bank MRV of carbon credits", "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"},
+    {"label": "Digital MRV (Springer)", "url": "https://link.springer.com/article/10.1007/s12599-025-00953-3"},
+    {"label": "Carbon MRV PoC (GitHub)", "url": "https://github.com/zulu0echo/epic-webapp/tree/main/carbon-mrv-poc"}
   ],
   "featuredExperts": [
-    {
-      "name": "Gavin Hayman",
-      "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/",
-      "affiliation": "Transparency / verification"
-    },
-    {
-      "name": "Beth Simone Noveck",
-      "linkedInUrl": "https://www.linkedin.com/in/bethnoveck",
-      "affiliation": "GovLab / evidence"
-    }
+    {"name": "Gavin Hayman", "linkedInUrl": "https://www.linkedin.com/in/gavin-hayman-40024210/", "affiliation": "Transparency / verification"},
+    {"name": "Beth Simone Noveck", "linkedInUrl": "https://www.linkedin.com/in/bethnoveck", "affiliation": "GovLab / evidence"}
   ],
   "experiments": [
-    {
-      "title": "Digital MRV pilots",
-      "year": 2024,
-      "blockchainUsed": "Various",
-      "description": "Measurement, reporting and verification for carbon and climate finance.",
-      "url": "https://attest.sh"
-    },
-    {
-      "title": "Carbon credit registries",
-      "year": 2023,
-      "blockchainUsed": "Various",
-      "description": "Tamper-evident registries for carbon credits and offsets.",
-      "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"
-    }
+    {"title": "Carbon MRV PoC", "year": 2024, "blockchainUsed": "Ethereum / verifiable data", "description": "Dataset commitments, verifier attestations, append-only registry. View full docs and spec in-app or see source on GitHub.", "url": "/proof-of-concepts/carbon-mrv"},
+    {"title": "Digital MRV pilots", "year": 2024, "blockchainUsed": "Various", "description": "Measurement, reporting and verification for carbon and climate finance.", "url": "https://attest.sh"},
+    {"title": "Carbon credit registries", "year": 2023, "blockchainUsed": "Various", "description": "Tamper-evident registries for carbon credits and offsets.", "url": "https://www.worldbank.org/en/news/feature/2022/07/27/what-you-need-to-know-about-the-measurement-reporting-and-verification-mrv-of-carbon-credits"}
   ]
 }
