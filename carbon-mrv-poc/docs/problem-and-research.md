@@ -63,7 +63,7 @@ A **shared, tamper-evident record** of (1) what was measured (dataset commitment
 - **Privacy**: Raw data stays offchain; only commitments and attestations are in the shared layer.
 - **Openness and transparency**: Open formats and specs; anyone can verify attestations and commitments.
 
-This PoC demonstrates a minimal version: dataset commitments, signed attestations, and a simple registry, with a path to onchain anchoring and alignment with CROPS design goals (see [Design philosophy](design-philosophy.md)).
+This PoC demonstrates a minimal version: dataset commitments, signed attestations, and a simple registry, with a path to onchain anchoring and alignment with CROPS (Censorship Resistance, Open Source and Free, Privacy, Security) and walkaway test (see [Design philosophy](design-philosophy.md)).
 
 ## References
 

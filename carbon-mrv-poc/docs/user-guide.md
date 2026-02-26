@@ -8,7 +8,7 @@ This proof of concept shows how **carbon MRV** (measurement, reporting, verifica
 2. **Who verified it** — a signed statement from an accredited verifier that they checked the data and either verified or rejected it.
 3. **Where it’s recorded** — a registry that stores these attestations so programs and buyers can look them up and verify them without relying on a single central authority.
 
-The design emphasizes **decentralization** (no single gatekeeper), **privacy** (raw data stays offchain), **openness** (open formats and spec), and **transparency** (anyone can verify signatures and commitments). See [Design philosophy](design-philosophy.md) for more.
+The design aligns with **CROPS**: **C**ensorship Resistance (no single gatekeeper; permissionless verification), **O**pen Source and Free (open formats and spec), **P**rivacy (raw data stays offchain), and **S**ecurity (anyone can verify signatures and commitments; walkaway test). See [Design philosophy](design-philosophy.md) for more.
 
 ---
 
@@ -120,4 +120,4 @@ No account or server is required; everything runs locally. You can inspect `regi
 - **Verifiers**: To understand what “signing an attestation” means and how it supports accountability.
 - **Developers**: To extend the code (e.g. add onchain anchoring or align with a specific methodology).
 
-For design principles (decentralization, privacy, openness, transparency), see [Design philosophy](design-philosophy.md). For technical details, see [README](../README.md), [Architecture](architecture.md), and [Specification](../spec/README.md).
+For design principles (CROPS: Censorship Resistance, Open Source and Free, Privacy, Security), see [Design philosophy](design-philosophy.md). For technical details, see [README](../README.md), [Architecture](architecture.md), and [Specification](../spec/README.md).

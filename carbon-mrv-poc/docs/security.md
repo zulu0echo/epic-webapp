@@ -2,6 +2,8 @@
 
 This document describes the **threat model**, **trust assumptions**, and **security considerations** for the Carbon MRV proof of concept and its specification. It is intended for developers, auditors, and program managers who need a clear picture of what the system protects against and what it assumes.
 
+The design aligns with the **Security** pillar of CROPS: things must do what they claim (no more, no less), governance minimization (no central authority required to verify), and the **walkaway test** (protocol and users can verify without depending on the PoC authors or a single operator). It also supports **Censorship Resistance**: verification does not depend on a central server or gatekeeper. See [Design philosophy](design-philosophy.md) for full alignment.
+
 ---
 
 ## 1. Threat model
@@ -42,7 +44,7 @@ This document describes the **threat model**, **trust assumptions**, and **secur
 
 - **Integrity of attestations**: Only the holder of the verifier’s signing key can produce a valid attestation. Any party can verify the signature.
 - **Integrity of commitments**: The same canonical summary always produces the same hash; different summaries produce different hashes (collision resistance assumed). Anyone with the summary can verify it against the commitment.
-- **No requirement for central authority**: Verification of signatures and commitments does not depend on a central server or oracle. Supports decentralization and transparency.
+- **No requirement for central authority**: Verification of signatures and commitments does not depend on a central server or oracle. Supports Censorship Resistance and Security (walkaway test).
 
 ---
 

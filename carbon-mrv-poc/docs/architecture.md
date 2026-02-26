@@ -77,3 +77,7 @@ sequenceDiagram
 - **Canonical summary**: Sorted keys in JSON so that the same logical summary always yields the same hash.
 - **Signature (PoC)**: HMAC-SHA256 with a secret; production should use EIP-712 or similar so verifiers use their own keys.
 - **Registry**: Single JSON file for simplicity; production would use a proper store and optionally onchain anchoring.
+
+## Alignment with CROPS and the walkaway test
+
+The architecture is designed to satisfy **CROPS** (Censorship Resistance, Open Source and Free, Privacy, Security) and the **walkaway test** (verification and evolution possible without depending on the PoC authors or a single operator). Multiple registries and implementations can coexist; only commitments and attestations touch the shared layer (privacy); the spec and code are open and forkable (open source and free); and verification is permissionless and reproducible (censorship resistance and security). See [Design philosophy](design-philosophy.md) for the full mapping.

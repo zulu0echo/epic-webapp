@@ -42,6 +42,49 @@ Current carbon MRV systems often rely on centralized registries and manual verif
 
 # Specification
 
+## 0. Design principles and technical requirements (CROPS and walkaway test)
+
+This specification is designed and architected around **CROPS**—**C**ensorship Resistance, **O**pen Source and Free (as in Freedom), **P**rivacy, and **S**ecurity—as an indivisible whole, and the **walkaway test** (the protocol and core layers remain robust and trustless enough to function and evolve even if today's stewards disappeared). The following technical requirements SHALL be satisfied by conforming implementations.
+
+### 0.1 Censorship Resistance
+
+| ID   | Requirement | Priority |
+|------|--------------|----------|
+| CR-1 | Verification of attestation signatures SHALL NOT require querying a central server, gateway, or single registry. Any party with the attestation and (for production) the verifier's public key SHALL be able to verify. | MUST |
+| CR-2 | Verification that a dataset summary matches a commitment SHALL be possible using only the summary, the commitment hash, and the canonical serialization rules defined in this spec. No central authority SHALL be required. | MUST |
+| CR-3 | The registry interface SHALL be defined so that multiple independent registries can coexist; attestations and commitments SHALL be portable across registries. The protocol SHALL NOT mandate a single registry operator. | MUST |
+| CR-4 | Implementations SHALL NOT introduce kill switches, centralized intermediaries, or single points of failure that could selectively exclude valid use or break functionality. | MUST |
+
+### 0.2 Open Source and Free (as in Freedom)
+
+| ID   | Requirement | Priority |
+|------|--------------|----------|
+| OS-1 | All data formats, protocol steps, canonical serialization rules, and verification algorithms necessary to create and verify commitments and attestations SHALL be fully specified in this document (or referenced standards). No privileged or hidden behavior SHALL be required for interoperability. | MUST |
+| OS-2 | Commitment hashes SHALL use a standard, publicly specified algorithm (this spec: SHA-256; see §1.3). Attestation signing payloads SHALL have a deterministic, specified serialization (see §2.2). Implementations SHALL be able to interoperate using only this specification. | MUST |
+| OS-3 | The reference implementation SHALL be open source. Production implementations MAY use any license compatible with the spec; the spec itself does not mandate a specific license for implementations. | SHOULD (reference impl.); N/A (spec) |
+
+### 0.3 Privacy
+
+| ID   | Requirement | Priority |
+|------|--------------|----------|
+| PV-1 | Raw dataset summaries (monitoring data, full reports, PII) SHALL NOT be required in the shared layer (registry or onchain). Only the dataset commitment (hash, label, timestamp) and the attestation (signed statement) SHALL be stored or published in the registry. | MUST |
+| PV-2 | The attestation payload SHALL contain only: verifier identity, scope, commitment hash, outcome, and timestamps. It SHALL NOT require inclusion of the underlying dataset summary or raw monitoring data. | MUST |
+| PV-3 | Data minimization SHALL be the default: the minimum set of data necessary for verification and accountability SHALL be defined by this spec; implementations SHALL NOT require additional data in the shared layer for core verification. | MUST |
+
+### 0.4 Security (and walkaway test)
+
+| ID   | Requirement | Priority |
+|------|--------------|----------|
+| SC-1 | Attestations SHALL be signed so that any party can verify the signature using only the attestation and (in production) the verifier's public key. The behavior SHALL be fully specified and reproducible ("things must do what they claim"). | MUST |
+| SC-2 | Commitment verification SHALL be deterministic: the same canonical summary SHALL always produce the same hash; verification SHALL be reproducible by any implementation following this spec. | MUST |
+| SC-3 | The registry SHALL be append-only: existing entries SHALL NOT be modified or deleted by the protocol. History SHALL be preserved for auditability. | MUST |
+| SC-4 | Conforming implementations SHALL allow verification and core operations without depending on the PoC authors or a single central operator (walkaway test). Multiple implementations and registries SHALL be able to satisfy the spec. | MUST |
+| SC-5 | Security considerations, threat model, and trust assumptions SHALL be documented (see §3 and [Security](../docs/security.md)). No undisclosed or implicit trust SHALL be required for verification. | MUST |
+
+Implementations that satisfy the normative sections of this specification (§1–§3) and the requirements above are considered aligned with these technical criteria for this PoC. For a narrative treatment, see [Design philosophy](../docs/design-philosophy.md).
+
+---
+
 ## 1. Data formats
 
 ### 1.1 Dataset summary (input to commitment)
@@ -158,7 +201,7 @@ The reference implementation demonstrates the following flow:
 3. **Append to registry**: The attestation is appended to the registry as a new entry (attestation, recordedAt, optional anchor).
 4. **List (optional filters)**: Callers can list entries, optionally filtered by projectId and/or outcome.
 
-Verification can be done at any time: recompute the commitment hash from a summary and compare to the stored commitment; recompute the attestation signature from the attestation fields and compare to the stored signature.
+Verification can be done at any time: recompute the commitment hash from a summary and compare to the stored commitment; recompute the attestation signature from the attestation fields and compare to the stored signature. This satisfies **CR-1**, **CR-2**, and **SC-4** (walkaway test: no central server or single operator required).
 
 ### 2.1 Creating a dataset commitment
 
@@ -170,7 +213,7 @@ Verification can be done at any time: recompute the commitment hash from a summa
 2. Compute `commitmentHash` = SHA-256(canonicalSummary(summary)), encoded as lowercase hex.
 3. Return the dataset commitment object (commitmentHash, label, createdAt).
 
-**Verification**: Given a commitment and a summary, verification succeeds if and only if SHA-256(canonicalSummary(summary)) equals the commitment’s `commitmentHash` (both as lowercase hex). The reference implementation exposes `createDatasetCommitment(input)` and `verifyCommitment(commitmentHash, summary)`.
+**Verification**: Given a commitment and a summary, verification succeeds if and only if SHA-256(canonicalSummary(summary)) equals the commitment’s `commitmentHash` (both as lowercase hex). The reference implementation exposes `createDatasetCommitment(input)` and `verifyCommitment(commitmentHash, summary)`. This supports **CR-2**, **PV-1** (no raw summary in shared layer), and **SC-2** (deterministic, reproducible).
 
 ### 2.2 Signing payload for attestations
 
@@ -224,11 +267,11 @@ The reference implementation exposes `createAttestation(input)`.
 
 Additionally, the implementation MUST confirm that the attestation’s `datasetCommitment` is well-formed (has commitmentHash, label, createdAt).
 
-The reference implementation exposes `verifyAttestationSignature(attestation)`.
+The reference implementation exposes `verifyAttestationSignature(attestation)`. Verification requires no central server or registry (**CR-1**, **SC-1**).
 
 ### 2.6 Registry operations
 
-**Append**: Given an attestation and an optional anchor, the registry SHALL create a new registry entry with attestation, recordedAt (current time in ISO 8601), and optional anchor, and SHALL append it to the stored list of entries. The registry MUST NOT modify or remove existing entries in this operation. The reference implementation: `Registry.append(attestation, anchor?)`.
+**Append**: Given an attestation and an optional anchor, the registry SHALL create a new registry entry with attestation, recordedAt (current time in ISO 8601), and optional anchor, and SHALL append it to the stored list of entries. The registry MUST NOT modify or remove existing entries in this operation (**SC-3**: append-only; **CR-3**: registry is an interface, multiple backends possible). The reference implementation: `Registry.append(attestation, anchor?)`.
 
 **List**: The registry MAY support listing entries with optional filters. The reference implementation supports:
 - `projectId`: return only entries whose attestation.scope.projectId equals the given value.
@@ -258,11 +301,11 @@ The reference implementation: `Registry.list(filters?)`.
 | **Malicious prover** | Creates summaries and commitments | Can create a commitment to a summary and send a different summary to the verifier (commitment binding is to the hash, not to “what verifier saw”). Mitigation is procedural: verifier must confirm that the summary they review hashes to the commitment they attest to. |
 | **Registry operator** (if applicable) | Controls registry backend | Can drop, reorder, or delay entries; can censor. This spec does not mandate a trusted registry; append-only and optional onchain anchoring (future) can reduce single-operator trust. |
 
-**Security goals**:
+**Security goals** (aligned with CROPS Security and §0):
 
-- **Integrity**: An attacker MUST NOT be able to forge a valid attestation without the verifier’s signing key (or, in the PoC, the shared secret). Commitment hashes MUST be collision-resistant; SHA-256 is used for the PoC.
-- **Verifiability**: Any party with the attestation (and, for production, the verifier’s public key) MUST be able to verify the signature without relying on a central authority. Any party with a dataset summary MUST be able to verify that it matches a given commitment.
-- **Confidentiality**: This spec does not address confidentiality of the dataset summary. Summaries may be sensitive. Only commitments and attestations are assumed to be suitable for registry storage or publication in this specification.
+- **Integrity**: An attacker MUST NOT be able to forge a valid attestation without the verifier’s signing key (or, in the PoC, the shared secret). Commitment hashes MUST be collision-resistant; SHA-256 is used for the PoC. (**SC-1**: things do what they claim.)
+- **Verifiability**: Any party with the attestation (and, for production, the verifier’s public key) MUST be able to verify the signature without relying on a central authority. Any party with a dataset summary MUST be able to verify that it matches a given commitment. (**CR-1**, **CR-2**, **SC-4** walkaway test.)
+- **Confidentiality**: This spec does not address confidentiality of the dataset summary. (**PV-1**, **PV-2**: data minimization.) Summaries may be sensitive. Only commitments and attestations are assumed to be suitable for registry storage or publication in this specification.
 
 ### 3.2 Trust assumptions
 
@@ -291,7 +334,7 @@ For a fuller narrative treatment of threat model, trust assumptions, and securit
 
 ## 4. Implementation notes and compliance
 
-The **reference implementation** is in this repository:
+Implementations that conform to this specification SHALL also satisfy the requirements in **§0 (Design principles and technical requirements)**. The reference implementation in this repository demonstrates compliance with §0 and §1–§3:
 
 | Spec section     | Implementation |
 |-------------------|----------------|

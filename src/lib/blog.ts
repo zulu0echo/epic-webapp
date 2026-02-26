@@ -18,7 +18,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     slug: "epic-team-and-vision",
     title: "The EPIC Team and Our Vision",
     excerpt:
-      "Who we are, why we exist, and how we work to connect Ethereum’s capabilities with real institutional needs — without compromising decentralization or long-term resilience.",
+      "Who we are, why we exist, and how we work to connect Ethereum's capabilities with real institutional needs — without compromising decentralization or long-term resilience.",
     date: "2025-02-19",
   },
   {
@@ -26,13 +26,6 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     title: "Ethereum as Resilient Public Infrastructure: Implications for Governments, NGOs, and Multilateral Institutions",
     excerpt:
       "Why Ethereum's structural properties—decentralized consensus, tamper-evident records, client diversity, and programmable settlement—matter for institutional resilience in public-sector digital infrastructure.",
-    date: "2026-02-19",
-  },
-  {
-    slug: "crops-principles-govtech",
-    title: "CROPS Principles in Development: Why They Matter for GovTech and This Work",
-    excerpt:
-      "How decentralization, privacy, openness, and transparency—CROPS—guide the design of public-interest systems and why they are relevant to govtech use cases and EPIC’s work.",
     date: "2026-02-19",
   },
 ];

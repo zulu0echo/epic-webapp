@@ -2,7 +2,7 @@
 
 ## Value proposition (short)
 
-Ethereum (or a public verifiable data layer) can **anchor dataset commitments and verifier attestations** so that what was measured, who verified it, and under what rules form a **tamper-evident, reproducible audit trail**. The design aligns with **CROPS** values: **decentralization** (no single registry gatekeeper), **privacy** (raw data offchain; only commitments and attestations shared), **openness** (open protocols and formats), and **transparency** (anyone can verify signatures and reproduce proofs). See [Design philosophy](design-philosophy.md) for a full treatment.
+Ethereum (or a public verifiable data layer) can **anchor dataset commitments and verifier attestations** so that what was measured, who verified it, and under what rules form a **tamper-evident, reproducible audit trail**. The design aligns with **CROPS**: **C**ensorship Resistance (no single registry gatekeeper; permissionless verification), **O**pen Source and Free (open protocols and formats; no privileged code), **P**rivacy (raw data offchain; only commitments and attestations shared), and **S**ecurity (reproducible verification; things do what they claim; walkaway test). See [Design philosophy](design-philosophy.md) for a full treatment.
 
 ## Solution required
 
@@ -49,5 +49,5 @@ Ethereum (and compatible chains/L2s) and **verifiable data** more broadly offer:
 
 ## Audience
 
-- **Technical**: Developers and architects who want to see how commitments and attestations can be composed and how they support decentralization, privacy, openness, and transparency.
-- **Policy / programs**: Stakeholders who want to understand “what goes onchain” (or in the shared layer) and how it supports MRV without replacing existing methodologies, and how CROPS-style design (decentralization, privacy, openness, transparency) applies to Carbon MRV.
+- **Technical**: Developers and architects who want to see how commitments and attestations can be composed and how they support CROPS (Censorship Resistance, Open Source and Free, Privacy, Security).
+- **Policy / programs**: Stakeholders who want to understand “what goes onchain” (or in the shared layer) and how it supports MRV without replacing existing methodologies, and how CROPS (Censorship Resistance, Open Source and Free, Privacy, Security) applies to Carbon MRV.
