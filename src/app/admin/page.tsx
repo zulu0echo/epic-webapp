@@ -28,7 +28,7 @@ function parseList(value: string): string[] {
 }
 
 export default function AdminPage() {
-  const [tab, setTab] = useState<"dashboard" | "taxonomy" | "export" | "opportunities">("dashboard");
+  const [tab, setTab] = useState<"dashboard" | "taxonomy" | "export">("dashboard");
   const [exportStatus, setExportStatus] = useState("");
   const [admin, setAdmin] = useState<boolean | null>(null);
 
@@ -88,38 +88,6 @@ export default function AdminPage() {
       a.click();
       URL.revokeObjectURL(a.href);
       setExportStatus("Downloaded epic-domains.json");
-    } catch {
-      setExportStatus("Export failed");
-    }
-  };
-
-  const handleExportCRM = async () => {
-    setExportStatus("Exporting CRM...");
-    try {
-      const [inst, opp] = await Promise.all([
-        fetch("/api/institutions").then((r) => r.json()),
-        fetch("/api/opportunities").then((r) => r.json()),
-      ]);
-      const csv = [
-        "Institutions",
-        "id,name,type,country,status",
-        ...inst.map((i: { id: string; name: string; type: string; country: string; status: string }) =>
-          [i.id, i.name, i.type, i.country ?? "", i.status ?? ""].join(",")
-        ),
-        "",
-        "Opportunities",
-        "id,title,stage,priority",
-        ...opp.map((o: { id: string; title: string; stage: string; priority: string }) =>
-          [o.id, o.title, o.stage, o.priority ?? ""].join(",")
-        ),
-      ].join("\n");
-      const blob = new Blob([csv], { type: "text/csv" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "epic-crm-export.csv";
-      a.click();
-      URL.revokeObjectURL(a.href);
-      setExportStatus("Downloaded epic-crm-export.csv");
     } catch {
       setExportStatus("Export failed");
     }
@@ -261,14 +229,14 @@ export default function AdminPage() {
 
   if (admin === null) return <div className="epic-section max-w-4xl"><div className="epic-card p-6"><p className="text-slate-500">Loading...</p></div></div>;
 
-  const tabs = ["dashboard", "taxonomy", "export", "opportunities"] as const;
+  const tabs = ["dashboard", "taxonomy", "export"] as const;
 
   return (
     <div className="epic-section max-w-5xl">
       <h1 className="epic-heading-2">Admin</h1>
       {!admin ? (
         <div className="mt-4 epic-card p-4 border-amber-200 bg-amber-50/80">
-          <p className="text-amber-800 mb-2">Rolodex and CRM are only visible to logged-in system admins.</p>
+          <p className="text-amber-800 mb-2">Admin tools require login.</p>
           <Link href="/admin/login" className="text-indigo-600 font-medium hover:underline">
             Log in as admin →
           </Link>
@@ -277,10 +245,6 @@ export default function AdminPage() {
         <div className="mt-4 epic-card p-4 bg-slate-50/80 border-slate-200 text-sm text-slate-700">
           <span className="font-medium">Admin access.</span>{" "}
           <Link href="/map" className="text-indigo-600 hover:underline">Map Explorer</Link>
-          {" · "}
-          <Link href="/rolodex" className="text-indigo-600 hover:underline">Rolodex</Link>
-          {" · "}
-          <Link href="/crm" className="text-indigo-600 hover:underline">CRM</Link>
         </div>
       )}
       <div className="mt-6 flex gap-0 border-b border-slate-200 overflow-x-auto">
@@ -637,24 +601,13 @@ export default function AdminPage() {
         )}
         {tab === "export" && (
           <div>
-            <p className="epic-body mb-4">Export domains (JSON) or CRM data (CSV).</p>
+            <p className="epic-body mb-4">Export domains as JSON.</p>
             <div className="flex flex-wrap gap-2">
               <button onClick={handleExportDomains} className="epic-btn-primary">
                 Export domains (JSON)
               </button>
-              <button onClick={handleExportCRM} className="epic-btn-secondary">
-                Export CRM (CSV)
-              </button>
             </div>
             {exportStatus && <p className="mt-3 text-sm text-slate-600">{exportStatus}</p>}
-          </div>
-        )}
-        {tab === "opportunities" && (
-          <div>
-            <p className="epic-body mb-4">Add opportunities via API or CRM.</p>
-            <Link href="/crm/opportunities" className="text-indigo-600 font-medium hover:underline">
-              View opportunities →
-            </Link>
           </div>
         )}
       </div>

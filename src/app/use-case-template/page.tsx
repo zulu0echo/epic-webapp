@@ -55,8 +55,8 @@ export default function UseCaseTemplatePage() {
               Proof of Concept Template
             </h1>
             <p className="mt-2 epic-body max-w-2xl">
-              A structured template for documenting govtech domain and subdomain proof of concepts. Use it to produce reliable material for problem exploration, Ethereum value proposition, requirements, architecture, code, documentation, demos, and a formal specification (e.g. zkspecs-style).
-            </p>
+              A structured template for documenting govtech domain and subdomain proof of concepts. Use it to produce reliable material for problem exploration, Ethereum value proposition, requirements, architecture, code, documentation, demos, and a formal specification (e.g. zkspecs-style). Proof of concepts should be assessed against CROPS (censorship resistance, resilience, openness, privacy, security) and the walkaway test before they ship.
+          </p>
           </div>
           <Link
             href="/proof-of-concepts/carbon-mrv"

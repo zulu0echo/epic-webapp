@@ -23,8 +23,8 @@ export default async function OpportunityPage({
   return (
     <div className="epic-section max-w-3xl">
       <nav className="mb-4 text-sm">
-        <Link href="/crm/opportunities" className="text-indigo-600 hover:underline">
-          ← Opportunities
+        <Link href="/map" className="text-indigo-600 hover:underline">
+          ← Map explorer
         </Link>
       </nav>
       <h1 className="epic-heading-2">{opportunity.title}</h1>

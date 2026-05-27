@@ -27,59 +27,82 @@ export default function HomePage() {
             Ethereum Public Infrastructure and Commons
           </h1>
           <p className="mt-4 text-xl text-slate-600 sm:text-2xl font-serif">
-            Supporting governments and public institutions in the responsible exploration and adoption of Ethereum-based solutions for public systems.
+            Preserving and scaling user self-sovereignty in public systems — where people hold the final say over their identities, credentials, assets, and verifiable claims.
           </p>
           <p className="mt-6 max-w-2xl epic-body">
-            EPIC is an initiative of the Ethereum Foundation. We work with governments, multilateral organizations, and civil society to connect Ethereum’s capabilities with institutional needs while preserving decentralization, openness, and long-term resilience.
+            EPIC is an initiative of the Ethereum Foundation. We work with governments, multilateral organizations, and civil society so that when public institutions adopt Ethereum-based infrastructure, it strengthens — not trades away — censorship resistance, resilience, openness, privacy, and security.
+          </p>
+          <p className="mt-4 max-w-2xl epic-body">
+            EPIC exists to serve self-sovereign users: the person who must prove a credential without handing a platform their full history; the aid recipient who needs portable identity across borders; the verifier who checks an attestation without calling a vendor API; the citizen who should retain exit paths when institutions change. Public engagement is a means to that end — not the end itself. We map where Ethereum primitives can expand what those users can do independently, and we support pilots that pass the walkaway test: systems that keep working if stewards disappear.
           </p>
         </div>
       </section>
 
-      {/* Rationale */}
+      {/* For individuals */}
       <section className="epic-divider bg-epic-paper/50">
+        <div className="epic-section">
+          <h2 className="epic-heading-2">For you — not only for institutions</h2>
+          <p className="mt-4 epic-body">
+            You do not need a ministry badge or a procurement contract to care about sovereign tools. Whether you are an individual running your own keys, a developer building in public, someone living off the beaten path with unreliable connectivity, or simply a person who refuses to rent your identity from a platform — this work is for you. EPIC publishes open maps, specs, and proof-of-concepts you can read, fork, and run without asking permission. Explore the domains where Ethereum can give you verifiable claims, portable records, and audit trails you control — not credentials issued to you and revocable at someone else&apos;s discretion.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/map" className="epic-btn-primary">
+              Explore the map
+            </Link>
+            <Link href="/proof-of-concepts/carbon-mrv" className="epic-btn-secondary">
+              Carbon MRV PoC
+            </Link>
+            <Link href="/use-case-template" className="epic-btn-secondary">
+              PoC template
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Rationale */}
+      <section className="epic-divider bg-white">
         <div className="epic-section">
           <h2 className="epic-heading-2">Why this work matters</h2>
           <p className="mt-4 epic-body">
-            Public institutions manage critical systems: identity, payments, registries, service delivery, supply chains, and data governance. Many of these systems remain fragmented, opaque, or difficult to modernize.
+            Public institutions manage critical systems: identity, payments, registries, service delivery, supply chains, and data governance. Many of these systems remain fragmented, opaque, or difficult to modernize — and too often they capture users inside vendor stacks with no credible exit.
           </p>
           <p className="mt-4 epic-body">
-            Ethereum offers primitives for coordination, transparency, and programmable trust. Meaningful institutional adoption depends on trusted relationships, careful design, and long-term alignment. EPIC exists to support that process.
+            Ethereum offers primitives for coordination and programmable trust without requiring a central gatekeeper. Meaningful adoption depends on careful design and long-term alignment with user sovereignty. EPIC supports that process — and publishes what we learn in the open.
           </p>
         </div>
       </section>
 
       {/* What we do */}
-      <section className="epic-divider bg-white">
+      <section className="epic-divider bg-epic-paper/50">
         <div className="epic-section">
           <h2 className="epic-heading-2">What we do</h2>
           <div className="mt-10 space-y-8">
             {[
               {
                 title: "Institutional engagement",
-                intro: "We identify and support values-aligned leaders within and around public institutions who are positioned to advance responsible adoption.",
+                intro: "We work with values-aligned leaders in and around public institutions when their projects can expand what self-sovereign users can do — not when adoption would consolidate control.",
                 list: [
-                  "Education and guidance on Ethereum’s capabilities",
-                  "Introductions to vetted ecosystem partners",
-                  "Support on design, policy, and implementation",
-                  "Access to a curated network of domain experts",
+                  "Education on Ethereum capabilities and CROPS-aligned design",
+                  "Support on architecture, policy, and implementation",
+                  "Connections to open standards and ecosystem work already in flight",
                 ],
-                closing: "We focus on smaller governments and specific departments where thoughtful innovation can proceed with clarity and accountability.",
+                closing: "We focus where thoughtful innovation can proceed with clarity and accountability — always with the end user’s sovereignty in view.",
               },
               {
                 title: "Pilot and production support",
-                intro: "We help identify and support proof-of-concept and production projects that demonstrate Ethereum’s utility in public systems.",
+                intro: "We help develop proof-of-concept and production projects that demonstrate Ethereum’s utility without introducing chokepoints.",
                 list: [
-                  "Emphasis on quality and long-term resilience",
+                  "Emphasis on quality, resilience, and the walkaway test",
                   "Decentralization and open standards",
-                  "Due diligence and risk assessment",
+                  "Due diligence against CROPS tradeoffs (censorship resistance, resilience, openness, privacy, security)",
                 ],
-                closing: "We support a limited number of initiatives each year that advance institutional understanding of Ethereum.",
+                closing: "We support a limited number of initiatives each year that advance understanding of public-interest infrastructure.",
               },
               {
-                title: "Coalition building",
-                intro: "Institutional adoption does not happen in isolation. We collaborate with organizations inside and outside the ecosystem that share a commitment to openness, neutrality, and transparency.",
+                title: "Open knowledge",
+                intro: "We publish maps, templates, specs, and briefings so that judgment and tooling diffuse beyond the Foundation.",
                 list: null,
-                closing: "Through partnerships, events, research, and joint initiatives, we broaden the institutional conversation around public-interest infrastructure.",
+                closing: "Through open documentation and proof-of-concepts, we broaden access to sovereign tools — for institutions and for individuals alike.",
               },
             ].map((block, idx) => (
               <div key={idx} className="epic-card p-6 sm:p-8">
@@ -106,7 +129,7 @@ export default function HomePage() {
       </section>
 
       {/* Areas of engagement */}
-      <section className="epic-divider bg-epic-paper/50">
+      <section className="epic-divider bg-white">
         <div className="epic-section">
           <h2 className="epic-heading-2">Areas of engagement</h2>
           <p className="mt-4 epic-body">
@@ -130,25 +153,25 @@ export default function HomePage() {
             ))}
           </ul>
           <p className="mt-6 epic-body">
-            Our work spans research, pilot design, strategic advisory, and ecosystem coordination.
+            Our work spans research, pilot design, open specifications, and ecosystem coordination.
           </p>
         </div>
       </section>
 
       {/* How we work */}
-      <section className="epic-divider bg-white">
+      <section className="epic-divider bg-epic-paper/50">
         <div className="epic-section">
           <h2 className="epic-heading-2">How we work</h2>
           <p className="mt-4 epic-body">
-            We follow a structured approach to institutional engagement:
+            We follow a structured approach grounded in user sovereignty:
           </p>
           <ol className="mt-6 space-y-4">
             {[
-              "Identify opportunities and institutional champions",
-              "Assess alignment and feasibility",
-              "Provide guidance and ecosystem connections",
+              "Name the self-sovereign user and what they gain",
+              "Assess alignment with CROPS and the walkaway test",
+              "Provide guidance and point to open ecosystem resources",
               "Support responsible pilot execution",
-              "Share knowledge and maintain long-term relationships",
+              "Publish knowledge in forms others can fork and extend",
             ].map((step, i) => (
               <li key={i} className="flex items-center gap-4 rounded-epic border border-epic-border bg-epic-paper/30 px-4 py-3">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-200 font-serif text-sm font-semibold text-epic-navy">
@@ -158,31 +181,28 @@ export default function HomePage() {
               </li>
             ))}
           </ol>
-          <p className="mt-6 epic-body">
-            We maintain a database of institutional opportunities, an engagement pipeline, and a curated network of experts for institutional projects.
-          </p>
         </div>
       </section>
 
       {/* Vision */}
-      <section className="epic-divider bg-epic-paper/50">
+      <section className="epic-divider bg-white">
         <div className="epic-section">
           <h2 className="epic-heading-2">Vision</h2>
           <p className="mt-4 epic-body">
-            We aim for a future where governments and public institutions can use Ethereum to build systems that are more transparent, interoperable, resilient, and accountable, and aligned with open, global standards.
+            We aim for a future where people and institutions can use Ethereum to build systems that are verifiable, interoperable, resilient, and accountable — aligned with open, global standards and with users retaining the final say.
           </p>
           <p className="mt-6 epic-body">
-            EPIC’s role is not to promote technology for its own sake but to ensure that when Ethereum is used in public systems, it is done thoughtfully and in service of long-term public value.
+            EPIC&apos;s role is not to promote technology for its own sake but to ensure that when Ethereum is used in public systems, it is done thoughtfully and in service of long-term public value — and of the individuals who must live inside those systems.
           </p>
         </div>
       </section>
 
-      {/* Trust: Partners and governance (placeholder structure) */}
-      <section className="epic-divider bg-white">
+      {/* Trust: Partners and governance */}
+      <section className="epic-divider bg-epic-paper/50">
         <div className="epic-section">
           <h2 className="epic-heading-2">Partners and governance</h2>
           <p className="mt-4 epic-body">
-            EPIC operates within the Ethereum Foundation and collaborates with public institutions, multilateral organizations, standards bodies, and NGOs. We publish briefings, map engagement domains, and maintain transparent processes for institutional outreach.
+            EPIC operates within the Ethereum Foundation and collaborates with public institutions, multilateral organizations, standards bodies, and NGOs. We publish briefings, map engagement domains, and maintain open documentation for outreach and research.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <div className="epic-card p-6">
@@ -208,11 +228,11 @@ export default function HomePage() {
       </section>
 
       {/* Blog and map cards */}
-      <section className="epic-divider bg-epic-paper/50">
+      <section className="epic-divider bg-white">
         <div className="epic-section">
           <h2 className="epic-heading-2">From the blog</h2>
           <p className="mt-2 epic-body">
-            Updates and resources on public infrastructure and institutional adoption.
+            Updates and resources on public infrastructure and sovereign tools.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <Link
@@ -253,7 +273,7 @@ export default function HomePage() {
         <div className="epic-section">
           <h2 className="font-serif text-2xl font-semibold sm:text-3xl">Explore and get in touch</h2>
           <p className="mt-3 text-slate-300">
-            Use the map explorer, submit ecosystem tools, or contact the team.
+            Use the map explorer, read open specs, or contact the team.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/map" className="epic-btn-primary bg-white text-epic-navy hover:bg-slate-100 focus-visible:ring-white">
@@ -270,12 +290,6 @@ export default function HomePage() {
               className="epic-btn-secondary border-slate-500 bg-transparent text-white hover:bg-slate-800/50 focus-visible:ring-slate-400"
             >
               Contact
-            </Link>
-            <Link
-              href="/vendor"
-              className="epic-btn-secondary border-slate-500 bg-transparent text-white hover:bg-slate-800/50 focus-visible:ring-slate-400"
-            >
-              Vendor and ecosystem
             </Link>
           </div>
         </div>

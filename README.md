@@ -1,14 +1,14 @@
 # EPIC Map App
 
-Production-quality web app for the **Ethereum Foundation EPIC team** (Ethereum Public Infrastructure and Commons) to map GovTech / Digital Public Infrastructure (DPI) domains where Ethereum can be applied, and to maintain a consolidated database of institutional opportunities, contacts, and a Rolodex of Ethereum-aligned experts.
+Production-quality web app for the **Ethereum Foundation EPIC team** (Ethereum Public Infrastructure and Commons) to map GovTech / Digital Public Infrastructure (DPI) domains where Ethereum can be applied, and to publish open resources for self-sovereign users and public institutions.
 
 ## Features
 
-- **Map Explorer**: Interactive taxonomy tree (left), graph view (center) with pan/zoom and focus mode, and detail panel (right) with tabs: Overview, Challenges & Opportunities, Key Actors, Experiments, Experts, Opportunities.
-- **Rolodex**: Table of experts with filters; match experts to a domain or opportunity (via URL params) with explainable scoring.
-- **CRM**: Institutions, contacts, opportunities pipeline; weekly review (updated this week, stale).
-- **Admin**: Export domains (JSON), export CRM (CSV). Content is file-based (see `content/`).
-- **Global search**: Search across domains, institutions, opportunities, experts.
+- **Map Explorer**: Interactive taxonomy tree (left), graph view (center) with pan/zoom and focus mode, and detail panel (right) with tabs: Overview, Challenges & Opportunities, Key Actors, Experiments, Experts.
+- **Admin**: Export domains (JSON), add/edit domains and edges. Content is file-based (see `content/`).
+- **Global search**: Search across domains, institutions, opportunities, experts, blog posts, and static pages.
+- **Proof of concepts**: Carbon MRV PoC with open spec, docs, and reference implementation.
+- **PoC template**: Structured template for documenting domain proof of concepts.
 
 ## Tech stack
 
@@ -38,9 +38,10 @@ Sample content is included in `content/domains/`, `content/experts/`, `content/o
 
 ### Deploy to Vercel
 
-Deploy as usual (e.g. connect the repo to Vercel). No database or environment variables are needed for map, Rolodex, or CRM — they read from the `content/` folder in the repo.
+Deploy as usual (e.g. connect the repo to Vercel). No database is required for the map or public pages — they read from the `content/` folder in the repo.
 
-- **Contact** and **Vendor / Ecosystem** forms send to **epic@ethereum.org** (they open your default email client with To and body pre-filled).
+- **Contact** form sends to **epic@ethereum.org** (opens your default email client with To and body pre-filled).
+- **Admin** (optional): set `EPIC_ADMIN_SECRET` in environment variables to enable admin login for domain management.
 
 ## Scripts
 
@@ -55,10 +56,7 @@ Deploy as usual (e.g. connect the repo to Vercel). No database or environment va
 
 - **Domain**: Hierarchical taxonomy (name, definition, summary, challenges, opportunities, ethereum primitives, maturity, tags); edges to other domains (depends_on, enables, adjacent_to).
 - **Experiment**: Prior blockchain/Ethereum pilots (title, year, description, outcomes, links, blockchain used).
-- **Institution**: Gov/agency/multilateral/NGO/vendor/coalition; country, status, tags.
-- **Contact**: Linked to institution; champion flag, influence, last contacted.
-- **Opportunity**: Pipeline (long_list → screening → exploration → evaluation → engagement → post_engagement); linked to institutions and domains.
-- **Expert**: Rolodex entry (affiliation, expertise domains, skills tags, region, languages, availability); linked to domains.
+- **Institution**, **Opportunity**, **Expert**: Optional reference content in JSON; surfaced in search and domain pages where linked.
 
 ## Where to edit
 
@@ -68,17 +66,9 @@ Deploy as usual (e.g. connect the repo to Vercel). No database or environment va
 - **Institutions**: `content/institutions/*.json`
 - **Individual pages**: Each entry has a page at `/domains/[slug]`, `/experts/[slug]`, `/opportunities/[slug]`, `/institutions/[slug]`.
 
-## Matching (Rolodex ↔ domain/opportunity)
-
-- **Endpoint**: `GET /api/experts/match?domainId=...` or `?opportunityId=...`
-- **Scoring**: Weighted overlap of domain tags, skills, region, language; deterministic and explainable (reasons array).
-- **Rolodex with match**: Open `/rolodex?domainId=xxx` or `/rolodex?opportunityId=xxx` to see match results at the top.
-
 ## Export / import
 
 - **Export domains**: Admin → Export → “Export domains (JSON)”.
-- **Export CRM**: Admin → Export → “Export CRM (CSV)”.
-- **Full taxonomy**: Re-run `npm run db:seed` (wipes and reseeds) or extend `prisma/seed.ts`.
 
 ## Taxonomy maintenance
 

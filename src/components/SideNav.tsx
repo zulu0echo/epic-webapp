@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, Building2, BookUser, Settings, Home, Mail, Package, LogOut, PanelLeftClose, PanelLeft, BookOpen, FileText, X } from "lucide-react";
+import { Map, Settings, Home, Mail, LogOut, PanelLeftClose, PanelLeft, BookOpen, FileText, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 import { ETH_BRAND } from "@/lib/brand";
@@ -16,14 +16,7 @@ const publicNav = [
   { href: "/blog", label: "Blog", icon: BookOpen },
   { href: "/use-case-template", label: "Proof of Concept Template", icon: FileText },
   { href: "/contact", label: "Contact", icon: Mail },
-  { href: "/vendor", label: "Vendor / Ecosystem", icon: Package },
   { href: "/admin", label: "Admin", icon: Settings },
-];
-
-const adminSubsections = [
-  { href: "/admin", label: "Dashboard", icon: Settings },
-  { href: "/rolodex", label: "Rolodex", icon: BookUser },
-  { href: "/crm", label: "CRM", icon: Building2 },
 ];
 
 export function SideNav({
@@ -117,26 +110,6 @@ export function SideNav({
                 <span className="truncate">{label}</span>
               </Link>
             ))}
-            {admin && (
-              <>
-                <div className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Admin</div>
-                {adminSubsections.map(({ href, label, icon: Icon }) => (
-                  <Link
-                    key={href + label}
-                    href={href}
-                    className={cn(
-                      "flex items-center gap-2.5 px-3 py-3 pl-5 rounded-lg text-sm font-medium min-h-[44px] items-center",
-                      pathname === href || (href !== "/" && pathname.startsWith(href))
-                        ? "bg-slate-100 text-epic-navy"
-                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                    )}
-                  >
-                    <Icon className="w-4 h-4 shrink-0" />
-                    <span className="truncate">{label}</span>
-                  </Link>
-                ))}
-              </>
-            )}
           </div>
           <div className="mt-auto border-t border-epic-border space-y-0.5 pt-2">
             {admin && (
@@ -190,33 +163,6 @@ export function SideNav({
             {!collapsed && <span className="truncate">{label}</span>}
           </Link>
         ))}
-        {admin && (
-          <>
-            {!collapsed && (
-              <div className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Admin
-              </div>
-            )}
-            {adminSubsections.map(({ href, label, icon: Icon }) => (
-              <Link
-                key={href + label}
-                href={href}
-                title={collapsed ? label : undefined}
-                className={cn(
-                  "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150",
-                  collapsed && "justify-center px-0",
-                  !collapsed && "pl-5",
-                  pathname === href || (href !== "/" && pathname.startsWith(href))
-                    ? "bg-slate-100 text-epic-navy font-medium"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                )}
-              >
-                <Icon className="w-4 h-4 shrink-0" />
-                {!collapsed && <span className="truncate">{label}</span>}
-              </Link>
-            ))}
-          </>
-        )}
       </div>
       <div className="mt-auto pt-2 border-t border-epic-border space-y-0.5">
         {admin && (

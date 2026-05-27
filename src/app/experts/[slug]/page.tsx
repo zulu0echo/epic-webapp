@@ -31,8 +31,8 @@ export default async function ExpertPage({
   return (
     <div className="epic-section max-w-3xl">
       <nav className="mb-4 text-sm">
-        <Link href="/rolodex" className="text-indigo-600 hover:underline">
-          ← Rolodex
+        <Link href="/map" className="text-indigo-600 hover:underline">
+          ← Map explorer
         </Link>
       </nav>
       <h1 className="epic-heading-2">{expert.name}</h1>

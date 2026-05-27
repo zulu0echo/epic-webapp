@@ -111,7 +111,6 @@ export async function GET(request: Request) {
     { title: "Proof of Concept Template", href: "/use-case-template", preview: "Template for govtech domain proof of concepts: research, value prop, requirements, architecture.", keywords: ["template", "poc", "proof of concept", "use case"] },
     { title: "Carbon MRV PoC", href: "/proof-of-concepts/carbon-mrv", preview: "Carbon MRV proof of concept: dataset commitments, verifier attestations, registry.", keywords: ["carbon", "mrv", "climate", "attestation", "registry"] },
     { title: "Contact", href: "/contact", preview: "Get in touch with the EPIC team.", keywords: ["contact", "email", "touch"] },
-    { title: "Vendor / Ecosystem", href: "/vendor", preview: "Vendor and ecosystem resources.", keywords: ["vendor", "ecosystem", "partners"] },
   ];
   for (const s of staticPages) {
     if (s.keywords.some((k) => k.includes(q) || q.includes(k))) {

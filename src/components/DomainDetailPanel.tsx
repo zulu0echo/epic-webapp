@@ -290,32 +290,26 @@ export function DomainDetailPanel({
             )}
           </ul>
         )}
-        {tab === "experts" && (() => {
-          const fromRolodex = (domain.expertDomains ?? []).map(({ expert: e }) => ({ name: e.name, affiliation: e.affiliation ?? undefined, linkedInUrl: null as string | null }));
-          const rolodexNames = new Set(fromRolodex.map((e) => e.name.toLowerCase()));
-          const fromFeatured = (domain.featuredExperts ?? []).filter((ex) => !rolodexNames.has(ex.name.toLowerCase())).map((ex) => ({ name: ex.name, affiliation: ex.affiliation, linkedInUrl: ex.linkedInUrl }));
-          const combined = [...fromRolodex, ...fromFeatured];
-          return (
-            <ul className="space-y-2">
-              {combined.length === 0 ? (
-                <li className="text-slate-500">No experts listed for this domain.</li>
-              ) : (
-                combined.map((e, i) => (
-                  <li key={`${e.name}-${i}`} className="epic-card p-3">
-                    {e.linkedInUrl ? (
-                      <a href={e.linkedInUrl} target="_blank" rel="noopener noreferrer" className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
-                        {e.name}
-                      </a>
-                    ) : (
-                      <span className="font-medium text-slate-800">{e.name}</span>
-                    )}
-                    {e.affiliation && <span className="text-slate-500 ml-1">· {e.affiliation}</span>}
-                  </li>
-                ))
-              )}
-            </ul>
-          );
-        })()}
+        {tab === "experts" && (
+          <ul className="space-y-2">
+            {(domain.featuredExperts ?? []).length === 0 ? (
+              <li className="text-slate-500">No experts listed for this domain.</li>
+            ) : (
+              domain.featuredExperts!.map((e, i) => (
+                <li key={`${e.name}-${i}`} className="epic-card p-3">
+                  {e.linkedInUrl ? (
+                    <a href={e.linkedInUrl} target="_blank" rel="noopener noreferrer" className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
+                      {e.name}
+                    </a>
+                  ) : (
+                    <span className="font-medium text-slate-800">{e.name}</span>
+                  )}
+                  {e.affiliation && <span className="text-slate-500 ml-1">· {e.affiliation}</span>}
+                </li>
+              ))
+            )}
+          </ul>
+        )}
       </div>
     </div>
   );

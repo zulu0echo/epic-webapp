@@ -14,8 +14,8 @@ export default async function InstitutionPage({
   return (
     <div className="epic-section max-w-3xl">
       <nav className="mb-4 text-sm">
-        <Link href="/crm" className="text-indigo-600 hover:underline">
-          ← CRM
+        <Link href="/map" className="text-indigo-600 hover:underline">
+          ← Map explorer
         </Link>
       </nav>
       <h1 className="epic-heading-2">{institution.name}</h1>

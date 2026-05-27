@@ -3,13 +3,11 @@ import Link from "next/link";
 const exploreLinks = [
   { href: "/map", label: "Map explorer" },
   { href: "/blog", label: "Blog" },
+  { href: "/use-case-template", label: "PoC template" },
   { href: "/domains/digital-identity-and-credentials", label: "Domains" },
 ];
 
-const contactLinks = [
-  { href: "/contact", label: "Contact" },
-  { href: "/vendor", label: "Vendor and ecosystem" },
-];
+const contactLinks = [{ href: "/contact", label: "Contact" }];
 
 export function Footer() {
   return (
@@ -55,7 +53,7 @@ export function Footer() {
               About
             </h3>
             <p className="mt-4 text-sm text-slate-600 leading-relaxed">
-              EPIC is an initiative of the Ethereum Foundation supporting public-sector adoption of open, neutral infrastructure.
+              EPIC is an initiative of the Ethereum Foundation supporting open, sovereign public infrastructure — for institutions and for individuals.
             </p>
           </div>
         </div>
