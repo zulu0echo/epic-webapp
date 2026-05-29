@@ -21,17 +21,21 @@ export const USE_CASE_TEMPLATE_SECTIONS: TemplateSection[] = [
       "At least two existing solutions or frameworks are described with strengths and limitations.",
       "Sources are linked (URLs or references) and authoritative where possible.",
       "The gap or limitation that motivates an Ethereum-based solution is clearly stated.",
+      "The self-sovereign user is named; harms from coerced enrolment or surveillance are acknowledged where relevant.",
     ],
   },
   {
     id: "ethereum-value-prop",
     title: "Ethereum relevance and value proposition",
-    description: `Explain why Ethereum (or public blockchain / verifiable data) is relevant to this use case. Describe the value proposition in terms of coordination, transparency, auditability, or programmable trust. Call out which Ethereum primitives apply (e.g. attestations, commitments, registries, smart contracts) and how they map to the problem. Avoid generic blockchain claims; focus on concrete benefits (e.g. tamper-evident audit trail, verifier attestations, milestone-based disbursement) and any trade-offs or constraints (e.g. data offchain, privacy).`,
+    description: `Explain why Ethereum (or public blockchain / verifiable data) is relevant to this use case. Describe the value proposition in terms of coordination, transparency, auditability, or programmable trust. Call out which Ethereum primitives apply (e.g. attestations, commitments, registries, smart contracts) and how they map to the problem. Avoid generic blockchain claims; focus on concrete benefits (e.g. tamper-evident audit trail, verifier attestations, milestone-based disbursement) and any trade-offs or constraints (e.g. data offchain, privacy).
+
+Include a paragraph titled "When Ethereum is not appropriate" with a concrete negative example — a problem for which Ethereum is the wrong primitive, and what should be used instead.`,
     acceptanceCriteria: [
       "Value proposition is stated in one or two clear sentences.",
       "At least one Ethereum primitive (e.g. attestations, registries, commitments) is named and linked to a problem or requirement.",
       "Trade-offs or constraints (e.g. scalability, privacy, regulatory) are acknowledged where relevant.",
       "Language is accessible to both technical and policy readers.",
+      "A documented negative outcome is included where Ethereum is not the appropriate primitive, with rationale.",
     ],
   },
   {

@@ -37,6 +37,9 @@ export default async function CarbonMRVPocOverviewPage() {
           </a>
         </div>
       </header>
+      <section aria-label="Scope" className="mx-6 mt-6 rounded-lg border border-amber-200 bg-amber-50/80 px-4 py-3 text-sm text-amber-900">
+        This is a <strong>minimal reference implementation</strong> for learning and spec review. It is not production MRV infrastructure, not climate finance advice, and not an EF endorsement of any registry or verifier.
+      </section>
       <section aria-label="Main content" className="epic-article-body">
         <CarbonMRVFlowAnimation />
         <div className="mt-8">

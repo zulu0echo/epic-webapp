@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { WHAT_EPIC_WILL_NOT_DO, COMMITMENTS_LIMITATIONS } from "@/lib/epicCopy";
 
 /** Renders post body by slug. Returns null if slug is unknown. */
 export function getPostContent(slug: string): React.ReactNode {
@@ -24,7 +25,7 @@ function MapExplorerPost() {
 
       <h2 className="epic-heading-3 mt-8">What you’ll find on the map</h2>
       <p>
-        The map has three main ways to explore: a <strong>tree view</strong> of domains and subdomains, a <strong>graph view</strong> showing how domains relate to each other (depends on, enables, adjacent to), and a <strong>detail panel</strong> for each node with definitions, challenges, opportunities, experiments, references, and featured experts.
+        The map has three main ways to explore: a <strong>tree view</strong> of domains and subdomains, a <strong>graph view</strong> showing how domains relate to each other (depends on, enables, adjacent to), and a <strong>detail panel</strong> for each node with definitions, challenges, opportunities, experiments, and references.
       </p>
       <p>
         Each domain is tagged with <strong>Ethereum primitives</strong> (e.g. attestation, verifiable credentials, registries, ZK proofs) and a <strong>maturity level</strong> (idea, pilot, production) so you can see both the problem space and how far real-world adoption has come.
@@ -32,7 +33,7 @@ function MapExplorerPost() {
 
       <h2 className="epic-heading-3 mt-8">Why it matters</h2>
       <p>
-        Governments and multilaterals are exploring blockchain and digital public infrastructure at different speeds and in different sectors. The map gives a single place to see the full landscape: what domains exist, how they connect, what’s been tried, and who the subject-matter experts are. That makes it easier to scope pilots, find partners, and avoid reinventing the wheel.
+        Governments and multilaterals are exploring blockchain and digital public infrastructure at different speeds and in different sectors. The map gives a single place to see the full landscape: what domains exist, how they connect, what&apos;s been tried, and where gaps remain — before scoping a pilot or procurement process.
       </p>
 
       <h2 className="epic-heading-3 mt-8">How you can contribute</h2>
@@ -44,17 +45,16 @@ function MapExplorerPost() {
           <strong>Suggest new domains or subdomains</strong> — If you work in a sector we haven’t yet captured (e.g. a specific type of registry or a new application of attestations), we’d love to hear how you’d structure it.
         </li>
         <li>
-          <strong>Add or correct experiments and references</strong> — Know of a pilot, PoC, or report that should be linked from a domain? Send us the link and the domain it belongs to.
-        </li>
-        <li>
-          <strong>Nominate experts</strong> — We list 2–3 featured experts per domain. If you’re a subject-matter expert or know one who should be featured (with their consent), get in touch.
+          <strong>Add or correct experiments and references</strong> — Cite primary sources; do not add named individuals without documented consent. Contact{" "}
+          <a href="mailto:epic@ethereum.org" className="font-medium text-epic-navy hover:underline">epic@ethereum.org</a>
+          {" "}with corrections.
         </li>
         <li>
           <strong>Improve definitions and opportunities</strong> — Definitions, challenges, and opportunities are written to be concise and practical. If you see something outdated or missing, suggest an edit.
         </li>
       </ul>
       <p>
-        The easiest way to start is to use the map yourself — open domains, follow the links to experiments and experts — and then tell us what’s missing or wrong. We’ll use that feedback to refine the taxonomy and the content.
+        The easiest way to start is to use the map yourself — open domains, follow the links to experiments and references — and then tell us what&apos;s missing or wrong.
       </p>
 
       <div className="mt-10 rounded-epic-lg border border-epic-border bg-epic-paper/80 p-6">
@@ -83,15 +83,15 @@ function EpicTeamVisionPost() {
   return (
     <article className="epic-body space-y-6">
       <p>
-        <strong>EPIC</strong> (Ethereum Public Infrastructure and Commons) is a team within the Ethereum Foundation. We focus on helping governments, multilateral organizations, and large NGOs explore and adopt Ethereum-based solutions in ways that strengthen public systems — without compromising decentralization, openness, or long-term resilience.
+        <strong>EPIC</strong> (Ethereum Public Infrastructure and Commons) is a team within the Ethereum Foundation. The views in this post are EPIC&apos;s, not an official Ethereum Foundation policy position. We focus on helping governments, multilateral organizations, and large NGOs explore Ethereum-based solutions in ways that strengthen public systems — without compromising decentralization, openness, or long-term resilience.
       </p>
 
       <h2 className="epic-heading-3 mt-8">Who we are</h2>
       <p>
-        We are a small, mission-driven team with backgrounds in public policy, institutional engagement, and Ethereum ecosystem building. We sit inside the Ethereum Foundation so we can speak with credibility about the technology and the community, while staying focused on public-interest outcomes rather than commercial or speculative use cases.
+        We are a small, mission-driven team with backgrounds in public policy, institutional engagement, and Ethereum ecosystem building. We sit inside the Ethereum Foundation to access protocol expertise and ecosystem context. That placement does not make EPIC&apos;s public-sector judgments authoritative for the EF, for governments, or for users.
       </p>
       <p>
-        We work closely with the rest of the Foundation and with a wide network of researchers, implementers, and domain experts who share our values. Our role is to connect institutions with the right people and the right information so that pilots and programs are designed and executed well.
+        We work closely with the rest of the Foundation and with researchers and implementers who share our values. Our role is to publish open resources and answer questions — not to prescribe deployments or broker reputational capital.
       </p>
 
       <h2 className="epic-heading-3 mt-8">Our vision</h2>
@@ -99,16 +99,19 @@ function EpicTeamVisionPost() {
         We envision a future where public institutions use Ethereum where it clearly adds value: as a neutral coordination layer for attestations and credentials, as a transparent backbone for registries and payments, and as infrastructure that can evolve without vendor lock-in or single points of failure.
       </p>
       <p>
-        That future is not automatic. It requires institutions that understand both the technology and the governance implications; implementers who can deliver robust, maintainable systems; and a global conversation that treats public infrastructure as a long-term commitment. EPIC exists to advance that vision by cultivating champions, supporting high-integrity pilots, and building coalitions that share Ethereum’s values of openness and credible transparency.
+        That future is not automatic. It requires institutions that understand both the technology and the governance implications; implementers who can deliver robust, maintainable systems; and a global conversation that treats public infrastructure as a long-term commitment. User sovereignty — control of keys, selective disclosure, and credible exit — is the test; institutional convenience is not. EPIC exists to advance that vision by cultivating champions, supporting high-integrity pilots, and building coalitions that share Ethereum&apos;s values of openness and credible transparency.
       </p>
 
       <h2 className="epic-heading-3 mt-8">How we work</h2>
       <p>
-        We don’t push technology for its own sake. We identify and support values-aligned leaders inside and around public institutions; we help scope and advise on pilots that demonstrate real utility; and we connect institutions with trusted experts and ecosystem partners. We maintain the EPIC map, a Rolodex of experts, and a pipeline of institutional opportunities so that our engagement is structured and repeatable.
+        We don&apos;t push technology for its own sake. We identify and support values-aligned leaders inside and around public institutions; we help scope and advise on pilots that demonstrate real utility; and we connect institutions with open standards and ecosystem resources. We maintain the EPIC map and publish templates and proof-of-concepts in the open. We do not operate a public expert roster or institutional pipeline on this site.
       </p>
       <p>
-        If you’re inside a government, multilateral, or large NGO and are exploring where Ethereum might fit — or if you’re a builder or researcher who wants to work on public-interest applications — we’d like to hear from you.
+        If you&apos;re inside a government, multilateral, or large NGO and are exploring where Ethereum might fit — or if you&apos;re a builder or researcher who wants to work on public-interest applications — we&apos;d like to hear from you.
       </p>
+
+      <h2 className="epic-heading-3 mt-8">What EPIC will not do</h2>
+      <p className="whitespace-pre-line">{WHAT_EPIC_WILL_NOT_DO}</p>
 
       <div className="mt-10 rounded-epic-lg border border-epic-border bg-epic-paper/80 p-6">
         <h3 className="font-serif text-lg font-semibold text-epic-ink">Get in touch</h3>
@@ -143,12 +146,15 @@ function ExtLink({ href, children }: { href: string; children: React.ReactNode }
 function EthereumResilientInfrastructurePost() {
   return (
     <article className="epic-body space-y-6">
+      <p className="text-sm text-slate-600">
+        This essay describes institutional resilience properties of the Ethereum protocol. It is not a recommendation that governments anchor personal data, identity, or benefit records on a public ledger. Deployment choices remain with institutions and affected users.
+      </p>
       <h2 className="epic-heading-3 mt-6">Executive Summary</h2>
       <p>
         Public-sector institutions require digital infrastructure that can withstand political turnover, institutional restructuring, adversarial pressure, and cross-border complexity. Unlike private-sector platforms, government and multilateral systems must operate under intense public scrutiny while remaining durable across decades. The primary challenge is not merely technological efficiency; it is <strong>institutional resilience</strong>—the capacity of systems to remain verifiable, tamper-evident, and operational regardless of changes in operators, vendors, or political leadership.
       </p>
       <p>
-        Ethereum, as a decentralized proof-of-stake blockchain, provides a credible foundation for certain classes of public digital infrastructure. Its design enables independent verification of records, distributed security backed by significant economic stake, programmable settlement logic, and interoperability across institutional boundaries. This paper examines why Ethereum is structurally relevant to governments, NGOs, and international institutions, and how it can be deployed in ways that strengthen resilience rather than introduce fragility.
+        Ethereum, as a decentralized proof-of-stake blockchain, provides a credible foundation for certain classes of public digital infrastructure. Its design enables independent verification of records, distributed security backed by significant economic stake, programmable settlement logic, and interoperability across institutional boundaries. This paper examines where Ethereum protocol properties may matter for governments, NGOs, and international institutions — and where deployment strengthens user-side exit rather than introducing immutability or linkability harms. Many public functions do not require a blockchain.
       </p>
 
       <hr className="border-epic-border my-8" />
@@ -203,7 +209,7 @@ function EthereumResilientInfrastructurePost() {
         The United Nations World Food Programme’s “Building Blocks” initiative demonstrates the institutional application of Ethereum-based infrastructure in humanitarian contexts (<ExtLink href="https://www.wfp.org/building-blocks">wfp.org/building-blocks</ExtLink>). According to an ITU case study, the system utilized Ethereum technology in a permissioned configuration to improve coordination and transparency in refugee assistance programs (<ExtLink href="https://www.itu.int/hub/2020/04/how-the-world-food-programme-uses-blockchain-to-better-serve-refugees/">ITU: How WFP uses blockchain to better serve refugees</ExtLink>).
       </p>
       <p>
-        The resilience benefit lies in shared verification. When multiple agencies rely on a common ledger, reconciliation overhead decreases and disputes can be resolved against a cryptographic record rather than disparate internal databases.
+        The resilience benefit lies in shared verification. When multiple agencies rely on a common ledger, reconciliation overhead decreases and disputes can be resolved against a cryptographic record rather than disparate internal databases. Permissioned or institution-operated configurations may improve reconciliation for agencies while offering beneficiaries little user-side exit. Any humanitarian application requires separate assessment of enrolment coercion, data minimisation, and offboarding — not covered by ledger resilience alone.
       </p>
 
       <h3 className="font-serif text-lg font-semibold text-epic-ink mt-6">2.2 Transparent Public Funding and Grant Disbursement</h3>
@@ -230,7 +236,12 @@ function EthereumResilientInfrastructurePost() {
         This mechanism does not replace procurement law but enhances procedural integrity. By strengthening the technical enforceability of deadlines, institutions can reduce disputes and increase public confidence.
       </p>
 
-      <h2 className="epic-heading-3 mt-8">3. Architectural Patterns for Resilient Deployment</h2>
+      <h2 className="epic-heading-3 mt-8">3. Architectural patterns sometimes discussed in public-sector design (illustrative, not EPIC prescriptions)</h2>
+      <p>
+        The following patterns appear frequently in workshop materials. EPIC does not endorse any as default for governments; each must be assessed against{" "}
+        <Link href="/use-case-template#crops" className="font-medium text-epic-navy hover:underline">CROPS</Link>
+        , user-side exit, and applicable law — including data-protection and erasure rights.
+      </p>
 
       <h3 className="font-serif text-lg font-semibold text-epic-ink mt-6">3.1 Layered Design: Settlement on L1, Operations on L2</h3>
       <p>
@@ -256,6 +267,9 @@ function EthereumResilientInfrastructurePost() {
         This multi-party design reduces unilateral control risk and aligns technical infrastructure with constitutional principles of separation of powers.
       </p>
 
+      <h3 className="font-serif text-lg font-semibold text-epic-ink mt-6" id="commitments-limitations">3.4 Limitations of off-chain data with on-chain commitments</h3>
+      <p className="whitespace-pre-line">{COMMITMENTS_LIMITATIONS}</p>
+
       <h2 className="epic-heading-3 mt-8">4. Risk Considerations and Mitigation</h2>
       <p>
         Ethereum is not without challenges. Transaction fee volatility, regulatory ambiguity, and operational complexity must be addressed through careful design. Layer 2 scaling reduces cost exposure. Legal analysis ensures compliance with jurisdictional requirements. Operational training and institutional capacity building are necessary for sustainable deployment.
@@ -272,7 +286,7 @@ function EthereumResilientInfrastructurePost() {
         When deployed through layered architectures—anchoring proofs and commitments on Ethereum while operating applications off-chain or on rollups—public institutions can enhance transparency, reduce reconciliation friction, and improve long-term continuity.
       </p>
       <p>
-        Resilience in public infrastructure is ultimately about trust under stress. Ethereum offers a mechanism for embedding verifiability into the foundation of digital governance systems, reducing reliance on institutional goodwill alone and replacing it with cryptographic assurance.
+        Resilience in public infrastructure is ultimately about trust under stress. Where appropriate, Ethereum offers a mechanism for embedding verifiable evidence that users and auditors can check independently. Cryptographic assurance is not a substitute for legal rights, erasure where required, or protection against coerced enrolment.
       </p>
     </article>
   );

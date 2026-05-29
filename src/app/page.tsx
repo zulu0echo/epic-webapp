@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ETH_BRAND } from "@/lib/brand";
+import { WHAT_EPIC_WILL_NOT_DO, WALKAWAY_TEST_USER_SIDE } from "@/lib/epicCopy";
 
 export default function HomePage() {
   return (
@@ -30,10 +31,10 @@ export default function HomePage() {
             Preserving and scaling user self-sovereignty in public systems — where people hold the final say over their identities, credentials, assets, and verifiable claims.
           </p>
           <p className="mt-6 max-w-2xl epic-body">
-            EPIC is an initiative of the Ethereum Foundation. We work with governments, multilateral organizations, and civil society so that when public institutions adopt Ethereum-based infrastructure, it strengthens — not trades away — censorship resistance, resilience, openness, privacy, and security.
+            EPIC is a team within the Ethereum Foundation. The views on this site are EPIC&apos;s, not an official Ethereum Foundation policy position. We work with governments, multilateral organizations, and civil society so that when public institutions adopt Ethereum-based infrastructure, it strengthens — not trades away — censorship resistance, resilience, openness, privacy, and security.
           </p>
           <p className="mt-4 max-w-2xl epic-body">
-            EPIC exists to serve self-sovereign users: the person who must prove a credential without handing a platform their full history; the aid recipient who needs portable identity across borders; the verifier who checks an attestation without calling a vendor API; the citizen who should retain exit paths when institutions change. Public engagement is a means to that end — not the end itself. We map where Ethereum primitives can expand what those users can do independently, and we support pilots that pass the walkaway test: systems that keep working if stewards disappear.
+            EPIC exists to serve self-sovereign users: the person who must prove a credential without handing a platform their full history; the aid recipient who needs portable identity across borders; the verifier who checks an attestation without calling a vendor API; the citizen who should retain exit paths when institutions change. Public engagement is a means to that end — not the end itself. We map where Ethereum primitives can expand what those users can do independently, and we support pilots that pass the walkaway test: {WALKAWAY_TEST_USER_SIDE}
           </p>
         </div>
       </section>
@@ -83,7 +84,7 @@ export default function HomePage() {
                 intro: "We work with values-aligned leaders in and around public institutions when their projects can expand what self-sovereign users can do — not when adoption would consolidate control.",
                 list: [
                   "Education on Ethereum capabilities and CROPS-aligned design",
-                  "Support on architecture, policy, and implementation",
+                  "Questions and review against CROPS and user-side exit — not prescribed architectures",
                   "Connections to open standards and ecosystem work already in flight",
                 ],
                 closing: "We focus where thoughtful innovation can proceed with clarity and accountability — always with the end user’s sovereignty in view.",
@@ -133,7 +134,7 @@ export default function HomePage() {
         <div className="epic-section">
           <h2 className="epic-heading-2">Areas of engagement</h2>
           <p className="mt-4 epic-body">
-            EPIC works across Digital Public Infrastructure and GovTech domains, including:
+            The map organises research domains where Ethereum primitives may be relevant. Listing a domain is not a commitment to an active EPIC workstream.
           </p>
           <ul className="mt-6 grid gap-3 text-slate-600 sm:grid-cols-2">
             {[
@@ -153,7 +154,7 @@ export default function HomePage() {
             ))}
           </ul>
           <p className="mt-6 epic-body">
-            Our work spans research, pilot design, open specifications, and ecosystem coordination.
+            Our published work today concentrates on open mapping, the PoC template, and the Carbon MRV proof-of-concept. Other domains are documented for community reference unless marked otherwise on the map.
           </p>
         </div>
       </section>
@@ -168,7 +169,7 @@ export default function HomePage() {
           <ol className="mt-6 space-y-4">
             {[
               "Name the self-sovereign user and what they gain",
-              "Assess alignment with CROPS and the walkaway test",
+              "Assess alignment with CROPS and user-side exit",
               "Provide guidance and point to open ecosystem resources",
               "Support responsible pilot execution",
               "Publish knowledge in forms others can fork and extend",
@@ -181,6 +182,14 @@ export default function HomePage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* What EPIC will not do */}
+      <section className="epic-divider bg-white">
+        <div className="epic-section">
+          <h2 className="epic-heading-2">What EPIC will not do</h2>
+          <p className="mt-4 epic-body whitespace-pre-line">{WHAT_EPIC_WILL_NOT_DO}</p>
         </div>
       </section>
 
@@ -202,7 +211,7 @@ export default function HomePage() {
         <div className="epic-section">
           <h2 className="epic-heading-2">Partners and governance</h2>
           <p className="mt-4 epic-body">
-            EPIC operates within the Ethereum Foundation and collaborates with public institutions, multilateral organizations, standards bodies, and NGOs. We publish briefings, map engagement domains, and maintain open documentation for outreach and research.
+            EPIC operates within the Ethereum Foundation and collaborates with public institutions, multilateral organizations, standards bodies, and NGOs. We publish briefings, map research domains, and maintain open documentation.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <div className="epic-card p-6">

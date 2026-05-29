@@ -29,6 +29,8 @@ export interface DomainContent {
   references?: DomainReference[];
   /** Featured experts: 2–3 LinkedIn profiles of subject-matter experts. */
   featuredExperts?: FeaturedExpert[];
+  /** Who holds sovereignty in this domain and what they must be able to do independently. */
+  selfSovereignUser?: string;
 }
 
 export interface ExpertContent {

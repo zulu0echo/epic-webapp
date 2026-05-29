@@ -6,7 +6,7 @@ A minimal proof of concept for **Carbon MRV** (Measurement, Reporting, Verificat
 - **Verifier attestations** — signed statement that a dataset was verified (PoC: HMAC; production: EIP-712 or similar)
 - **Registry** — append-only list of attestations (PoC: file-based; production: onchain or verified API)
 
-The design is aligned with **CROPS**: **C**ensorship Resistance (no single registry gatekeeper or kill switch; permissionless verification), **O**pen Source and Free (open spec and formats; no privileged code), **P**rivacy (raw data offchain; only commitments and attestations in the shared layer), and **S**ecurity (things do what they claim; reproducible verification; walkaway test). See [Design philosophy](docs/design-philosophy.md).
+The design is assessed against [CROPS](/use-case-template#crops) and the [walkaway test (user-side exit)](/use-case-template#walkaway-test). See [Design philosophy](docs/design-philosophy.md) for how those properties map to this design — not as a claim that the PoC fully satisfies them in production.
 
 This repo follows the [EPIC Use Case Template](https://github.com/ethereum/epic-map-app/blob/main/src/lib/useCaseTemplate.ts) for govtech domain use cases.
 
@@ -117,7 +117,7 @@ carbon-mrv-poc/
 
 ## Call to action
 
-- **Pilot partners**: Registries, verifiers, or programs interested in testing attestation and commitment flows — open an issue with label `pilot-interest` or contact the maintainers.
+- **Feedback and spec review**: Registries, verifiers, or programs interested in commenting on the open spec (not EPIC-endorsed deployment) — open an issue with label `pilot-interest` or contact the maintainers.
 - **Spec feedback**: Open an issue or PR on the [spec](spec/README.md).
 - **Code**: See [CONTRIBUTING.md](CONTRIBUTING.md).
 

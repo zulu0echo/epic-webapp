@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { USE_CASE_TEMPLATE_SECTIONS } from "@/lib/useCaseTemplate";
+import { CROPS_SECTION, WALKAWAY_SECTION } from "@/lib/epicCopy";
 import { FileText, CheckCircle2, ArrowRight, Leaf } from "lucide-react";
 
 export const metadata = {
@@ -55,8 +56,12 @@ export default function UseCaseTemplatePage() {
               Proof of Concept Template
             </h1>
             <p className="mt-2 epic-body max-w-2xl">
-              A structured template for documenting govtech domain and subdomain proof of concepts. Use it to produce reliable material for problem exploration, Ethereum value proposition, requirements, architecture, code, documentation, demos, and a formal specification (e.g. zkspecs-style). Proof of concepts should be assessed against CROPS (censorship resistance, resilience, openness, privacy, security) and the walkaway test before they ship.
-          </p>
+              Use this template to document a proof-of-concept before any institutional pilot. Assess against{" "}
+              <a href="#crops" className="text-epic-navy font-medium hover:underline">CROPS</a>
+              {" "}and the{" "}
+              <a href="#walkaway-test" className="text-epic-navy font-medium hover:underline">walkaway test</a>
+              . EPIC publishes the template; filling it does not imply EF endorsement of a deployment.
+            </p>
           </div>
           <Link
             href="/proof-of-concepts/carbon-mrv"
@@ -83,6 +88,16 @@ export default function UseCaseTemplatePage() {
             . Use RFC 2119 keywords (MUST, SHOULD, MAY) in normative sections.
           </p>
         </div>
+
+        <section id={CROPS_SECTION.id} className="epic-card p-6 sm:p-8 mb-6 scroll-mt-6">
+          <h2 className="epic-heading-2">{CROPS_SECTION.title}</h2>
+          <p className="mt-4 epic-body whitespace-pre-wrap">{CROPS_SECTION.body}</p>
+        </section>
+
+        <section id={WALKAWAY_SECTION.id} className="epic-card p-6 sm:p-8 mb-6 scroll-mt-6">
+          <h2 className="epic-heading-2">{WALKAWAY_SECTION.title}</h2>
+          <p className="mt-4 epic-body whitespace-pre-wrap">{WALKAWAY_SECTION.body}</p>
+        </section>
 
         {USE_CASE_TEMPLATE_SECTIONS.map((section, index) => (
           <SectionBlock key={section.id} section={section} index={index} />

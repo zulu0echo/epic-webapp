@@ -30,7 +30,7 @@ type Domain = {
   opportunityLinks?: { opportunity: { id: string; title: string; stage: string } }[];
   expertDomains?: { expert: { id: string; name: string; affiliation: string | null } }[];
   references?: { label: string; url: string }[];
-  featuredExperts?: { name: string; linkedInUrl: string; affiliation?: string }[];
+  selfSovereignUser?: string | null;
 };
 
 export function DomainDetailPanel({
@@ -100,7 +100,7 @@ export function DomainDetailPanel({
               tab === t && theme.accent
             )}
           >
-            {t === "experiments" ? "Proof of concepts" : t}
+            {t === "experiments" ? "Proof of concepts" : t === "experts" ? "Self-sovereign user" : t}
           </button>
         ))}
       </div>
@@ -222,21 +222,6 @@ export function DomainDetailPanel({
                 </ul>
               </section>
             )}
-            {(domain.featuredExperts?.length ?? 0) > 0 && (
-              <section>
-                <h3 className="font-medium text-slate-700 mb-1">Featured experts</h3>
-                <ul className="space-y-1.5">
-                  {domain.featuredExperts!.map((ex, i) => (
-                    <li key={i}>
-                      <a href={ex.linkedInUrl} target="_blank" rel="noopener noreferrer" className={cn("text-sm font-medium hover:underline", theme.accent, theme.accentHover)}>
-                        {ex.name}
-                      </a>
-                      {ex.affiliation && <span className="text-slate-500 text-sm ml-1">· {ex.affiliation}</span>}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
           </>
         )}
         {tab === "challenges" && (
@@ -291,24 +276,16 @@ export function DomainDetailPanel({
           </ul>
         )}
         {tab === "experts" && (
-          <ul className="space-y-2">
-            {(domain.featuredExperts ?? []).length === 0 ? (
-              <li className="text-slate-500">No experts listed for this domain.</li>
+          <div className="text-slate-600 text-sm whitespace-pre-wrap">
+            {domain.selfSovereignUser ? (
+              <>
+                <h3 className="font-medium text-slate-700 mb-2">Self-sovereign user in this domain</h3>
+                <p>{domain.selfSovereignUser}</p>
+              </>
             ) : (
-              domain.featuredExperts!.map((e, i) => (
-                <li key={`${e.name}-${i}`} className="epic-card p-3">
-                  {e.linkedInUrl ? (
-                    <a href={e.linkedInUrl} target="_blank" rel="noopener noreferrer" className={cn("font-medium hover:underline", theme.accent, theme.accentHover)}>
-                      {e.name}
-                    </a>
-                  ) : (
-                    <span className="font-medium text-slate-800">{e.name}</span>
-                  )}
-                  {e.affiliation && <span className="text-slate-500 ml-1">· {e.affiliation}</span>}
-                </li>
-              ))
+              <p className="text-slate-500">Self-sovereign user not yet documented for this domain.</p>
             )}
-          </ul>
+          </div>
         )}
       </div>
     </div>

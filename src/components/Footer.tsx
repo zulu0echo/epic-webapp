@@ -53,7 +53,7 @@ export function Footer() {
               About
             </h3>
             <p className="mt-4 text-sm text-slate-600 leading-relaxed">
-              EPIC is an initiative of the Ethereum Foundation supporting open, sovereign public infrastructure — for institutions and for individuals.
+              EPIC is a team within the Ethereum Foundation publishing open research on public infrastructure and user self-sovereignty. Content here is not official EF policy.
             </p>
           </div>
         </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostMeta, getAllPostSlugs } from "@/lib/blog";
 import { getPostContent } from "@/content/blog-posts";
+import { BLOG_BYLINE } from "@/lib/epicCopy";
 
 function formatDate(iso: string) {
   try {
@@ -44,6 +45,7 @@ export default async function BlogPostPage({
       >
         {formatDate(meta.date)}
       </time>
+      <p className="mt-2 text-sm text-slate-600">{BLOG_BYLINE}</p>
       <h1 className="mt-2 font-serif text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         {meta.title}
       </h1>

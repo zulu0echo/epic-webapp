@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getDomainBySlug, getDomains, getExperts, getOpportunities } from "@/lib/content";
+import { getDomainBySlug, getDomains } from "@/lib/content";
 import { parseJsonArray } from "@/lib/parsers";
 import { getSectorTheme } from "@/lib/sectorColors";
 
@@ -18,11 +18,9 @@ export default async function DomainPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [domain, allDomains, experts, opportunities] = await Promise.all([
+  const [domain, allDomains] = await Promise.all([
     getDomainBySlug(slug),
     getDomains(),
-    getExperts(),
-    getOpportunities(),
   ]);
   if (!domain) notFound();
 
@@ -37,11 +35,6 @@ export default async function DomainPage({
     const to = allDomains.find((d) => d.slug === e.toSlug);
     return { ...e, toName: to?.name ?? e.toSlug };
   });
-  const linkedExperts = experts.filter((e) => (e.domainSlugs ?? []).includes(domain.slug));
-  const linkedOpportunities = opportunities.filter((o) =>
-    (o.domainSlugs ?? []).includes(domain.slug)
-  );
-
   const tags = Array.isArray(domain.tags) ? domain.tags : parseJsonArray(domain.tags as string);
   const primitives = Array.isArray(domain.ethereumPrimitives)
     ? domain.ethereumPrimitives
@@ -70,6 +63,13 @@ export default async function DomainPage({
         <p className="text-sm text-slate-500 mt-1">
           Parent: <Link href={`/domains/${parent.slug}`} className={`${theme.accent} ${theme.accentHover} hover:underline`}>{parent.name}</Link>
         </p>
+      )}
+
+      {domain.selfSovereignUser && (
+        <section className="mt-6 p-4 rounded-xl border border-slate-200 bg-slate-50/80">
+          <h2 className="font-semibold text-slate-800 mb-2">Self-sovereign user in this domain</h2>
+          <p className="text-slate-600 text-sm whitespace-pre-wrap">{domain.selfSovereignUser}</p>
+        </section>
       )}
 
       {domain.definition && (
@@ -193,38 +193,6 @@ export default async function DomainPage({
         </section>
       )}
 
-      {linkedExperts.length > 0 && (
-        <section className="mt-6">
-          <h2 className="font-semibold text-slate-800 mb-2">Experts</h2>
-          <ul className="space-y-1">
-            {linkedExperts.map((e) => (
-              <li key={e.slug}>
-                <Link href={`/experts/${e.slug}`} className={`${theme.accent} ${theme.accentHover} hover:underline`}>
-                  {e.name}
-                </Link>
-                {e.affiliation && <span className="text-slate-500 ml-1">· {e.affiliation}</span>}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {linkedOpportunities.length > 0 && (
-        <section className="mt-6">
-          <h2 className="font-semibold text-slate-800 mb-2">Opportunities</h2>
-          <ul className="space-y-1">
-            {linkedOpportunities.map((o) => (
-              <li key={o.slug}>
-                <Link href={`/opportunities/${o.slug}`} className={`${theme.accent} ${theme.accentHover} hover:underline`}>
-                  {o.title}
-                </Link>
-                <span className="text-slate-500 ml-1">· {o.stage ?? "long_list"}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
       {(domain.references?.length ?? 0) > 0 && (
         <section className="mt-6">
           <h2 className="font-semibold text-slate-800 mb-2">References & proof of concepts</h2>
@@ -234,22 +202,6 @@ export default async function DomainPage({
                 <a href={ref.url} target="_blank" rel="noopener noreferrer" className={`${theme.accent} ${theme.accentHover} hover:underline`}>
                   {ref.label}
                 </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {(domain.featuredExperts?.length ?? 0) > 0 && (
-        <section className="mt-6">
-          <h2 className="font-semibold text-slate-800 mb-2">Featured experts</h2>
-          <ul className="space-y-1.5">
-            {domain.featuredExperts!.map((ex, i) => (
-              <li key={i}>
-                <a href={ex.linkedInUrl} target="_blank" rel="noopener noreferrer" className={`font-medium ${theme.accent} ${theme.accentHover} hover:underline`}>
-                  {ex.name}
-                </a>
-                {ex.affiliation && <span className="text-slate-500 ml-1">· {ex.affiliation}</span>}
               </li>
             ))}
           </ul>

@@ -28,7 +28,11 @@ export default function ContactPage() {
       <div className="epic-card p-6 sm:p-8">
         <h1 className="epic-heading-2">Contact</h1>
         <p className="mt-2 epic-body">
-          Get in touch with the EPIC team. This form opens your email client and sends to{" "}
+          Contact the EPIC team for corrections to the map, spec feedback, or questions about published materials. This channel is not a procurement desk, identity enrolment service, or EF grants intake. For Ethereum Foundation grants, see{" "}
+          <a href="https://ethereum.org/community/grants" target="_blank" rel="noopener noreferrer" className="text-epic-navy font-medium hover:underline">
+            ethereum.org/community/grants
+          </a>
+          . This form opens your email client and sends to{" "}
           <a href={`mailto:${RECIPIENT}`} className="text-epic-navy font-medium hover:underline">
             {RECIPIENT}
           </a>

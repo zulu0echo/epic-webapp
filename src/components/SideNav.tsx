@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, Settings, Home, Mail, LogOut, PanelLeftClose, PanelLeft, BookOpen, FileText, X } from "lucide-react";
+import { Map, Home, Mail, LogOut, PanelLeftClose, PanelLeft, BookOpen, FileText, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 import { ETH_BRAND } from "@/lib/brand";
@@ -16,7 +16,6 @@ const publicNav = [
   { href: "/blog", label: "Blog", icon: BookOpen },
   { href: "/use-case-template", label: "Proof of Concept Template", icon: FileText },
   { href: "/contact", label: "Contact", icon: Mail },
-  { href: "/admin", label: "Admin", icon: Settings },
 ];
 
 export function SideNav({

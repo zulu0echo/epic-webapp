@@ -74,7 +74,7 @@ export async function GET(
     ...shape,
     rootName,
     references: domain.references ?? [],
-    featuredExperts: domain.featuredExperts ?? [],
+    selfSovereignUser: domain.selfSovereignUser ?? null,
   });
 }
 
