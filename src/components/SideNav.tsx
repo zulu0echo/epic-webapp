@@ -183,8 +183,10 @@ export function SideNav({
           <div className="mb-1 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 px-3 py-2.5" onClick={onMobileClose}>
               {brand}
-              <span className="font-mono text-sm font-semibold tracking-wide text-epic-yellow">
-                real-world ethereum
+              <span className="font-mono text-xs font-semibold leading-snug tracking-wide text-epic-yellow">
+                Ethereum Foundation
+                <br />
+                for Institutions
               </span>
             </Link>
             <button
@@ -257,13 +259,15 @@ export function SideNav({
         {brand}
         <span
           className={cn(
-            "truncate font-mono text-sm font-semibold tracking-wide text-epic-yellow",
+            "font-mono text-xs font-semibold leading-snug tracking-wide text-epic-yellow",
             collapsed && "hidden"
           )}
         >
-          real-world ethereum
+          Ethereum Foundation
+          <br />
+          for Institutions
         </span>
-        {collapsed && <span className="sr-only">Real-World Ethereum</span>}
+        {collapsed && <span className="sr-only">Ethereum Foundation for Institutions</span>}
       </Link>
       <div className="flex flex-1 flex-col gap-0.5 overflow-y-auto py-1">
         {isHome && (
