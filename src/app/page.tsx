@@ -219,9 +219,19 @@ export default function HomePage() {
               <p className="mt-2 text-sm text-slate-600">
                 Briefings, domain maps, and policy-oriented resources are available through the blog and map explorer.
               </p>
-              <Link href="/blog" className="mt-3 inline-block text-sm font-medium text-epic-navy hover:underline">
-                View blog and resources
-              </Link>
+              <div className="mt-3 flex flex-col gap-2">
+                <Link href="/blog" className="inline-block text-sm font-medium text-epic-navy hover:underline">
+                  View blog and resources
+                </Link>
+                <a
+                  href="/docs/ethereum-basics-for-governments-and-institutions.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-sm font-medium text-epic-navy hover:underline"
+                >
+                  Ethereum Basics for Governments and Institutions (PDF)
+                </a>
+              </div>
             </div>
             <div className="epic-card p-6">
               <h3 className="font-serif text-lg font-semibold text-epic-ink">Engagement domains</h3>

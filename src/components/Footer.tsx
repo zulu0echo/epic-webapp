@@ -29,6 +29,16 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/docs/ethereum-basics-for-governments-and-institutions.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-600 hover:text-epic-ink transition-colors"
+                >
+                  Ethereum Basics (PDF)
+                </a>
+              </li>
             </ul>
           </div>
           <div>
