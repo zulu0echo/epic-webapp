@@ -190,9 +190,13 @@ const resources = [
   },
   {
     title: "The Ethereum Foundation Mandate",
-    body: "The Foundation's constitutional document: its role as one steward among many, the four protocol properties, and its commitment to reducing its own influence over time. Published March 2026.",
+    body: "The Foundation's constitutional document: its role as one steward among many, the four protocol properties, and its commitment to reducing its own influence over time. An abbreviated briefing sets out how the Ethereum for Public Infrastructure and Commons (EPIC) team applies the Mandate — what it supports, what it deliberately does not, and who it works with.",
     href: "https://ethereum.foundation/ef-mandate.pdf",
     cta: "Read the Mandate",
+    secondary: {
+      href: "/docs/epic-mandate-brief.pdf",
+      cta: "Read the EPIC brief (PDF)",
+    },
     primary: true,
     internal: false,
   },
@@ -298,6 +302,12 @@ export default function HomePage() {
             discontinue it. For a government, this preserves sovereignty over its own systems while
             enabling interoperability with others.
           </p>
+          <p className="mt-4 epic-body">
+            The practical aim is civic infrastructure that resolves a long-standing trilemma — at
+            once resilient against technical, social, and political threats, respectful of personal
+            autonomy, and economically competitive. Recent technical developments make it possible to
+            satisfy all three at the same time rather than trading one off against another.
+          </p>
         </div>
       </section>
 
@@ -340,7 +350,19 @@ export default function HomePage() {
             <a href="https://ethereum.foundation/ef-mandate.pdf" className="underline">
               Ethereum Foundation Mandate
             </a>{" "}
-            (March 2026), that address these questions at the protocol level.
+            (March 2026), that address these questions at the protocol level. An{" "}
+            <a
+              href="/docs/epic-mandate-brief.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              abbreviated briefing
+            </a>{" "}
+            sets out how these principles are applied to public infrastructure: individuals retain
+            consent over their identities, assets, and actions, while institutions gain credible
+            alternatives to vendor lock-in, foreign dependencies, and unauditable closed systems —
+            both at once, built on open source.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {crops.map((c) => (
@@ -375,6 +397,11 @@ export default function HomePage() {
               </span>
             </li>
           </ul>
+          <p className="mt-8 epic-body">
+            The measure of success is simple: individuals are genuinely freer and more respected than
+            they would otherwise have been, and institutions come to see resilience and user
+            sovereignty as the mark of serious institutional practice.
+          </p>
         </div>
       </section>
 
@@ -501,11 +528,19 @@ export default function HomePage() {
             Exploring Ethereum for your institution
           </h2>
           <p className="mt-4 max-w-2xl text-slate-400">
-            The Ethereum Foundation works with governments, public agencies, international
-            organizations, and regulated institutions evaluating Ethereum as digital public
-            infrastructure — from initial technical briefings through architecture review and pilot
-            design. Engagement is advisory and vendor-neutral: the Foundation sells nothing and holds
-            no commercial stake in deployment decisions.
+            The Ethereum Foundation&apos;s Ethereum for Public Infrastructure and Commons (EPIC) team
+            works with governments, multilateral institutions, public agencies, NGOs, and civil
+            society evaluating Ethereum as digital public infrastructure — from briefings and
+            workshops on sovereign infrastructure design, through high-level architecture
+            sense-checking, to incubating pilots and making introductions to aligned development
+            teams in the wider ecosystem.
+          </p>
+          <p className="mt-4 max-w-2xl text-slate-400">
+            Engagement is advisory and vendor-neutral: the Foundation sells nothing and holds no
+            commercial stake in deployment decisions. It also places deliberate limits on its own
+            role — no turn-key products, no certification of projects, no open-ended technical
+            support — because the goal is institutional capability without dependency on any single
+            actor, the Foundation included.
           </p>
           <p className="mt-4 max-w-2xl text-slate-400">
             To arrange a briefing or discuss a specific use case, contact the institutional team.
@@ -537,7 +572,7 @@ export default function HomePage() {
               <div key={r.title} className="flex flex-col rounded-epic-lg bg-white p-6">
                 <h3 className="epic-heading-3 text-base">{r.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-slate-600">{r.body}</p>
-                <div className="mt-4">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {r.internal ? (
                     <Link
                       href={r.href}
@@ -557,6 +592,16 @@ export default function HomePage() {
                       }
                     >
                       {r.cta}
+                    </a>
+                  )}
+                  {"secondary" in r && r.secondary && (
+                    <a
+                      href={r.secondary.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center rounded-full border border-epic-slate-subtle px-4 py-2 text-sm font-semibold text-epic-ink transition-colors hover:border-epic-ink"
+                    >
+                      {r.secondary.cta}
                     </a>
                   )}
                 </div>
