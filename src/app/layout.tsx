@@ -1,24 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
 import { ETH_BRAND } from "@/lib/brand";
 
-const sourceSerif = Source_Serif_4({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-source-serif",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const sourceSans = Source_Sans_3({
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-source-sans",
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "EPIC — Ethereum Public Infrastructure and Commons",
-  description: "Supporting governments and public institutions in the responsible exploration and adoption of Ethereum-based solutions for public systems.",
+  title: "Real-World Ethereum — Digital Public Infrastructure",
+  description:
+    "An evidence-based briefing for governments, public agencies, international organizations, and regulated institutions evaluating Ethereum as digital public infrastructure.",
   icons: {
     icon: ETH_BRAND.diamondGlyph,
   },
@@ -36,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${sourceSans.variable}`}>
+    <html lang="en" className={`${inter.variable} ${plexMono.variable}`}>
       <body className="min-h-screen flex font-sans">
         <AppShell>{children}</AppShell>
       </body>

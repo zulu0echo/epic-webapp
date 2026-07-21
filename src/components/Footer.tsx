@@ -2,29 +2,49 @@ import Link from "next/link";
 
 const exploreLinks = [
   { href: "/map", label: "Map explorer" },
-  { href: "/blog", label: "Blog" },
-  { href: "/use-case-template", label: "PoC template" },
   { href: "/domains/digital-identity-and-credentials", label: "Domains" },
+  { href: "/contact", label: "Contact" },
 ];
 
-const contactLinks = [{ href: "/contact", label: "Contact" }];
+const sourceLinks = [
+  {
+    href: "https://blog.ethereum.org/2026/03/13/ef-mandate",
+    label: "Ethereum Foundation Mandate (March 2026)",
+  },
+  {
+    href: "https://blog.ethereum.org/2026/07/01/ethereum-for-institutions",
+    label: "Ethereum for Governments and Institutions (July 2026)",
+  },
+  {
+    href: "https://openzeppelin.com/hubfs/OpenZeppelin%20%7C%20Technical%20Risk%20Assessment%20on%20Blockchain%20Networks.pdf",
+    label: "OpenZeppelin technical risk assessment",
+  },
+];
 
 export function Footer() {
   return (
-    <footer className="epic-divider bg-white">
+    <footer className="bg-epic-navy bg-epic-grid-dark bg-grid text-epic-slate-subtle">
       <div className="epic-section-wide">
         <div className="grid gap-10 py-12 sm:grid-cols-3">
           <div>
-            <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-epic-muted">
-              Explore
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-epic-yellow">
+              real-world ethereum
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              Prepared for institutional audiences — governments, public agencies, international
+              organizations, NGOs, and regulated enterprises — by the Ethereum Foundation
+              institutional team. Figures are drawn from cited public sources and dated where shown;
+              readers should verify current data before relying on it for decisions.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-epic-yellow">
+              explore
             </h3>
             <ul className="mt-4 space-y-2">
               {exploreLinks.map(({ href, label }) => (
                 <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-slate-600 hover:text-epic-ink transition-colors"
-                  >
+                  <Link href={href} className="text-sm text-slate-300 transition-colors hover:text-epic-yellow">
                     {label}
                   </Link>
                 </li>
@@ -34,7 +54,7 @@ export function Footer() {
                   href="/docs/ethereum-basics-for-governments-and-institutions.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-600 hover:text-epic-ink transition-colors"
+                  className="text-sm text-slate-300 transition-colors hover:text-epic-yellow"
                 >
                   Ethereum Basics (PDF)
                 </a>
@@ -42,40 +62,37 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-epic-muted">
-              Contact
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-epic-yellow">
+              sources
             </h3>
             <ul className="mt-4 space-y-2">
-              {contactLinks.map(({ href, label }) => (
+              {sourceLinks.map(({ href, label }) => (
                 <li key={href}>
-                  <Link
+                  <a
                     href={href}
-                    className="text-slate-600 hover:text-epic-ink transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-slate-300 transition-colors hover:text-epic-yellow"
                   >
                     {label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-epic-muted">
-              About
-            </h3>
-            <p className="mt-4 text-sm text-slate-600 leading-relaxed">
-              EPIC is a team within the Ethereum Foundation publishing open research on public infrastructure and user self-sovereignty. Content here is not official EF policy.
-            </p>
-          </div>
         </div>
-        <div className="epic-divider py-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-sm text-slate-500">
-          <span>Ethereum Public Infrastructure and Commons</span>
+        <div className="flex flex-col gap-2 border-t border-epic-navy-muted/40 py-6 font-mono text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            informational material · not investment, legal, or procurement advice · views are those of
+            the institutional team, not official ethereum foundation policy
+          </span>
           <a
-            href="https://ethereum.org"
+            href="https://ethereum.foundation"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-slate-700 transition-colors"
+            className="shrink-0 transition-colors hover:text-epic-yellow"
           >
-            Ethereum Foundation
+            ethereum.foundation
           </a>
         </div>
       </div>

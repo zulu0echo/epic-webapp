@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, Home, Mail, LogOut, PanelLeftClose, PanelLeft, BookOpen, FileText, X } from "lucide-react";
+import { Map, Home, Mail, LogOut, PanelLeftClose, PanelLeft, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 import { ETH_BRAND } from "@/lib/brand";
@@ -13,8 +13,6 @@ const STORAGE_KEY = "epic-sidebar-collapsed";
 const publicNav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/map", label: "Map Explorer", icon: Map },
-  { href: "/blog", label: "Blog", icon: BookOpen },
-  { href: "/use-case-template", label: "Proof of Concept Template", icon: FileText },
   { href: "/contact", label: "Contact", icon: Mail },
 ];
 
@@ -82,7 +80,7 @@ export function SideNav({
           <div className="flex items-center justify-between mb-1">
             <div className="flex items-center gap-2 px-3 py-2.5">
               <img src={ETH_BRAND.diamondPurple} alt="" className="h-7 w-7 shrink-0" width={28} height={28} />
-              <span className="font-serif text-lg font-semibold text-epic-navy">EPIC</span>
+              <span className="font-mono text-sm font-semibold tracking-wide text-epic-navy">real-world ethereum</span>
             </div>
             <button
               type="button"
@@ -141,8 +139,8 @@ export function SideNav({
           width={28}
           height={28}
         />
-        <span className={cn("font-serif text-lg font-semibold text-epic-navy truncate", collapsed && "hidden")}>EPIC</span>
-        {collapsed && <span className="sr-only">EPIC</span>}
+        <span className={cn("font-mono text-sm font-semibold tracking-wide text-epic-navy truncate", collapsed && "hidden")}>real-world ethereum</span>
+        {collapsed && <span className="sr-only">Real-World Ethereum</span>}
       </div>
       <div className="flex-1 flex flex-col gap-0.5 py-1">
         {publicNav.map(({ href, label, icon: Icon }) => (
