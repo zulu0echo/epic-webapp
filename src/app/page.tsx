@@ -226,7 +226,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero — report cover treatment */}
-      <section className="relative overflow-hidden bg-epic-navy bg-epic-grid-dark bg-grid">
+      <section className="relative overflow-hidden bg-epic-navy bg-epic-grid-dark bg-grid" id="overview">
         <div
           aria-hidden
           className="absolute -bottom-28 -right-24 h-[22rem] w-[24rem] rounded-[3rem] bg-epic-yellow"

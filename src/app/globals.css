@@ -23,6 +23,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-epic-surface text-epic-ink antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
