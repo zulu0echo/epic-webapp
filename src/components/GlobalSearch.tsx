@@ -29,7 +29,7 @@ const TYPE_LABEL: Record<SearchPageItem["type"], string> = {
   page: "Page",
 };
 
-export function GlobalSearch() {
+export function GlobalSearch({ compact = false }: { compact?: boolean } = {}) {
   const [q, setQ] = useState("");
   const [results, setResults] = useState<SearchResult | null>(null);
   const [open, setOpen] = useState(false);
@@ -60,12 +60,12 @@ export function GlobalSearch() {
   const hasResults = pages.length > 0;
 
   return (
-    <div ref={ref} className="relative w-72 sm:w-80">
+    <div ref={ref} className={compact ? "relative w-full" : "relative w-72 sm:w-80"}>
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
         <input
           type="search"
-          placeholder="Search domains, opportunities, experts..."
+          placeholder={compact ? "Search..." : "Search domains, opportunities, experts..."}
           className="epic-input w-full pl-9 pr-3 py-2"
           value={q}
           onChange={(e) => {

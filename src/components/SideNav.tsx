@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, Home, Mail, LogOut, PanelLeftClose, PanelLeft, X } from "lucide-react";
+import { Map, Home, Mail, LogOut, PanelLeftClose, PanelLeft, Search, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 import { ETH_BRAND } from "@/lib/brand";
+import { GlobalSearch } from "@/components/GlobalSearch";
 import { useIsMobileDevice } from "@/hooks/useIsMobileDevice";
 
 const STORAGE_KEY = "epic-sidebar-collapsed";
@@ -198,6 +199,9 @@ export function SideNav({
               <X className="h-5 w-5" />
             </button>
           </div>
+          <div className="px-1 py-2">
+            <GlobalSearch compact />
+          </div>
           <div className="flex flex-1 flex-col gap-0.5 py-1">
             {isHome && (
               <>
@@ -244,7 +248,7 @@ export function SideNav({
       className={
         "bg-epic-navy bg-epic-grid-dark bg-grid " +
         cn(
-          "sticky top-0 flex h-screen shrink-0 self-start flex-col gap-0.5 border-r border-epic-navy-muted/40 p-3 transition-[width] duration-200 ease-out",
+          "sticky top-0 z-30 flex h-screen shrink-0 self-start flex-col gap-0.5 border-r border-epic-navy-muted/40 p-3 transition-[width] duration-200 ease-out",
           collapsed ? "w-[4.25rem]" : "w-60"
         )
       }
@@ -269,6 +273,19 @@ export function SideNav({
         </span>
         {collapsed && <span className="sr-only">Ethereum Foundation for Institutions</span>}
       </Link>
+      {collapsed ? (
+        <button
+          onClick={toggleCollapsed}
+          title="Search"
+          className="flex items-center justify-center rounded-lg px-0 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:bg-white/5 hover:text-epic-yellow"
+        >
+          <Search className="h-4 w-4 shrink-0" />
+        </button>
+      ) : (
+        <div className="px-1 py-2">
+          <GlobalSearch compact />
+        </div>
+      )}
       <div className="flex flex-1 flex-col gap-0.5 overflow-y-auto py-1">
         {isHome && (
           <>

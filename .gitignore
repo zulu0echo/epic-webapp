@@ -51,3 +51,4 @@ Thumbs.db
 *.log
 .cache/
 carbon-mrv-poc/registry-data.json
+.env*
