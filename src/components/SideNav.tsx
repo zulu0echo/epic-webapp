@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, Home, Mail, LogOut, PanelLeftClose, PanelLeft, Search, X } from "lucide-react";
+import { Map, Home, Mail, LogOut, PanelLeftClose, PanelLeft, Search, X, Globe2 } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 import { ETH_BRAND } from "@/lib/brand";
@@ -26,6 +26,7 @@ const homeSections = [
 const routeNav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/map", label: "Map Explorer", icon: Map },
+  { href: "/institutional-map", label: "Institutional Data Map", icon: Globe2 },
   { href: "/contact", label: "Contact", icon: Mail },
 ];
 
