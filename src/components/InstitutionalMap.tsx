@@ -269,7 +269,7 @@ export default function InstitutionalMap() {
               </button>
             );
           })}
-          <div className="ml-auto flex items-center gap-2">
+          <div className="flex w-full flex-wrap items-center gap-2 sm:ml-auto sm:w-auto">
             <label className="inline-flex items-center gap-1.5 text-xs text-slate-500">
               <span className="font-mono uppercase tracking-[0.12em]">Compare</span>
               <select
@@ -340,7 +340,7 @@ export default function InstitutionalMap() {
       ) : (
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         {/* Map / table */}
-        <div className="relative min-h-[560px] flex-1 bg-slate-50/70">
+        <div className="relative min-h-[380px] flex-1 bg-slate-50/70 sm:min-h-[560px]">
           {showTable ? (
             <TableView layer={layer} onSelect={(id) => { setSelectedId(id); setShowTable(false); }} />
           ) : (
