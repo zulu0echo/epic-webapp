@@ -4,15 +4,14 @@
 **Owner:** EPIC team
 **Last updated:** 2026-07-22
 
-A HungerMap-style interactive world map
-([hungermap.wfp.org](https://hungermap.wfp.org/food?w=ipc-phase-3&m=percentage)) that
-demonstrates Ethereum-relevant data continuously and freely, framed for an institutional
-audience (treasury, risk, compliance, asset management, policy).
+An interactive world choropleth that demonstrates Ethereum-relevant data continuously and
+freely, framed for an institutional audience (treasury, risk, compliance, asset management,
+policy).
 
-The reference map works because it combines: a **geographic choropleth**, a **severity/phase
+The model works because it combines: a **geographic choropleth**, a **severity/phase
 axis** *and* a **prevalence/percentage axis**, a **live + predictive** data pipeline (never
-blank), and enough **credibility** to be used operationally. This spec adapts that model to
-Ethereum data using only free, continuously-updated sources.
+blank), and enough **credibility** to be used operationally — applied to Ethereum data using
+only free, continuously-updated sources.
 
 ---
 
@@ -38,7 +37,7 @@ and the UI is responsible for surfacing `sourceUrl` on hover/click for each figu
 
 On-chain Ethereum data is **abundant, free, and real-time — but chain-level or address-level,
 never country-level.** Addresses are pseudonymous; nothing on-chain says *where* a user is.
-Since HungerMap is fundamentally a *map*, the geographic dimension is the thing we must solve —
+Since this is fundamentally a *map*, the geographic dimension is the thing we must solve —
 and for stablecoin *flows* specifically, country-level data is mostly paywalled.
 
 This splits candidate maps into feasibility tiers for "free + continuous + geographic":
@@ -116,7 +115,7 @@ Docs: [World Bank Indicators API](https://datahelpdesk.worldbank.org/knowledgeba
 
 Two distinct needs, different sources:
 **(A)** current regulatory *status* per country — the slow-changing baseline that colors the map
-(the "phase", mirroring IPC phases: banned → restricted → framework-in-progress → clear);
+(the "phase": banned → restricted → framework-in-progress → clear);
 **(B)** a live *news stream* of policy changes — the feed in the country drill-down panel.
 
 ### 3.1 Regulatory status baseline (free, curated, periodic)
@@ -179,7 +178,7 @@ the LLM summary never replaces the primary link.
    so a source going down never blanks the map.
 2. **Per-source cadence tiers:** real-time (on-chain), daily (FX/news), monthly (trackers/World
    Bank), annual (Chainalysis/PwC). Every layer timestamped in the UI.
-3. **Gap-fill (HungerMap's key trick).** Where country-level on-chain data doesn't exist, model
+3. **Gap-fill.** Where country-level on-chain data doesn't exist, model
    it from free macro proxies and **label it modeled** with a methodology link. Never blank, never
    fake-precise.
 4. **Provenance is enforced at ingest**, not bolted on later: a record without a resolvable
@@ -208,6 +207,29 @@ the LLM summary never replaces the primary link.
 - World Bank macro data is annual — good for context/color-scale, not "live."
 
 ---
+
+## Methodology — how each layer is measured
+
+Every value links to its primary source, shows an as-of date, and is labeled by how it was
+derived. Three derivation classes:
+
+- **Measured** — observed from primary data; subject to collection limits, not judgment.
+- **Modeled** — computed from measured inputs via a stated formula; a proxy, not a direct
+  observation.
+- **Assessed** — editorial classification from primary law and official sources, cross-checked
+  against trackers.
+
+| Layer | Class | Metric | How it's derived | Cadence |
+|---|---|---|---|---|
+| Validator & node decentralization | Measured | % of nodes | Share of reachable nodes whose IP geolocates to each country, aggregated across Rated, ethernodes.org and MigaLabs. Counts nodes, not stake. Cloud hosting attributes to the datacenter's country (e.g. AWS Dublin inflates Ireland); VPNs/relays can mask origin. | hourly (target) |
+| Stablecoin dollar-access demand | Modeled | 0–100 index | Proxy for latent dollar-access demand — **not** on-chain flows. Inflation + remittances/GDP (World Bank) normalized to 0–100 and combined, contextualized against live supply (DefiLlama). Measured country-level flows require licensed data (Chainalysis/Allium/Artemis Pro). | inputs annual; supply hourly |
+| Regulatory status | Assessed | phase 0–3 | Placed on a 0–3 phase from primary legislation and the official regulator pages linked per country, cross-checked against STRIDE / Atlantic Council / MiCA trackers. Four sub-domains (stablecoins, custody, tax, market structure) scored 0–3. Dated; as-of date is authoritative. | reviewed monthly |
+| Institutional operating readiness | Modeled | 0–100 composite | `readiness = 0.70 × regulatory-clarity + 0.30 × infrastructure`, where clarity = (phase ÷ 3) × 100 and infrastructure = min(100, node-share% × 6), floored at 25 where node data is absent. Weights are an editorial choice and can be tuned. | derived |
+
+**Limitations & gap-fill.** Countries without data render as a neutral "No data" gap, never a
+guessed value. Modeled layers indicate *where to look*, not exact magnitudes. Regulatory postures
+change — trust each entry's as-of date and linked statute. The in-app **Methodology** view renders
+this same content from the layer data, so it stays in sync with what ships.
 
 ## 6. Source index
 
