@@ -166,8 +166,8 @@ const subs = (stable: number, custody: number, tax: number, market: number): Sub
 ];
 
 const MICA_DEV: Development[] = [
-  { date: "2024-06-30", text: "MiCA stablecoin rules (asset-referenced & e-money tokens) began to apply.", source: OFF.eba },
-  { date: "2024-12-30", text: "MiCA fully applicable; CASP authorisation regime in force across the EU.", source: OFF.esmaMica },
+  { date: "2024-12-30", text: "MiCA became fully applicable; CASP authorisation regime in force across the EU.", source: OFF.esmaMica },
+  { date: "2025", text: "ESMA/EBA finalised MiCA technical standards; CASP authorisations proceeding as national transitional periods wind down.", source: OFF.esmaMica },
 ];
 
 const euRow = (id: string, name: string, national: SourceLink): CountryDatum => ({
@@ -213,16 +213,22 @@ const regulatoryRows: CountryDatum[] = [
   {
     id: "392", name: "Japan", value: 3, phase: 3, source: SRC.atlantic,
     note: "Licensed exchanges under the FSA; stablecoin issuance framework in force.",
-    framework: "Payment Services Act (amended)", effectiveDate: "2023", trend: "▲ Comprehensive (2023)",
+    framework: "Payment Services Act (amended)", effectiveDate: "2023; FIEA reform proposed 2025", trend: "▲ Comprehensive; reform underway",
     subScores: subs(3, 3, 2, 3), officialSources: [OFF.jfsa],
-    developments: [{ date: "2023", text: "Amended Payment Services Act took effect, establishing a stablecoin regime.", source: OFF.jfsa }],
+    developments: [
+      { date: "2023", text: "Amended Payment Services Act took effect, establishing a stablecoin regime.", source: OFF.jfsa },
+      { date: "2025", text: "FSA proposed regulating crypto under the Financial Instruments and Exchange Act and cutting the crypto tax rate.", source: OFF.jfsa },
+    ],
   },
   {
     id: "784", name: "United Arab Emirates", value: 3, phase: 3, source: SRC.atlantic,
     note: "Operational frameworks via VARA (Dubai) and ADGM (Abu Dhabi).",
-    framework: "VARA + ADGM regimes", effectiveDate: "2023", trend: "▲ Comprehensive (2023)",
+    framework: "VARA + ADGM regimes", effectiveDate: "2023; rulebooks updated 2025", trend: "▲ Comprehensive; expanding",
     subScores: subs(3, 3, 3, 3), officialSources: [OFF.vara, OFF.adgm],
-    developments: [{ date: "2023", text: "VARA full market regulations issued; licensed VASP activity underway.", source: OFF.vara }],
+    developments: [
+      { date: "2023", text: "VARA full market regulations issued; licensed VASP activity underway.", source: OFF.vara },
+      { date: "2025", text: "VARA updated its virtual-asset rulebooks; licensed activity expanded in Dubai.", source: OFF.vara },
+    ],
   },
   // Framework advancing
   {
@@ -232,16 +238,19 @@ const regulatoryRows: CountryDatum[] = [
     subScores: subs(3, 2, 2, 2),
     officialSources: [OFF.secUS, OFF.cftc, OFF.usTreasury, OFF.genius],
     developments: [
-      { date: "2025", text: "GENIUS Act established a federal framework for payment stablecoins.", source: OFF.genius },
-      { date: "2024", text: "Spot crypto exchange-traded products approved and trading.", source: OFF.secUS },
+      { date: "2025-07", text: "GENIUS Act signed into law, establishing a federal framework for payment stablecoins.", source: OFF.genius },
+      { date: "2025", text: "SEC rescinded SAB 121 and launched a Crypto Task Force; CLARITY market-structure bill advancing.", source: OFF.secUS },
     ],
   },
   {
     id: "826", name: "United Kingdom", value: 2, phase: 2, source: SRC.atlantic,
     note: "FCA cryptoasset regime being introduced; authorisation window expected 2026–2027.",
-    framework: "FSMA-based cryptoasset regime (in progress)", effectiveDate: "2026–2027 (expected)", trend: "▲ Advancing",
+    framework: "FSMA-based cryptoasset regime (in progress)", effectiveDate: "2026 (expected)", trend: "▲ Advancing",
     subScores: subs(2, 2, 2, 2), officialSources: [OFF.fca, OFF.hmt],
-    developments: [{ date: "2026–2027", text: "FCA developing the cryptoasset authorisation regime; applications expected to open.", source: OFF.fca }],
+    developments: [
+      { date: "2025-04", text: "HM Treasury published draft legislation bringing cryptoassets into the regulatory perimeter.", source: OFF.hmt },
+      { date: "2026", text: "FCA consulting on the cryptoasset regime; firm authorisations expected.", source: OFF.fca },
+    ],
   },
   {
     id: "124", name: "Canada", value: 2, phase: 2, source: SRC.atlantic,
@@ -282,9 +291,12 @@ const regulatoryRows: CountryDatum[] = [
   {
     id: "566", name: "Nigeria", value: 1, phase: 1, source: SRC.atlantic,
     note: "SEC digital-asset rules coexist with earlier banking-sector caution.",
-    framework: "SEC rules on digital assets", effectiveDate: "2022", trend: "▲ Opening",
-    subScores: subs(1, 1, 1, 1), officialSources: [OFF.secNigeria],
-    developments: [{ date: "2022", text: "SEC issued rules on the issuance and custody of digital assets.", source: OFF.secNigeria }],
+    framework: "Investments and Securities Act 2025", effectiveDate: "2025", trend: "▲ Opening",
+    subScores: subs(1, 2, 1, 1), officialSources: [OFF.secNigeria],
+    developments: [
+      { date: "2022", text: "SEC issued rules on the issuance and custody of digital assets.", source: OFF.secNigeria },
+      { date: "2025", text: "Investments and Securities Act recognised digital assets as securities; SEC licensing underway.", source: OFF.secNigeria },
+    ],
   },
   {
     id: "360", name: "Indonesia", value: 1, phase: 1, source: SRC.atlantic,
@@ -309,9 +321,12 @@ const regulatoryRows: CountryDatum[] = [
   {
     id: "156", name: "China", value: 0, phase: 0, source: SRC.atlantic,
     note: "Comprehensive ban on crypto trading and mining.",
-    framework: "Multi-agency prohibition", effectiveDate: "2021", trend: "▼ Prohibitive (2021)",
+    framework: "Multi-agency prohibition", effectiveDate: "2021", trend: "▼ Prohibitive (unchanged)",
     subScores: subs(0, 0, 0, 0), officialSources: [OFF.pboc],
-    developments: [{ date: "2021", text: "Authorities reaffirmed a comprehensive ban on crypto trading and mining.", source: OFF.pboc }],
+    developments: [
+      { date: "2021", text: "Authorities reaffirmed a comprehensive ban on crypto trading and mining.", source: OFF.pboc },
+      { date: "2025", text: "Mainland maintained its ban while monitoring Hong Kong's new stablecoin regime.", source: OFF.pboc },
+    ],
   },
 ];
 
