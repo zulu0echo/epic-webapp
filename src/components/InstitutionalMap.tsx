@@ -340,7 +340,7 @@ export default function InstitutionalMap() {
       ) : (
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         {/* Map / table */}
-        <div className="relative min-h-[380px] flex-1 bg-slate-50/70 sm:min-h-[560px]">
+        <div className="relative min-h-[380px] flex-1 bg-white sm:min-h-[560px]">
           {showTable ? (
             <TableView layer={layer} onSelect={(id) => { setSelectedId(id); setShowTable(false); }} />
           ) : (
@@ -353,20 +353,28 @@ export default function InstitutionalMap() {
                 onMouseLeave={() => setHover(null)}
               >
                 <rect width={WIDTH} height={HEIGHT} fill="transparent" onClick={() => setSelectedId(null)} />
+                <path
+                  d={pathGen({ type: "Sphere" }) ?? ""}
+                  fill="#eef1fb"
+                  stroke="#d7ddf4"
+                  strokeWidth={0.5}
+                  style={{ pointerEvents: "none" }}
+                />
                 {COUNTRIES.map((f, i) => {
                   const id = String(f.id);
                   const datum = layer.data[id];
                   const d = pathGen(f) ?? undefined;
                   if (!d) return null;
                   const isSelected = id === selectedId;
+                  const isHovered = hover?.id === id;
                   return (
                     <path
                       key={i}
                       d={d}
                       fill={fillFor(id, datum)}
-                      stroke={isSelected ? "#101349" : "#ffffff"}
-                      strokeWidth={isSelected ? 1.4 : 0.4}
-                      className="cursor-pointer outline-none transition-[stroke,opacity] hover:opacity-80"
+                      stroke={isSelected ? "#101349" : isHovered ? "#3f4aa0" : "#7c86c9"}
+                      strokeWidth={isSelected ? 1.6 : isHovered ? 0.9 : 0.6}
+                      className="cursor-pointer outline-none transition-[stroke,opacity] hover:opacity-90"
                       onMouseMove={(e) => onMove(e, id)}
                       onClick={() => setSelectedId(id)}
                       aria-label={datum ? `${datum.name}: ${formatValue(layer, datum)}` : undefined}

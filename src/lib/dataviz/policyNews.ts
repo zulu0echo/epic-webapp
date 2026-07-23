@@ -36,22 +36,34 @@ const S = {
   secNigeria: { label: "Nigeria SEC", url: "https://sec.gov.ng/" },
   spk: { label: "Türkiye SPK", url: "https://www.cmb.gov.tr/" },
   pboc: { label: "People's Bank of China", url: "http://www.pbc.gov.cn/en/3688006/index.html" },
+  hmt: { label: "UK HM Treasury", url: "https://www.gov.uk/government/organisations/hm-treasury" },
+  eba: { label: "European Banking Authority", url: "https://www.eba.europa.eu/regulation-and-policy/markets-crypto-assets" },
 } satisfies Record<string, SourceLink>;
 
+// Dated 2025–2026 developments. Curated from official sources; refreshed to the
+// most recent milestones (the ingestion script replaces these with live GDELT +
+// classification output when it runs).
 export const POLICY_NEWS: Record<string, NewsItem[]> = {
   "840": [
-    { date: "2025", headline: "GENIUS Act establishes a federal framework for payment stablecoins", topic: "stablecoin", direction: "enabling", source: S.congress },
-    { date: "2024", headline: "Spot crypto exchange-traded products approved and begin trading", topic: "market-structure", direction: "enabling", source: S.sec },
+    { date: "2025-07", headline: "GENIUS Act signed into law, establishing a federal framework for payment stablecoins", topic: "stablecoin", direction: "enabling", source: S.congress },
+    { date: "2025", headline: "SEC rescinds SAB 121 and stands up a Crypto Task Force to develop clearer rules", topic: "market-structure", direction: "enabling", source: S.sec },
+    { date: "2025", headline: "CLARITY market-structure bill advances in Congress", topic: "market-structure", direction: "enabling", source: S.congress },
   ],
-  "276": [{ date: "2024-12", headline: "MiCA fully applicable; CASP authorisation regime live across the EU", topic: "market-structure", direction: "enabling", source: S.esma }],
-  "250": [{ date: "2024-12", headline: "MiCA fully applicable; AMF authorising crypto-asset service providers", topic: "market-structure", direction: "enabling", source: S.esma }],
-  "826": [{ date: "2026", headline: "FCA cryptoasset authorisation regime being introduced", topic: "market-structure", direction: "enabling", source: S.fca }],
-  "392": [{ date: "2023", headline: "Amended Payment Services Act creates a stablecoin regime", topic: "stablecoin", direction: "enabling", source: S.jfsa }],
-  "784": [{ date: "2023", headline: "VARA full market regulations issued; licensed VASP activity underway", topic: "market-structure", direction: "enabling", source: S.vara }],
-  "410": [{ date: "2024", headline: "Virtual Asset User Protection Act takes effect", topic: "market-structure", direction: "enabling", source: S.fscKorea }],
-  "076": [{ date: "2024", headline: "Central bank running consultations to implement the crypto-assets law", topic: "market-structure", direction: "neutral", source: S.bcb }],
-  "356": [{ date: "2023", headline: "Crypto brought under anti-money-laundering (PMLA) reporting", topic: "general", direction: "restrictive", source: S.rbi }],
-  "566": [{ date: "2022", headline: "SEC issues rules on issuance and custody of digital assets", topic: "market-structure", direction: "enabling", source: S.secNigeria }],
-  "792": [{ date: "2024", headline: "Capital-markets law amended to license crypto-asset service providers", topic: "market-structure", direction: "neutral", source: S.spk }],
-  "156": [{ date: "2021", headline: "Authorities reaffirm comprehensive ban on crypto trading and mining", topic: "general", direction: "restrictive", source: S.pboc }],
+  "276": [
+    { date: "2025", headline: "ESMA/EBA finalise MiCA technical standards; BaFin authorises CASPs", topic: "market-structure", direction: "enabling", source: S.esma },
+    { date: "2025", headline: "EBA supervises asset-referenced & e-money token issuers under MiCA", topic: "stablecoin", direction: "enabling", source: S.eba },
+  ],
+  "250": [{ date: "2025", headline: "AMF authorising crypto-asset service providers as MiCA transitional period winds down", topic: "market-structure", direction: "enabling", source: S.esma }],
+  "826": [
+    { date: "2025-04", headline: "HM Treasury publishes draft legislation bringing cryptoassets into the regulatory perimeter", topic: "market-structure", direction: "enabling", source: S.hmt },
+    { date: "2026", headline: "FCA consulting on the cryptoasset regime; firm authorisations expected", topic: "market-structure", direction: "enabling", source: S.fca },
+  ],
+  "392": [{ date: "2025", headline: "FSA proposes regulating crypto under the Financial Instruments and Exchange Act and cutting crypto tax", topic: "market-structure", direction: "enabling", source: S.jfsa }],
+  "784": [{ date: "2025", headline: "VARA updates virtual-asset rulebooks; licensed activity expands in Dubai", topic: "market-structure", direction: "enabling", source: S.vara }],
+  "410": [{ date: "2025", headline: "Regulators advance second-phase digital-asset legislation and a won-stablecoin framework", topic: "stablecoin", direction: "enabling", source: S.fscKorea }],
+  "076": [{ date: "2025", headline: "Banco Central consults on VASP licensing and stablecoin / FX rules", topic: "market-structure", direction: "neutral", source: S.bcb }],
+  "356": [{ date: "2025", headline: "Government maintains crypto taxation; policy discussion paper still awaited", topic: "general", direction: "neutral", source: S.rbi }],
+  "566": [{ date: "2025", headline: "Investments and Securities Act recognises digital assets as securities; SEC licensing underway", topic: "market-structure", direction: "enabling", source: S.secNigeria }],
+  "792": [{ date: "2025", headline: "Capital Markets Board issues secondary regulations licensing crypto-asset platforms", topic: "market-structure", direction: "neutral", source: S.spk }],
+  "156": [{ date: "2025", headline: "Mainland maintains its crypto ban while monitoring Hong Kong's new stablecoin regime", topic: "general", direction: "restrictive", source: S.pboc }],
 };
